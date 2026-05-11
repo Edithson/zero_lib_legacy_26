@@ -14,6 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'webhook/notchpay',
         ]);
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\IsAdmin::class,
+            'superadmin' => \App\Http\Middleware\IsSuperAdmin::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
