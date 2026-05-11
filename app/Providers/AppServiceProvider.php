@@ -9,26 +9,27 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
+    public function register(): void {}
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        // 1. On récupère les paramètres depuis le cache.
-        // S'ils n'y sont pas, on fait la requête et on les met en cache indéfiniment.
-        $globalSettings = Cache::rememberForever('global_settings', function () {
-            return Setting::first() ?? new Setting();
+        // Si le cache contient un objet corrompu (ancienne valeur), on le purge d'abord
+        try {
+            $cached = Cache::get('global_settings');
+            if ($cached !== null && !is_array($cached)) {
+                Cache::forget('global_settings');
+            }
+        } catch (\Throwable $e) {
+            Cache::forget('global_settings');
+        }
+
+        // Maintenant on est sûr que le cache est propre ou vide
+        $attributes = Cache::rememberForever('global_settings', function () {
+            return (Setting::first() ?? new Setting())->toArray();
         });
 
-        // 2. On partage cette variable avec toutes les vues Blade de l'application
+        $globalSettings = (new Setting())->forceFill($attributes);
+
         View::share('globalSettings', $globalSettings);
     }
 }

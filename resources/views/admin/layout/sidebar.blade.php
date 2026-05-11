@@ -66,7 +66,7 @@
             Catégories
         </a>
 
-        <a href="#"
+        <a href="{{ route('admin.downloads.index') }}"
            class="sidebar-link {{ request()->routeIs('admin.downloads.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -94,7 +94,7 @@
             @endisset
         </a>
 
-        <a href="#"
+        <a href="{{ route('admin.newsletter.index') }}"
            class="sidebar-link {{ request()->routeIs('admin.newsletter.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

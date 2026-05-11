@@ -56,8 +56,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/contacts/{contact}', [ContactController::class, 'show'])->name('admin.contacts.show');
     Route::delete('/admin/contacts/{contact}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
 
+    // routes pour la gestion de la newsletter
+    Route::get('/admin/newsletter', [NewslatterController::class, 'index'])->name('admin.newsletter.index');
+    Route::delete('/admin/newsletter/{newslatter}', [NewslatterController::class, 'destroy'])->name('admin.newsletter.destroy');
+    Route::get('/admin/newsletter/export', [NewslatterController::class, 'export'])->name('admin.newsletter.export');
+
     // route pour la gestion des utilisateurs
     Route::resource('/admin/users', UserController::class)->names('admin.users')->except(['show']);
+
+    // route pour la gestion des téléchargements
+    Route::get('/admin/downloads', [DownloadController::class, 'index'])->name('admin.downloads.index');
 
 });
 

@@ -7,6 +7,7 @@ use App\Models\Download;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class DownloadController extends Controller
 {
@@ -31,5 +32,43 @@ class DownloadController extends Controller
 
         // 4. Déclenchement du téléchargement depuis le disque 'private'
         return Storage::disk('private')->download($book->file_path, $fileName);
+    }
+
+    public function index(Request $request): View
+    {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        // 1. Requête pour la liste détaillée (avec filtres)
+        $query = Download::with(['book', 'user'])->latest();
+
+        if ($startDate) {
+            $query->whereDate('created_at', '>=', $startDate);
+        }
+        if ($endDate) {
+            $query->whereDate('created_at', '<=', $endDate);
+        }
+
+        $downloads = $query->paginate(15)->withQueryString();
+
+        // 2. Requête pour le Top 5 des livres (pour le visuel)
+        // On compte les téléchargements de tous les temps pour le classement global
+        $topBooks = Book::withCount('downloads')
+            ->having('downloads_count', '>', 0)
+            ->orderByDesc('downloads_count')
+            ->take(5)
+            ->get();
+
+        // On récupère le nombre maximum pour calculer les pourcentages de nos barres de progression
+        $maxDownloads = $topBooks->max('downloads_count') ?: 1;
+
+        return view('admin.pages.downloads.index', [
+            'downloads'    => $downloads,
+            'topBooks'     => $topBooks,
+            'maxDownloads' => $maxDownloads,
+            'startDate'    => $startDate,
+            'endDate'      => $endDate,
+            'pageTitle'    => 'Statistiques des téléchargements',
+        ]);
     }
 }
