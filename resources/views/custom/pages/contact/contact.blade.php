@@ -203,32 +203,7 @@
             </div>
 
             {{-- section pour les coordonnées du dev --}}
-            <div class="bg-parchment rounded-2xl p-5">
-                <h3 class="font-serif font-bold text-lg text-ink mb-2">Coordonnées du développeur</h3>
-                <p class="text-ink/80 text-sm leading-relaxed">
-                    Si vous souhaitez contacter directement le développeur pour des questions techniques, des propositions de collaboration, ou simplement pour échanger sur le projet, voici mes coordonnées :
-                </p>
-                <ul class="mt-3 space-y-2">
-                    <li>
-                        <span class="font-semibold text-ink">Email :</span>
-                        <a href="mailto:{{ $globalSettings->admin_email ?? 'moafogaus@gmail.com' }}" class="text-amber hover:underline">
-                            {{ $globalSettings->admin_email ?? 'moafogaus@gmail.com' }}
-                        </a>
-                    </li>
-                    <li>
-                        <span class="font-semibold text-ink">Linkedin :</span>
-                        <a href="{{ $globalSettings->adr_linkedin ?? 'https://linkedin.com/in/edithson' }}" target="_blank" rel="noopener" class="text-amber hover:underline">
-                            {{ $globalSettings->adr_linkedin ?? 'https://linkedin.com/in/edithson' }}
-                        </a>
-                    </li>
-                    <li>
-                        <span class="font-semibold text-ink">Tel./WhatsApp :</span>
-                        <a href="tel:{{ $globalSettings->phone ?? '+237678859210' }}" class="text-amber hover:underline">
-                            {{ $globalSettings->phone ?? '+237678859210' }}
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            @include('custom.pages.contact.contact_details')
 
         </div>
         </div>

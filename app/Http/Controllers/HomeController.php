@@ -74,4 +74,14 @@ class HomeController extends Controller
     {
         return view('custom.pages.contact.contact');
     }
+
+    public function show_art($slug): View
+    {
+        try {
+            $book = Book::where('slug', $slug)->firstOrFail();
+            return view('custom.pages.articles.show', ['book' => $book]);
+        } catch (\Throwable $th) {
+            abort(404);
+        }
+    }
 }

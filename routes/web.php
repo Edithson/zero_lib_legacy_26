@@ -20,6 +20,7 @@ Route::get('/', HomeController::class . '@index')->name('home');
 Route::get('/about', HomeController::class . '@about')->name('about');
 Route::get('/contact', HomeController::class . '@contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/books/{slug}', [HomeController::class, 'show_art'])->name('books.show');
 
 Route::post('/newsletter/subscribe', [NewslatterController::class, 'store'])
      ->name('newsletter.subscribe');

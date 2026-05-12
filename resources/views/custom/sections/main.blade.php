@@ -81,7 +81,9 @@
 
                     <div class="p-3 sm:p-4 flex flex-col flex-1">
                         <span class="text-[10px] text-amber font-semibold tracking-widest uppercase">{{ $book->category->name ?? 'Non classé' }}</span>
-                        <h3 class="font-serif font-bold text-sm mt-1 mb-1 line-clamp-2 leading-snug">{{ $book->title }}</h3>
+                        <a href="{{ route('books.show', $book->slug) }}" class="hover:underline">
+                            <h3 class="font-serif font-bold text-sm mt-1 mb-1 line-clamp-2 leading-snug">{{ $book->title }}</h3>
+                        </a>
 
                         {{-- Auteur --}}
                         @if($book->author)
@@ -116,7 +118,9 @@
                         <div class="flex items-start justify-between gap-2">
                             <div>
                                 <span class="text-[10px] text-amber font-semibold tracking-widest uppercase">{{ $book->category->name ?? 'Non classé' }}</span>
-                                <h3 class="font-serif font-bold text-sm mt-0.5 leading-snug">{{ $book->title }}</h3>
+                                <a href="{{ route('books.show', $book->slug) }}" class="hover:underline">
+                                    <h3 class="font-serif font-bold text-sm mt-0.5 leading-snug">{{ $book->title }}</h3>
+                                </a>
 
                                 {{-- Auteur --}}
                                 @if($book->author)
