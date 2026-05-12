@@ -1,0 +1,776 @@
+[
+    {
+        "title": "Rédiger correctement un Cahier des Charges",
+        "author": "Les Validateurs",
+        "description": "Optimisez l'organisation de vos projets numériques en maîtrisant l'art de rédiger un Cahier des Charges Fonctionnel structuré et professionnel. Ce guide accessible vous accompagne pas à pas pour définir avec précision les besoins de vos utilisateurs, les fonctions de vos produits et les contraintes techniques incontournables. Grâce à des exemples concrets allant du développement PHP au design CSS, vous apprendrez à transformer une idée brute en une feuille de route claire et efficace pour garantir le succès de vos réalisations. Que vous soyez débutant ou développeur aguerri, cet ouvrage est l'outil indispensable pour professionnaliser votre démarche et sécuriser vos phases de conception.",
+        "category": "Développement",
+        "nbr_pages": 12,
+        "original_filename": "rediger-correctement-un-cahier-des-charges.pdf",
+        "cover_filename": "rediger-correctement-un-cahier-des-charges.png"
+    },
+    {
+        "title": "Faire de son programme un Logiciel Libre",
+        "author": "GuilOooo",
+        "description": "Transformez vos projets informatiques en moteurs d'innovation grâce à ce guide complet et accessible dédié à l'univers du Logiciel Libre. Que vous soyez attiré par la rigueur de la licence GNU GPL ou la flexibilité du modèle BSD, cet ouvrage vous accompagne pas à pas dans le choix et l'application concrète du cadre juridique idéal pour vos programmes. En démystifiant des concepts fondamentaux comme le copyleft et l'accès au code source, ce livre offre aux développeurs toutes les clés nécessaires pour diffuser leurs créations avec assurance tout en rejoignant sereinement la communauté mondiale de l'Open Source.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 10,
+        "original_filename": "faire-de-son-programme-un-logiciel-libre.pdf",
+        "cover_filename": "faire-de-son-programme-un-logiciel-libre.png"
+    },
+    {
+        "title": "Créez des applications pour Windows 8 en HTML et JavaScript",
+        "author": "XavierBoubert",
+        "description": "Maîtrisez le développement d'applications pour Windows 8 en exploitant la puissance du HTML et du JavaScript grâce à ce guide complet et accessible. De la prise en main de Visual Studio à l'utilisation avancée des bibliothèques WinRT et WinJS, cet ouvrage vous enseigne comment concevoir des interfaces modernes et fluides parfaitement intégrées à l'écosystème Microsoft. Vous y découvrirez les secrets du design, la gestion du cycle de vie des programmes et l'implémentation de fonctionnalités interactives telles que la recherche, le partage et les notifications. Que vous soyez débutant ou développeur web chevronné, ce livre constitue le tremplin idéal pour transformer vos idées en applications professionnelles prêtes à conquérir le Windows Store.",
+        "category": "Développement",
+        "nbr_pages": 240,
+        "original_filename": "creez-des-applications-pour-windows-8-en-html-et-javascript.pdf",
+        "cover_filename": "creez-des-applications-pour-windows-8-en-html-et-javascript.png"
+    },
+    {
+        "title": "Concevez votre site web avec PHP et MySQL",
+        "author": "Mathieu Nebra (Mateo21)",
+        "description": "Plongez dans l'univers de la programmation web et transformez vos pages statiques en sites dynamiques et interactifs grâce à ce guide complet sur PHP et MySQL. De l'apprentissage des bases syntaxiques à la gestion avancée des bases de données, cet ouvrage vous accompagne pas à pas dans la création de formulaires sécurisés, le déploiement de sessions utilisateurs et la protection contre les failles de sécurité. Grâce à une pédagogie progressive rythmée par des cas pratiques, vous maîtriserez les outils indispensables pour concevoir des applications web robustes, professionnelles et totalement personnalisées. C'est la ressource idéale pour tout développeur en herbe souhaitant donner une dimension concrète et performante à ses projets numériques.",
+        "category": "Développement",
+        "nbr_pages": 307,
+        "original_filename": "Concevez-votre-site-web-avec-php-et-mysql.pdf",
+        "cover_filename": "concevez-votre-site-web-avec-php-et-mysql.png"
+    },
+    {
+        "title": "Centrer en CSS",
+        "author": "nightmat",
+        "description": "Maîtrisez enfin l’art complexe du centrage en CSS, l'un des défis les plus fréquents et pourtant subtils du développement web moderne. Ce guide pratique explore toutes les méthodes natives pour aligner vos éléments avec précision, qu’ils soient horizontaux, verticaux, dans le flux ou positionnés de manière absolue. En finir avec les balises obsolètes devient un jeu d'enfant grâce à des explications claires sur les propriétés fondamentales et des astuces indispensables pour assurer une compatibilité parfaite entre les différents navigateurs. Que vous soyez un développeur de niveau intermédiaire ou un passionné souhaitant perfectionner ses mises en page, cet ouvrage vous offre les clés pour obtenir un rendu professionnel et structuré en pur CSS.",
+        "category": "Web Design",
+        "nbr_pages": 20,
+        "original_filename": "centrer-en-css.pdf",
+        "cover_filename": "centrer-en-css.png"
+    },
+    {
+        "title": "Améliorez la visibilité de votre site grâce au référencement",
+        "author": "Nassoub",
+        "description": "Maîtrisez l'art complexe du référencement naturel pour propulser votre site web au sommet des résultats de recherche Google. Ce guide complet vous accompagne dans l'optimisation technique de votre structure HTML, la gestion stratégique des mots-clés et l'exploitation judicieuse du \"jus de lien\" pour maximiser votre autorité en ligne. Vous apprendrez également à renforcer votre notoriété externe via le netlinking et l'impact des réseaux sociaux, transformant ainsi chaque page en un véritable aimant à visiteurs. C'est l'ouvrage de référence indispensable pour quiconque souhaite décrypter les algorithmes modernes et garantir une visibilité pérenne à ses projets numériques.",
+        "category": "Web Design",
+        "nbr_pages": 129,
+        "original_filename": "ameliorez-la-visibilite-de-votre-site-grace-au-referencement.pdf",
+        "cover_filename": "ameliorez-la-visibilite-de-votre-site-grace-au-referencement.png"
+    },
+    {
+        "title": "Les applications web avec JavaFX",
+        "author": "reemy",
+        "description": "Plongez dans le monde captivant des applications web interactives avec JavaFX. Ce guide complet s'adresse aux développeurs Java désireux de maîtriser la création de Rich Internet Applications (RIA), de l'installation des outils à leur déploiement. Vous explorerez la conception d'interfaces graphiques dynamiques, l'intégration multimédia et les animations sophistiquées à travers des projets pratiques. Un ouvrage indispensable pour enrichir vos compétences en développement web et donner vie à des expériences utilisateur riches.",
+        "category": "Développement",
+        "nbr_pages": 96,
+        "original_filename": "les-applications-web-avec-javafx.pdf",
+        "cover_filename": "les-applications-web-avec-javafx.png"
+    },
+    {
+        "title": "PDO : comprendre et corriger les erreurs les plus fréquentes",
+        "author": "Guillaume Ch. (cGuille)",
+        "description": "Vous êtes développeur PHP et vous vous heurtez régulièrement à des erreurs mystérieuses ou frustrantes avec PDO ? Ce guide essentiel est conçu pour démystifier les pièges courants et vous fournir les outils nécessaires pour comprendre et corriger les problèmes les plus fréquents, qu'il s'agisse des options de configuration, de la sécurisation des requêtes ou des subtilités des types de données. Apprenez à interpréter votre code, à anticiper les erreurs et à transformer PDO en un allié puissant et fiable pour toutes vos interactions avec les bases de données. Cessez de perdre du temps à chercher la source de vos bugs et écrivez des applications plus robustes et sécurisées.",
+        "category": "Développement",
+        "nbr_pages": 14,
+        "original_filename": "pdo-comprendre-et-corriger-les-erreurs-les-plus-frequentes.pdf",
+        "cover_filename": "pdo-comprendre-et-corriger-les-erreurs-les-plus-frequentes.png"
+    },
+    {
+        "title": "Apprenez à programmer en Python",
+        "author": "prolixe",
+        "description": "Plongez au cœur du langage Python avec ce guide exhaustif, conçu pour vous accompagner pas à pas, même si vous n'avez aucune expérience en programmation. De l'installation aux premiers programmes, en passant par les variables, les structures de contrôle et la création de fonctions, chaque concept est expliqué avec clarté. Vous découvrirez également la modularité, la gestion des erreurs, et la manipulation des structures de données fondamentales comme les chaînes, listes et dictionnaires, le tout illustré par des exemples concrets et un projet pratique. Cet ouvrage est le tremplin idéal pour acquérir une solide base et commencer à coder efficacement en Python.",
+        "category": "Développement",
+        "nbr_pages": 266,
+        "original_filename": "223267-apprenez-a-programmer-en-python - notes.pdf",
+        "cover_filename": "apprenez-a-programmer-en-python.png"
+    },
+    {
+        "title": "Poursuite d'études après un DUT",
+        "author": "Julien Rosset (Darkelfe)",
+        "description": "Vous êtes titulaire d'un DUT et la question de votre avenir professionnel ou académique vous préoccupe ? Ce guide essentiel lève le voile sur l'intégralité des chemins qui s'offrent à vous, que ce soit une insertion rapide dans le monde du travail ou la poursuite d'études. Explorez un panorama complet des possibilités, des licences professionnelles aux écoles d'ingénieurs, en passant par les opportunités à l'étranger et la réorientation, le tout étayé par des conseils pratiques sur les critères de sélection. Ne laissez plus l'incertitude vous freiner et construisez sereinement votre projet post-DUT grâce à cette ressource précieuse.",
+        "category": "Mathématiques",
+        "nbr_pages": 9,
+        "original_filename": "poursuite-d-etudes-apres-un-dut.pdf",
+        "cover_filename": "poursuite-d-etudes-apres-un-dut.png"
+    },
+    {
+        "title": "Choisir les bons types de colonne SQL",
+        "author": "Kyle Katarn",
+        "description": "Vous souhaitez alléger vos bases de données SQL et maximiser leur performance ? Ce guide indispensable vous révèle comment transformer vos tables en choisissant les types de colonne les plus efficaces. Fini les INT et TEXT génériques ! Apprenez à sélectionner les formats numériques, de date, de texte ou à choix multiples adaptés à chaque donnée, afin de diviser par trois ou quatre l'espace de stockage. Que vous soyez débutant ou expérimenté avec MySQL, vous découvrirez des stratégies pratiques, des règles d'optimisation clés et des exemples concrets pour concevoir des structures de table SQL légères et performantes.",
+        "category": "Développement",
+        "nbr_pages": 16,
+        "original_filename": "choisir-les-bons-types-de-colonne-sql.pdf",
+        "cover_filename": "choisir-les-bons-types-de-colonne-sql.png"
+    },
+    {
+        "title": "Mettre des PC en réseau",
+        "author": "ShigeruM",
+        "description": "Explorez l'univers du réseautage informatique et apprenez à connecter vos ordinateurs pour échanger des données en toute simplicité. Ce guide pratique vous accompagne pas à pas, de la sélection de la bonne connectique (carte et câble Ethernet) à la configuration des adresses IP et la mise en place d'un groupe de travail. Conçu pour être accessible aux débutants, il démystifie les concepts essentiels pour que vous puissiez maîtriser le partage de fichiers et de ressources entre vos machines. Lancez-vous dans la création de votre propre réseau local avec confiance et autonomie.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 10,
+        "original_filename": "mettre-des-pc-en-reseau.pdf",
+        "cover_filename": "mettre-des-pc-en-reseau.png"
+    },
+    {
+        "title": "Créez des applications pour iPhone, iPad et iPod Touch",
+        "author": "MichelMartin",
+        "description": "Découvrez comment donner vie à vos idées d'applications pour iPhone, iPad et iPod Touch grâce à ce guide complet et accessible. De l'installation de votre environnement de développement à la maîtrise approfondie de l'Objective-C et la conception d'interfaces graphiques intuitives, chaque étape est couverte pour vous transformer en développeur iOS aguerri. Enrichi de projets concrets, comme la création d'un jeu de Mastermind, ce livre vous fournira les compétences pratiques indispensables pour créer des applications performantes et attrayantes. Préparez-vous à concrétiser vos projets et à les voir s'exécuter sur les appareils mobiles d'Apple.",
+        "category": "Développement",
+        "nbr_pages": 461,
+        "original_filename": "creez-des-applications-pour-iphone-ipad-et-ipod-touch.pdf",
+        "cover_filename": "creez-des-applications-pour-iphone-ipad-et-ipod-touch.png"
+    },
+    {
+        "title": "Apprenez à créer votre site web avec HTML5 et CSS3",
+        "author": "Mathieu Nebra (Mateo21)",
+        "description": "Vous rêvez de concevoir et de donner vie à votre propre site web ? Ce guide complet est votre passeport pour l'univers de la création web, même sans aucune expérience préalable. Apprenez à structurer le contenu avec les toutes dernières fonctionnalités de HTML5 et à le sublimer grâce aux puissantes mises en forme de CSS3. Lancez-vous et transformez vos idées en sites internet modernes et fonctionnels.",
+        "category": "Développement",
+        "nbr_pages": 248,
+        "original_filename": "apprenez-a-creer-votre-site-web-avec-html5-et-css3.pdf",
+        "cover_filename": "apprenez-a-creer-votre-site-web-avec-html5-et-css3.png"
+    },
+    {
+        "title": "Créer un espace membre pour son site",
+        "author": "Mr. Black",
+        "description": "Transformez votre site web en une plateforme interactive et dynamique avec ce guide pratique dédié à la création d'un espace membre complet. Vous y découvrirez comment mettre en place les fonctions essentielles, de l'inscription et la connexion sécurisée à la gestion des profils et l'administration des utilisateurs. Idéal pour les développeurs familiers avec PHP/MySQL et HTML/CSS, cet ouvrage propose une approche pas à pas, jalonnée d'exercices corrigés, pour construire les fondations d'une communauté en ligne. Maîtrisez les bases essentielles et offrez à vos visiteurs une expérience personnalisée et enrichie sur votre site.",
+        "category": "Développement",
+        "nbr_pages": 97,
+        "original_filename": "creer-un-espace-membre-pour-son-site.pdf",
+        "cover_filename": "creer-un-espace-membre-pour-son-site.png"
+    },
+    {
+        "title": "Comment créer un jeu vidéo ?",
+        "author": "Rastagong",
+        "description": "N'avez-vous jamais rêvé de passer du statut de joueur à celui de créateur ? Ce guide accessible est votre point de départ idéal pour concrétiser votre propre jeu vidéo, même sans aucune connaissance informatique préalable. Il vous accompagne pas à pas, de la conception initiale de votre idée à la réalisation technique et à la constitution de votre équipe. Découvrez les bases fondamentales pour comprendre les éléments clés d'un jeu et donner vie à vos univers interactifs.",
+        "category": "Développement",
+        "nbr_pages": 12,
+        "original_filename": "267332-comment-creer-un-jeu-video.pdf",
+        "cover_filename": "comment-creer-un-jeu-video.png"
+    },
+    {
+        "title": "Créez votre propre package",
+        "author": "sp.conductos",
+        "description": "Fini les préambules répétitifs et les copier-coller incessants ! Ce guide pratique vous ouvre les portes de la personnalisation avancée de LaTeX en vous enseignant à créer vos propres packages sur mesure. Apprenez à structurer, optimiser et partager vos extensions, intégrant des options et des conditions pour adapter parfaitement votre environnement de travail. Transformez votre utilisation de LaTeX en une expérience plus fluide et efficace, et devenez un maître de la composition typographique.",
+        "category": "Mathématiques",
+        "nbr_pages": 13,
+        "original_filename": "creez-votre-propre-package.pdf",
+        "cover_filename": "creez-votre-propre-package.png"
+    },
+    {
+        "title": "[TP] Pendu",
+        "author": "Triviak",
+        "description": "Découvrez comment créer une version graphique du célèbre jeu du Pendu grâce à ce tutoriel pratique et accessible, idéal pour les développeurs C souhaitant maîtriser SDL et SDL_ttf. Ce guide pas à pas vous accompagne pour transformer le jeu de console en une expérience visuellement enrichie, avec des images dynamiques et une gestion avancée du texte. Profitez d'un projet clé en main : toutes les ressources (graphismes, polices, dictionnaire) sont fournies, accompagnées d'une correction détaillée et de nombreuses pistes d'améliorations. Un excellent exercice pour consolider vos compétences en programmation de jeux.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 29,
+        "original_filename": "TP-pendu.pdf",
+        "cover_filename": "tp-pendu.png"
+    },
+    {
+        "title": "jQuery, dynamisez vos pages plus simplement !",
+        "author": "Alex-D",
+        "description": "Fatigué de la complexité de JavaScript et des défis de compatibilité navigateur ? Ce livre vous invite à découvrir jQuery, la bibliothèque qui simplifie radicalement la dynamisation de vos pages web. Du classique \"Hello World\" à la manipulation avancée du contenu et des attributs, apprenez à exploiter les puissants sélecteurs et méthodes de jQuery pour créer des interfaces fluides. Adoptez une syntaxe élégante et homogène qui vous permettra de développer plus rapidement, sans vous soucier des spécificités inter-navigateurs, et de libérer tout le potentiel de vos projets web.",
+        "category": "Développement",
+        "nbr_pages": 30,
+        "original_filename": "jquery-dynamisez-vos-pages-plus-simplement.pdf",
+        "cover_filename": "jquery-dynamisez-vos-pages-plus-simplement.png"
+    },
+    {
+        "title": "Programmez en orienté objet en PHP",
+        "author": "Victor Thuillier (vyk12)",
+        "description": "Passez de la programmation procédurale à l'excellence orientée objet en PHP grâce à ce guide complet et pratique. Vous y explorerez les fondations essentielles, de la création de classes et d'objets à l'encapsulation et l'héritage, en les appliquant directement via des ateliers concrets comme un mini-jeu de combat et la gestion de données en base. Poussez ensuite vos compétences avec les méthodes magiques, les interfaces, la gestion des exceptions, les traits et la réflexivité, pour architecturer des applications PHP robustes, évolutives et professionnelles.",
+        "category": "Développement",
+        "nbr_pages": 332,
+        "original_filename": "programmez-en-oriente-objet-en-php.pdf",
+        "cover_filename": "programmez-en-oriente-objet-en-php.png"
+    },
+    {
+        "title": "[CSS] Les compteurs",
+        "author": "Itello",
+        "description": "Découvrez comment les compteurs CSS révolutionnent la numérotation de vos contenus web en automatisant chapitres, paragraphes et sections sans modifier une ligne de votre code HTML. Ce guide pratique vous apprendra à initialiser, incrémenter et insérer ces compteurs pour créer des structures cohérentes et professionnelles, à la manière des livres. Facile d'accès, il vous montrera comment obtenir une présentation dynamique et parfaitement organisée de vos pages, tout en explorant des techniques avancées comme les compteurs imbriqués. Optimisez dès maintenant la présentation de vos articles et sites web avec une solution CSS élégante et efficace.",
+        "category": "Web Design",
+        "nbr_pages": 9,
+        "original_filename": "css-les-compteurs.pdf",
+        "cover_filename": "css-les-compteurs.png"
+    },
+    {
+        "title": "La balise <canvas> avec JavaScript",
+        "author": "Renan Gehan (rgehan)",
+        "description": "Plongez dans l'univers fascinant de la création graphique web avec \"La balise <canvas> avec JavaScript\" ! Ce guide accessible vous initie étape par étape aux fondamentaux du dessin et de l'animation à l'aide de l'élément <canvas> d'HTML5 et de JavaScript. Apprenez à manipuler les formes, les coordonnées et les bases de l'animation, avec un projet pratique de balle rebondissante pour consolider vos acquis. Maîtrisez les outils essentiels pour donner vie à vos interfaces interactives.",
+        "category": "Développement",
+        "nbr_pages": 14,
+        "original_filename": "La-balise-canvas-avec-javascript.pdf",
+        "cover_filename": "la-balise-canvas-avec-javascript.png"
+    },
+    {
+        "title": "Le JavaScript moderne",
+        "author": "artragis",
+        "description": "Loin de son image passée, JavaScript s'est imposé comme un pilier incontournable du développement moderne, du navigateur au serveur, et même aux applications de bureau. Ce livre vous invite à explorer l'évolution fulgurante de ce langage, de ses origines à son statut d'assembleur du web. Découvrez ses capacités actuelles et futures grâce aux innovations d'ECMAScript Harmony, aux modules et aux autres nouveautés qui le rendent plus puissant et polyvalent que jamais. Un guide essentiel pour tout programmeur souhaitant maîtriser les multiples facettes de ce langage dynamique et omniprésent.",
+        "category": "Développement",
+        "nbr_pages": 17,
+        "original_filename": "le-javascript-moderne.pdf",
+        "cover_filename": "le-javascript-moderne.png"
+    },
+    {
+        "title": "[SQL] Sélection multi- tables",
+        "author": "FlYos",
+        "description": "Maîtrisez la sélection de données complexes en SQL en explorant des techniques performantes pour interroger plusieurs tables, sans recourir aux jointures traditionnelles. Ce guide pratique vous accompagnera depuis la conception structurée de vos tables (MCD, clés étrangères) jusqu'à l'implémentation de solutions élégantes via les requêtes imbriquées. Idéal pour optimiser vos bases de données et diversifier vos approches d'interrogation, il vous permettra de manipuler les informations avec une clarté et une efficacité accrues.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 8,
+        "original_filename": "sql-selection-multi-tables.pdf",
+        "cover_filename": "sql-selection-multi-tables.png"
+    },
+    {
+        "title": "Analysez des données avec Excel",
+        "author": "bat538 ,",
+        "description": "Maîtrisez Excel de A à Z pour transformer vos données brutes en informations stratégiques grâce à ce guide complet et progressif. De la prise en main du logiciel aux formules avancées, en passant par les tableaux croisés dynamiques, les graphiques percutants et les outils de simulation, vous développerez une expertise solide en analyse de données. Allez plus loin en découvrant les bases de la programmation VBA pour automatiser vos tâches et créer des solutions personnalisées, décuplant ainsi la puissance d'Excel. Idéal pour les débutants comme pour ceux souhaitant perfectionner leurs compétences, ce livre est la ressource indispensable pour exploiter pleinement le potentiel de cet outil incontournable.",
+        "category": "Mathématiques",
+        "nbr_pages": 249,
+        "original_filename": "200966-analysez-des-donnees-avec-excel.pdf",
+        "cover_filename": "analysez-des-donnees-avec-excel.png"
+    },
+    {
+        "title": "Stop aux pourriels (spams)",
+        "author": "Dark Lemon",
+        "description": "Marre des spams qui inondent votre boîte de réception après avoir publié votre adresse e-mail en ligne ? Ce livre est votre bouclier ! \"Stop aux pourriels (spams)\" vous offre un guide indispensable pour déjouer les robots collecteurs, en vous présentant des techniques ingénieuses exploitant xHTML/CSS, JavaScript et PHP. Apprenez à transformer et crypter votre adresse sans la rendre illisible pour vos visiteurs, et dites adieu aux messages indésirables.",
+        "category": "Développement",
+        "nbr_pages": 13,
+        "original_filename": "stop-aux-pourriels-spams.pdf",
+        "cover_filename": "stop-aux-pourriels-spams.png"
+    },
+    {
+        "title": "Maîtrisez les bases de données avec QtSQL",
+        "author": "Dadouchi A.",
+        "description": "Découvrez comment intégrer efficacement les bases de données dans vos projets Qt grâce à ce guide pratique et accessible. De la préparation de votre environnement à la connexion, en passant par l'exécution de requêtes et le traitement des données avec QtSQL, chaque étape est expliquée clairement. Idéal pour les développeurs possédant déjà des bases en C++, Qt et SQL, cet ouvrage vous mènera pas à pas vers la maîtrise des fonctionnalités essentielles de gestion de données, même sans interface graphique. Lancez-vous et enrichissez vos applications Qt avec une gestion de données robuste et performante.",
+        "category": "Développement",
+        "nbr_pages": 8,
+        "original_filename": "maitrisez-les-bases-de-donnees-avec-qtsql.pdf",
+        "cover_filename": "maitrisez-les-bases-de-donnees-avec-qtsql.png"
+    },
+    {
+        "title": "Les espaces de noms en PHP",
+        "author": "Victor Thuillier (vyk12)",
+        "description": "Maîtrisez les espaces de noms en PHP, une fonctionnalité essentielle pour tout développeur souhaitant professionnaliser son code. Dites adieu aux conflits de noms entre classes, fonctions et constantes, même lorsque vous intégrez de multiples bibliothèques. Ce guide pratique de niveau intermédiaire vous accompagnera pas à pas, de la déclaration simple aux sous-namespaces et à la gestion des alias, pour une architecture applicative claire et robuste.",
+        "category": "Développement",
+        "nbr_pages": 12,
+        "original_filename": "les-espaces-de-noms-en-php.pdf",
+        "cover_filename": "les-espaces-de-noms-en-php.png"
+    },
+    {
+        "title": "Apprenez à programmer en Python",
+        "author": "prolixe",
+        "description": "Envie de maîtriser Python, le langage de programmation le plus populaire et polyvalent ? Ce guide complet vous accompagne pas à pas, des bases fondamentales comme les variables, les conditions et les boucles, aux concepts plus avancés tels que les fonctions, les modules et la gestion des exceptions. Grâce à une approche pédagogique progressive, des explications claires et des exercices pratiques, dont un projet concret comme le ZCasino, vous développerez rapidement les compétences pour écrire des programmes structurés. Plongez également dans l'univers des objets, manipulez les chaînes de caractères, listes, dictionnaires et interagissez avec les fichiers pour concrétiser toutes vos idées.",
+        "category": "Développement",
+        "nbr_pages": 266,
+        "original_filename": "223267-apprenez-a-programmer-en-python.pdf",
+        "cover_filename": "apprenez-a-programmer-en-python.png"
+    },
+    {
+        "title": "Simplifiez-vous la vie avec LESS",
+        "author": "Iso",
+        "description": "Découvrez comment **Simplifiez-vous la vie avec LESS** et transformez radicalement votre approche du CSS. Ce guide complet vous montrera comment ce pré-processeur puissant résout les problèmes de code répétitif et d'organisation, grâce à l'introduction des variables, des classes abstraites (mixins) et de l'imbrication des sélecteurs. Que vous souhaitiez une installation côté client ou serveur (Node.js), cet ouvrage vous accompagnera pas à pas vers un CSS plus propre, plus modulaire et infiniment plus facile à maintenir, quelle que soit votre expérience en développement web.",
+        "category": "Développement",
+        "nbr_pages": 10,
+        "original_filename": "simplifiez-vous-la-vie-avec-less.pdf",
+        "cover_filename": "simplifiez-vous-la-vie-avec-less.png"
+    },
+    {
+        "title": "Comment contribuer à un projet libre sans écrire une ligne de code ?",
+        "author": "Sithran",
+        "description": "Vous êtes passionné par le logiciel libre mais ne vous imaginez pas écrire une seule ligne de code ? Ce guide essentiel est fait pour vous, révélant une multitude de façons d'apporter une contribution précieuse et significative ! Découvrez comment votre expertise peut améliorer la qualité des logiciels, rendre la documentation plus accessible, faciliter l'intégration des nouveaux utilisateurs ou étendre la portée des projets par la traduction. Laissez votre empreinte et participez activement à l'évolution de vos logiciels préférés, sans jamais toucher au code.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 5,
+        "original_filename": "213671-comment-contribuer-a-un-projet-libre-sans-ecrire-une-ligne-de-code.pdf",
+        "cover_filename": "comment-contribuer-a-un-projet-libre-sans-ecrire-une-ligne-de-code.png"
+    },
+    {
+        "title": "Apprenez le fonctionnement des réseaux TCP/IP",
+        "author": "Romain Guichard (Caelifer) ,",
+        "description": "Plongez au cœur des réseaux informatiques et maîtrisez les fondamentaux du TCP/IP avec ce guide complet et progressif. Il vous révélera, étape par étape, comment les machines communiquent localement, dialoguent entre réseaux et interagissent via les applications. Riche en explications claires, en exercices pratiques et en mises en situation concrètes (routage, Wireshark, DHCP, DNS), cet ouvrage vous dotera des compétences essentielles pour comprendre, configurer et optimiser le fonctionnement de l'Internet. Que vous soyez débutant ou souhaitiez consolider vos acquis, ce livre est votre passeport pour l'univers des réseaux.",
+        "category": "Web Design",
+        "nbr_pages": 219,
+        "original_filename": "346829-apprenez-le-fonctionnement-des-reseaux-tcp-ip.pdf",
+        "cover_filename": "apprenez-le-fonctionnement-des-reseaux-tcp-ip.png"
+    },
+    {
+        "title": "Créer un mini-RPG en JavaScript avec canvas",
+        "author": "Sébastien CAPARROS (sebcap26)",
+        "description": "Lancez-vous dans l'univers de la création de jeux vidéo avec \"Créer un mini-RPG en JavaScript avec canvas\". Ce guide s'adresse aux développeurs intermédiaires maîtrisant HTML, JavaScript objet et AJAX, souhaitant bâtir les fondations d'un jeu de rôle dynamique. Vous y apprendrez à concevoir des cartes interactives, animer des personnages, gérer la caméra et intégrer des éléments d'interface. Une ressource essentielle pour donner vie à votre propre mini-RPG solo, étape par étape.",
+        "category": "Développement",
+        "nbr_pages": 34,
+        "original_filename": "creer-un-mini-rpg-en-javascript-avec-canvas.pdf",
+        "cover_filename": "creer-un-mini-rpg-en-javascript-avec-canvas.png"
+    },
+    {
+        "title": "Des applications ultra-rapides avec Node.js",
+        "author": "Mathieu Nebra (Mateo21)",
+        "description": "Maîtrisez Node.js, l'outil incontournable pour les développeurs web désireux de créer des applications ultra-rapides et hautement performantes. De la compréhension de ses mécanismes fondamentaux à la structuration d'applications robustes avec Express.js, en passant par la gestion des modules via NPM et la mise en œuvre du temps réel avec Socket.io, chaque aspect est abordé avec des exemples concrets et des TPs pratiques. Conçu pour les développeurs JavaScript expérimentés, cet ouvrage vous offre les clés pour exploiter pleinement le potentiel de Node.js et concrétiser vos projets les plus ambitieux.",
+        "category": "Développement",
+        "nbr_pages": 81,
+        "original_filename": "des-applications-ultra-rapides-avec-node-js.pdf",
+        "cover_filename": "des-applications-ultra-rapides-avec-node-js.png"
+    },
+    {
+        "title": "Un livre d'or",
+        "author": "Mathieu Nebra (Mateo21)",
+        "description": "Apprenez à dynamiser votre site web en créant un livre d'or interactif grâce à ce guide pratique et accessible conçu par Mathieu Nebra. Ce tutoriel pas à pas vous enseigne comment maîtriser les bases de données MySQL et sécuriser vos formulaires pour permettre à vos visiteurs de laisser une trace de leur passage en toute simplicité. Vous y découvrirez également les secrets de la pagination automatique en PHP afin d'organiser un grand volume de messages de manière fluide et professionnelle. C'est l'outil pédagogique idéal pour recueillir des retours précieux et renforcer l'interactivité de votre projet web dès ses premiers pas.",
+        "category": "Développement",
+        "nbr_pages": 9,
+        "original_filename": "un-livre-d-or.pdf",
+        "cover_filename": "un-livre-d-or.png"
+    },
+    {
+        "title": "Votre site PHP (presque) complet : architecture MVC et bonnes pratiques",
+        "author": "Savageman",
+        "description": "Passez du stade de débutant à celui de développeur averti en apprenant à structurer vos projets web selon l'architecture MVC et les standards professionnels les plus exigeants. À travers la réalisation concrète d'un espace membre complet, ce guide vous enseigne comment séparer efficacement vos couches de données tout en appliquant des règles de sécurité rigoureuses pour protéger durablement vos utilisateurs. Vous y découvrirez des outils robustes pour simplifier la gestion de vos bases de données et de vos formulaires, garantissant ainsi un code lisible, évolutif et facile à maintenir. Idéal pour approfondir vos connaissances techniques, cet ouvrage constitue un véritable tremplin pour bâtir des applications web performantes dans les règles de l'art.",
+        "category": "Développement",
+        "nbr_pages": 54,
+        "original_filename": "votre-site-php-presque-complet-architecture-mvc-et-bonnes-pratiques.pdf",
+        "cover_filename": "votre-site-php-presque-complet-architecture-mvc-et-bonnes-pratiques.png"
+    },
+    {
+        "title": "Modélisation par révolution",
+        "author": "révolution",
+        "description": "Découvrez l'art de la modélisation par révolution, une technique simple et performante pour transformer vos tracés en objets 3D élégants. Ce guide pratique vous accompagne pas à pas dans la maîtrise des courbes et du modificateur « Lathe » afin de concevoir avec aisance des volumes sophistiqués comme des verres, des vases ou des pièces d'échecs. Accessible aux débutants, l'ouvrage dévoile les secrets d'une méthode inspirée de la poterie pour obtenir des résultats professionnels et harmonieux en quelques clics seulement. Optimisez dès maintenant votre flux de travail et donnez une nouvelle dimension à vos créations numériques grâce à cette approche pédagogique et concrète.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 6,
+        "original_filename": "modelisation-par-revolution.pdf",
+        "cover_filename": "modelisation-par-revolution.png"
+    },
+    {
+        "title": "Créer son forum de toutes pièces",
+        "author": "Tadzoa",
+        "description": "Affranchissez-vous des solutions clés en main et apprenez à bâtir votre propre forum de discussion en partant de zéro grâce à ce guide complet et accessible. Étape par étape, vous maîtriserez le développement des fonctionnalités essentielles, de la gestion sécurisée des profils et de la messagerie privée jusqu'à la mise en place d'une interface d'administration robuste pour modérer efficacement votre communauté. L’ouvrage explore également l'intégration d'options avancées comme un système d'amis ou le suivi des messages non lus afin d'offrir une expérience utilisateur véritablement professionnelle. Ce manuel est l'outil idéal pour tout développeur souhaitant gagner en autonomie et concevoir un espace d'échange unique, parfaitement adapté à ses besoins.",
+        "category": "Développement",
+        "nbr_pages": 164,
+        "original_filename": "creer-son-forum-de-toutes-pieces.pdf",
+        "cover_filename": "creer-son-forum-de-toutes-pieces.png"
+    },
+    {
+        "title": "La gestion des erreurs et des problèmes HTML",
+        "author": "Ciphered",
+        "description": "Maîtrisez l'art délicat du débogage web grâce à ce guide complet dédié à la résolution des problèmes HTML et CSS les plus fréquents. À travers une approche méthodique et concrète, cet ouvrage vous apprend à identifier rapidement l'origine des déformations de mise en page et à dompter les subtilités complexes du positionnement ou de l'alignement vertical. Idéal pour transformer vos erreurs d'affichage en une expertise technique solide, ce manuel constitue une référence indispensable pour tout développeur souhaitant concevoir des interfaces web impeccables et professionnelles.",
+        "category": "Web Design",
+        "nbr_pages": 17,
+        "original_filename": "la-gestion-des-erreurs-et-des-problemes-html.pdf",
+        "cover_filename": "la-gestion-des-erreurs-et-des-problemes-html.png"
+    },
+    {
+        "title": "Créez votre menu interactif en images en HTML/CSS !",
+        "author": "Dwayn ,",
+        "description": "Plongez dans l'univers du web design moderne en apprenant à concevoir un menu interactif élégant exclusivement à l'aide de HTML5 et CSS3. Sans aucune ligne de JavaScript, cet ouvrage vous guide pas à pas dans la création d'une interface visuelle dynamique intégrant des effets de zoom et des transitions fluides particulièrement esthétiques. Vous maîtriserez l'art de l'ergonomie grâce à une navigation optimisée pour le survol et le clavier, tout en explorant diverses variantes pour adapter vos menus à tous vos projets. Transformez vos simples listes de liens en une galerie d'images interactive et professionnelle qui saura captiver vos utilisateurs dès le premier coup d'œil.",
+        "category": "Développement",
+        "nbr_pages": 30,
+        "original_filename": "creez-votre-menu-interactif-en-images-en-html-css.pdf",
+        "cover_filename": "creez-votre-menu-interactif-en-images-en-html-css.png"
+    },
+    {
+        "title": "Introduction à l'injection de dépendances en PHP",
+        "author": "vincent1870",
+        "description": "Fatigué des dépendances rigides et du manque de flexibilité dans vos applications PHP ? Ce guide pratique vous ouvre les portes de l'injection de dépendances, un patron de conception essentiel pour maîtriser le cycle de vie de vos objets et concevoir un code plus robuste. Apprenez à mettre en œuvre cette technique avec des conteneurs de services, tels que Pimple, afin de créer des applications modulaires, facilement configurables et à la maintenabilité accrue. Améliorez significativement la qualité et l'évolutivité de vos projets PHP en adoptant les meilleures pratiques de la programmation orientée objet.",
+        "category": "Développement",
+        "nbr_pages": 16,
+        "original_filename": "495641-introduction-a-l-injection-de-dependances-en-php.pdf",
+        "cover_filename": "introduction-a-l-injection-de-dependances-en-php.png"
+    },
+    {
+        "title": "Adopter un style de programmation clair avec le modèle MVC",
+        "author": "vincent1870",
+        "description": "Fatigué de naviguer dans un code désordonné et difficile à maintenir ? Plongez dans les principes du modèle MVC avec ce guide pratique pour structurer vos applications PHP de manière claire et élégante. De la théorie des Contrôleurs, Modèles et Vues à l'organisation optimisée de vos fichiers, vous construirez un système de news complet et découvrirez des pistes pour aller plus loin, comme l'utilisation de frameworks. Adoptez dès maintenant les bonnes pratiques qui transformeront la lisibilité et l'évolutivité de vos projets de développement web.",
+        "category": "Développement",
+        "nbr_pages": 11,
+        "original_filename": "adopter-un-style-de-programmation-clair-avec-le-modele-mvc.pdf",
+        "cover_filename": "adopter-un-style-de-programmation-clair-avec-le-modele-mvc.png"
+    },
+    {
+        "title": "Propulsez votre site avec WordPress",
+        "author": "Midnight Falcon",
+        "description": "De la première installation à l'optimisation avancée, ce guide complet vous offre toutes les clés pour maîtriser WordPress, le CMS le plus populaire du web. Apprenez à manipuler son interface d'administration, à gérer publications et médias, et à personnaliser son apparence avec des thèmes et des extensions. Allez bien au-delà de l'utilisation de base en développant vos propres thèmes et plugins sur mesure, et en optimisant votre site pour le référencement et la performance avant de le mettre en production. Grâce à des explications claires et de nombreux travaux pratiques, vous serez armé pour créer et propulser un site WordPress unique, professionnel et performant.",
+        "category": "Développement",
+        "nbr_pages": 112,
+        "original_filename": "propulsez-votre-site-avec-wordpress.pdf",
+        "cover_filename": "propulsez-votre-site-avec-wordpress.png"
+    },
+    {
+        "title": "Comment créer un jeu vidéo ?",
+        "author": "Rastagong",
+        "description": "Rêvez-vous de passer du côté du joueur à celui du créateur ? Ce guide, conçu pour les débutants absolus, vous prend par la main pour vous montrer comment créer un jeu vidéo de A à Z, sans aucune connaissance préalable en informatique. Explorez les composants essentiels, des graphismes aux musiques en passant par la programmation, et apprenez à structurer votre projet, de l'idée initiale jusqu'à la constitution d'une équipe. Transformez enfin votre passion en une réalisation concrète et maîtrisez les bases de la conception de jeux vidéo.",
+        "category": "Développement",
+        "nbr_pages": 12,
+        "original_filename": "comment-creer-un-jeu-video.pdf",
+        "cover_filename": "comment-creer-un-jeu-video.png"
+    },
+    {
+        "title": "Triggers et vues matérialisées (MySQL)",
+        "author": "Lord Casque Noir",
+        "description": "Optimisez la performance et l'intégrité de vos bases de données MySQL avec ce tutoriel essentiel sur les triggers et les vues matérialisées. Découvrez comment les vues matérialisées peuvent servir de cache pour accélérer drastiquement vos requêtes, tandis que les triggers vous permettront d'automatiser des tâches cruciales comme l'historisation des données ou le calcul de valeurs par défaut. Grâce à des exemples concrets et des mises en garde pratiques, ce guide intermédiaire vous outille pour maîtriser ces puissants mécanismes et bâtir des applications plus robustes et réactives.",
+        "category": "Développement",
+        "nbr_pages": 26,
+        "original_filename": "triggers-et-vues-materialisees-mysql.pdf",
+        "cover_filename": "triggers-et-vues-materialisees-mysql.png"
+    },
+    {
+        "title": "Atomik Framework : un framework PHP simple et léger",
+        "author": "Warshadow",
+        "description": "Plongez dans l'univers d'Atomik Framework, un framework PHP ultra-léger et intuitif, idéal pour le développement rapide de vos projets web. Ce guide vous révèle comment exploiter la puissance de cet outil performant, développé en France, qui mise sur la simplicité et la modularité grâce à un système de plugins efficace. De son installation à la configuration avancée, en passant par la maîtrise de ses fonctions clés, vous apprendrez à construire des sites réactifs de petite à moyenne envergure. Optimisez votre workflow et découvrez une approche minimaliste mais complète pour vos applications PHP.",
+        "category": "Développement",
+        "nbr_pages": 11,
+        "original_filename": "Atomik-framework-un-framework-php-simple-et-leger.pdf",
+        "cover_filename": "atomik-framework-un-framework-php-simple-et-leger.png"
+    },
+    {
+        "title": "Comment faire une page ayant la même hauteur que le navigateur ?",
+        "author": "Anonyme",
+        "description": "Vous avez toujours cherché à créer des pages web qui s'adaptent parfaitement à la hauteur du navigateur de vos visiteurs ? Ce tutoriel essentiel vous propose deux méthodes fiables pour un rendu impeccable : une approche purement CSS et une solution plus robuste en JavaScript. Apprenez à maîtriser l'ajustement dynamique de vos contenus, en contournant les défis de compatibilité pour offrir une expérience utilisateur fluide. Idéal pour les développeurs souhaitant optimiser la présentation visuelle de leurs créations.",
+        "category": "Développement",
+        "nbr_pages": 8,
+        "original_filename": "comment-faire-une-page-ayant-la-meme-hauteur-que-le-navigateur.pdf",
+        "cover_filename": "comment-faire-une-page-ayant-la-meme-hauteur-que-le-navigateur.png"
+    },
+    {
+        "title": "Calcul d'une expression mathématique",
+        "author": "robocop",
+        "description": "Explorez les mystères de l'interprétation des expressions mathématiques avec cet ouvrage pratique et approfondi ! Apprenez à construire votre propre calculatrice, capable de décoder des expressions complexes, en maîtrisant des concepts clés tels que l'analyse lexicale, l'analyse syntaxique (via la BNF) et la manipulation d'arbres syntaxiques abstraits. Ce guide essentiel vous offre une première approche concrète de la compilation, transformant une simple chaîne de caractères en un résultat calculé. Une ressource indispensable pour tout développeur désireux de comprendre comment les ordinateurs traitent le langage mathématique.",
+        "category": "Développement",
+        "nbr_pages": 11,
+        "original_filename": "calcul-d-une-expression-mathematique.pdf",
+        "cover_filename": "calcul-d-une-expression-mathematique.png"
+    },
+    {
+        "title": "jQuery : écrivez moins pour faire plus !",
+        "author": "tit_toinou",
+        "description": "Plongez dans l'univers de jQuery et transformez votre manière de développer des interfaces web : écrivez moins de code, mais réalisez des fonctionnalités bien plus riches et dynamiques. Cet ouvrage complet vous guide depuis les bases de l'installation et des sélecteurs jusqu'à la manipulation experte du DOM, la gestion des attributs et des formulaires, ainsi que la création d'animations fluides et d'effets visuels. Riche en exemples et travaux pratiques, il aborde également les sujets avancés comme la gestion déléguée des événements et les espaces de noms, pour une interactivité web sans précédent. Maîtrisez cette bibliothèque incontournable, adoptée par les géants du web, et optimisez vos projets pour une expérience utilisateur remarquable.",
+        "category": "Développement",
+        "nbr_pages": 86,
+        "original_filename": "jquery-ecrivez-moins-pour-faire-plus.pdf",
+        "cover_filename": "jquery-ecrivez-moins-pour-faire-plus.png"
+    },
+    {
+        "title": "Un compte à rebours en PHP",
+        "author": "SpriteWare",
+        "description": "Envie d'intégrer un compte à rebours dynamique et personnalisé à votre site web ? Ce guide pratique en PHP, d'une difficulté annoncée « Facile », vous accompagne pas à pas pour créer un décompte efficace, à l'image de celui avant Noël. Vous maîtriserez les concepts clés comme les timestamps et les conversions de temps, avec une option JavaScript pour ceux qui souhaitent aller plus loin. Idéal pour les développeurs PHP cherchant à ajouter une touche interactive à leurs projets, ce livre vous prouvera qu'un tel script est à la portée de tous.",
+        "category": "Développement",
+        "nbr_pages": 9,
+        "original_filename": "un-compte-a-rebours-en-php.pdf",
+        "cover_filename": "un-compte-a-rebours-en-php.png"
+    },
+    {
+        "title": "Simplifiez vos développements JavaScript avec jQuery",
+        "author": "MichelMartin",
+        "description": "Plongez au cœur de jQuery avec ce guide indispensable pour transformer et simplifier vos développements JavaScript. De l'installation aux techniques avancées, maîtrisez la manipulation du DOM, la gestion événementielle et la création d'animations fluides, le tout illustré par des exemples concrets et des projets pratiques. Ce livre vous offre les clés pour concevoir des interfaces web dynamiques et performantes avec une efficacité redoutable, vous permettant d'économiser un temps précieux. Adoptez jQuery et portez vos compétences de développeur à un niveau supérieur.",
+        "category": "Développement",
+        "nbr_pages": 266,
+        "original_filename": "simplifiez-vos-developpements-javascript-avec-jquery.pdf",
+        "cover_filename": "simplifiez-vos-developpements-javascript-avec-jquery.png"
+    },
+    {
+        "title": "Découvrez la puissance de jQuery UI",
+        "author": "Sainior",
+        "description": "Libérez tout le potentiel de vos interfaces web avec \"Découvrez la puissance de jQuery UI\", le guide indispensable pour tout développeur désireux de créer des expériences utilisateur dynamiques et intuitives. Cet ouvrage vous plonge au cœur des interactions fondamentales – du Drag & Drop à la sélection et au redimensionnement – et vous initie aux widgets essentiels tels que les menus accordéon, les barres de progression et l'autocomplétion. Grâce à des explications claires et des ateliers pratiques, vous apprendrez à implémenter facilement des fonctionnalités avancées, résolvant les défis de compatibilité et d'accessibilité. Maîtrisez jQuery UI pour concevoir des applications web modernes, performantes et visuellement attrayantes.",
+        "category": "Développement",
+        "nbr_pages": 67,
+        "original_filename": "decouvrez-la-puissance-de-jquery-ui.pdf",
+        "cover_filename": "decouvrez-la-puissance-de-jquery-ui.png"
+    },
+    {
+        "title": "Apprenez à programmer en Java",
+        "author": "cysboy",
+        "description": "Plongez dans l'univers de la programmation avec ce guide complet qui vous accompagne de vos premiers pas en Java jusqu'à la maîtrise des concepts les plus avancés du langage. Vous apprendrez à structurer des applications robustes grâce à l'approche orientée objet et aux design patterns, tout en découvrant comment créer des interfaces graphiques interactives et gérer des tâches simultanées. Ponctué de travaux pratiques concrets et de conseils méthodologiques, cet ouvrage pédagogique constitue le tremplin idéal pour transformer vos idées en logiciels professionnels et performants. Que vous soyez totalement débutant ou souhaitiez consolider vos bases, cette référence indispensable vous offre une progression fluide pour devenir un développeur Java accompli.",
+        "category": "Développement",
+        "nbr_pages": 534,
+        "original_filename": "10601-apprenez-a-programmer-en-java.pdf",
+        "cover_filename": "apprenez-a-programmer-en-java.png"
+    },
+    {
+        "title": "Autour de la fonction exponentielle et ses constructions",
+        "author": "louisclem",
+        "description": "Explorez les secrets de l'analyse mathématique à travers cet ouvrage captivant qui propose une immersion inédite dans les multiples constructions de la fonction exponentielle. En reliant rigoureusement les équations différentielles aux transformations de sommes en produits, ce guide permet de dépasser les simples bases scolaires pour saisir toute l'unité et la puissance de ce concept fondamental. Grâce à une approche pédagogique stimulante et ponctuée de notes culturelles, les lecteurs avides d'approfondissement découvriront comment des points de départ variés convergent vers une même réalité mathématique universelle.",
+        "category": "Mathématiques",
+        "nbr_pages": 17,
+        "original_filename": "autour-de-la-fonction-exponentielle-et-ses-constructions.pdf",
+        "cover_filename": "autour-de-la-fonction-exponentielle-et-ses-constructions.png"
+    },
+    {
+        "title": "Créer un menu circulaire",
+        "author": "gp2mv3",
+        "description": "Apprenez à transformer l'interface de votre site web en concevant un menu circulaire interactif et élégant qui saura captiver vos visiteurs par son originalité. Ce guide pratique vous accompagne pas à pas dans l'utilisation conjointe du HTML, du CSS et du JavaScript pour créer une animation fluide basée sur les principes fondamentaux de la trigonométrie. En maîtrisant ces techniques de développement, vous serez capable d'intégrer une navigation dynamique et moderne tout en préservant une accessibilité optimale pour l'ensemble de vos utilisateurs. C'est l'ouvrage idéal pour tout développeur souhaitant ajouter une touche de créativité professionnelle et de distinction à ses projets numériques.",
+        "category": "Développement",
+        "nbr_pages": 9,
+        "original_filename": "creer-un-menu-circulaire.pdf",
+        "cover_filename": "creer-un-menu-circulaire.png"
+    },
+    {
+        "title": "Utiliser l'API MySQL dans vos programmes",
+        "author": "Henon Fabien",
+        "description": "Découvrez comment propulser vos applications C/C++ dans une nouvelle dimension en y intégrant la puissance et la flexibilité des bases de données MySQL. Ce guide pratique et accessible vous accompagne pas à pas, de la configuration de votre environnement de développement jusqu’à la maîtrise parfaite des connexions et des requêtes SQL au cœur de votre code. Que vous souhaitiez gérer des classements mondiaux ou des systèmes de données complexes, cet ouvrage vous donne les clés pour transformer vos programmes statiques en logiciels dynamiques, professionnels et évolutifs. C’est l’outil idéal pour tout développeur souhaitant franchir un cap technique et enrichir l'interactivité de ses créations informatiques.",
+        "category": "Développement",
+        "nbr_pages": 18,
+        "original_filename": "utiliser-l-api-mysql-dans-vos-programmes.pdf",
+        "cover_filename": "utiliser-l-api-mysql-dans-vos-programmes.png"
+    },
+    {
+        "title": "Créer un petit montage avec Windows Movie Maker",
+        "author": "Norrecix",
+        "description": "Découvrez comment transformer vos vidéos personnelles en montages réussis grâce à ce guide complet et accessible dédié à Windows Movie Maker. Conçu spécialement pour les débutants et les étudiants, ce manuel vous accompagne pas à pas dans la maîtrise de l'interface, de l'organisation de la chronologie jusqu'à l'exportation finale de vos projets. Vous y apprendrez à manipuler vos séquences avec aisance et à appliquer des astuces pratiques pour donner une dimension professionnelle à toutes vos présentations. C’est l’ouvrage idéal pour s’initier au montage vidéo de manière intuitive, gratuite et rapide.",
+        "category": "Mathématiques",
+        "nbr_pages": 9,
+        "original_filename": "creer-un-petit-montage-avec-windows-movie-maker.pdf",
+        "cover_filename": "creer-un-petit-montage-avec-windows-movie-maker.png"
+    },
+    {
+        "title": "Animez votre site avec CSS3 !",
+        "author": "Adrien Guéret (KorHosik)",
+        "description": "Plongez dans l'univers dynamique du webdesign moderne avec ce guide pratique dédié à la maîtrise des animations et transitions CSS3. À travers des exemples concrets allant du simple survol à la création de menus interactifs, vous apprendrez à transformer vos interfaces statiques en expériences fluides et captivantes pour vos utilisateurs. L'ouvrage explore également l'alliance puissante entre le CSS et le JavaScript pour vous offrir une liberté de création sans limites, tout en restant parfaitement accessible aux débutants. C'est l'outil indispensable pour tout développeur souhaitant donner une nouvelle dimension esthétique et professionnelle à ses projets web.",
+        "category": "Développement",
+        "nbr_pages": 21,
+        "original_filename": "animez-votre-site-avec-css3.pdf",
+        "cover_filename": "animez-votre-site-avec-css3.png"
+    },
+    {
+        "title": "Comment contribuer à un projet libre sans écrire une ligne de code ?",
+        "author": "Sithran",
+        "description": "Découvrez comment devenir un acteur clé de l’écosystème open source sans avoir besoin de maîtriser le moindre langage de programmation. Ce guide pratique explore des leviers essentiels tels que la rédaction de documentation, la traduction d'interfaces ou le soutien aux nouveaux utilisateurs pour faire progresser durablement vos logiciels favoris. En mettant vos compétences rédactionnelles, linguistiques ou relationnelles au service de la communauté, vous contribuez directement à la qualité et à la pérennité des outils que vous utilisez au quotidien. C'est l'ouvrage indispensable pour quiconque souhaite passer de simple utilisateur à contributeur actif, tout en embrassant pleinement les valeurs du partage et de l'entraide.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 5,
+        "original_filename": "comment-contribuer-a-un-projet-libre-sans-ecrire-une-ligne-de-code.pdf",
+        "cover_filename": "comment-contribuer-a-un-projet-libre-sans-ecrire-une-ligne-de-code.png"
+    },
+    {
+        "title": "Comment faire une page ayant la même hauteur que le navigateur ?",
+        "author": "Anonyme",
+        "description": "Vous souhaitez que votre page web s'adapte parfaitement à la hauteur du navigateur de chaque visiteur ? Ce guide pratique vous dévoile des techniques claires en CSS et JavaScript pour concevoir des mises en page dynamiques qui s'ajustent automatiquement. Maîtrisez cette problématique courante du développement web avec des solutions accessibles, garantissant une expérience utilisateur optimisée et une meilleure compatibilité entre navigateurs, même les plus anciens. Idéal pour les développeurs de tout niveau, ce tutoriel \"facile\" vous aidera à créer des designs plus réactifs et visuellement cohérents.",
+        "category": "Développement",
+        "nbr_pages": 8,
+        "original_filename": "145147-comment-faire-une-page-ayant-la-meme-hauteur-que-le-navigateur.pdf",
+        "cover_filename": "comment-faire-une-page-ayant-la-meme-hauteur-que-le-navigateur.png"
+    },
+    {
+        "title": "Bien utiliser les sprites CSS",
+        "author": "warpShadow",
+        "description": "Découvrez comment optimiser les performances de vos sites web de manière innovante avec les sprites CSS. Ce guide pratique vous expliquera la technique consistant à regrouper astucieusement plusieurs images en une seule, réduisant ainsi drastiquement le nombre de requêtes HTTP et éliminant la latence des chargements. Apprenez à implémenter les sprites pour des animations au survol, des images répétées ou cliquables, et transformez votre approche du webdesign pour une expérience utilisateur plus fluide. Un ouvrage indispensable pour tout développeur souhaitant améliorer l'efficacité de ses projets web.",
+        "category": "Web Design",
+        "nbr_pages": 13,
+        "original_filename": "bien-utiliser-les-sprites-css.pdf",
+        "cover_filename": "bien-utiliser-les-sprites-css.png"
+    },
+    {
+        "title": "register_globals et écrasement de données",
+        "author": "luc@s",
+        "description": "La directive `register_globals` en PHP, bien que d'apparence inoffensive, est une vulnérabilité majeure qui peut compromettre sérieusement la sécurité de vos applications web. Ce guide essentiel révèle comment une simple requête HTTP peut entraîner l'écrasement de données sensibles ou même contourner vos systèmes d'authentification, exposant ainsi vos informations confidentielles. Découvrez des méthodes concrètes pour désactiver cette directive sur votre serveur ou, si ce n'est pas possible, apprenez à blinder votre code grâce à des pratiques de programmation sécurisées. Protégez vos utilisateurs et vos données en maîtrisant les risques liés à `register_globals` pour une sécurité optimale.",
+        "category": "Développement",
+        "nbr_pages": 6,
+        "original_filename": "register-globals-et-ecrasement-de-donnees.pdf",
+        "cover_filename": "register-globals-et-ecrasement-de-donnees.png"
+    },
+    {
+        "title": "Le référencement de son site web",
+        "author": "referenceur",
+        "description": "Préparez-vous à transformer la visibilité de votre site web ! Ce guide pratique vous offre les clés pour maîtriser le référencement et propulser vos pages en tête des résultats des moteurs de recherche. Des bases fondamentales aux techniques d'optimisation \"in page\", apprenez pas à pas à décrypter les algorithmes et à appliquer les meilleures stratégies. Adoptez les bonnes pratiques du SEO pour attirer un trafic qualifié et faire de votre présence en ligne un véritable succès.",
+        "category": "Web Design",
+        "nbr_pages": 58,
+        "original_filename": "le-referencement-de-son-site-web.pdf",
+        "cover_filename": "le-referencement-de-son-site-web.png"
+    },
+    {
+        "title": "Administrez vos bases de données avec MySQL",
+        "author": "Chantal Gribaumont (Taguan)",
+        "description": "\"Administrez vos bases de données avec MySQL\" est le guide indispensable pour tout développeur ou administrateur souhaitant maîtriser le SGBDR le plus populaire du marché. De l'installation complète sous divers OS à la prise en main du langage SQL pour créer, manipuler et sécuriser vos données, chaque concept est expliqué avec clarté. Vous explorerez également les techniques avancées comme les index pour optimiser les performances, les jointures complexes pour lier les informations, et les sous-requêtes pour des manipulations sophistiquées, vous offrant une expertise solide en administration de bases de données MySQL.",
+        "category": "Développement",
+        "nbr_pages": 413,
+        "original_filename": "administrez-vos-bases-de-donnees-avec-mysql.pdf",
+        "cover_filename": "administrez-vos-bases-de-donnees-avec-mysql.png"
+    },
+    {
+        "title": "Adapter son site au format mobile avec CSS3",
+        "author": "SdaliM",
+        "description": "Transformez votre site web en une interface moderne et parfaitement lisible sur smartphone grâce à ce guide pratique dédié aux techniques d'optimisation mobile. En maîtrisant la puissance des media queries et des fonctionnalités avancées de CSS3, vous apprendrez à adapter vos mises en page avec précision pour offrir une expérience utilisateur fluide sur tous les types d'écrans. De la configuration stratégique de la balise viewport à la création de menus dynamiques, cet ouvrage vous accompagne pas à pas à travers des exercices concrets pour professionnaliser vos projets web en un temps record. Que vous soyez débutant ou développeur autodidacte, ce manuel constitue l'outil idéal pour rendre vos contenus accessibles et attractifs pour l'ensemble de vos visiteurs mobiles.",
+        "category": "Développement",
+        "nbr_pages": 47,
+        "original_filename": "adapter-son-site-au-format-mobile-avec-css3.pdf",
+        "cover_filename": "adapter-son-site-au-format-mobile-avec-css3.png"
+    },
+    {
+        "title": "Chiffrer des données avec TrueCrypt",
+        "author": "Mut",
+        "description": "Vos données sensibles méritent une protection absolue contre les regards indiscrets et les menaces potentielles. Ce guide pratique vous ouvre les portes de TrueCrypt, un logiciel de chiffrement libre et puissant, pour sécuriser efficacement toutes vos informations. Apprenez pas à pas à créer des volumes chiffrés, des espaces de stockage invisibles et même à protéger des partitions entières, quel que soit votre système d'exploitation. Offrez à vos documents personnels une confidentialité et une tranquillité d'esprit inégalées grâce à des méthodes de chiffrement robustes et faciles à mettre en œuvre.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 10,
+        "original_filename": "chiffrer-des-donnees-avec-truecrypt.pdf",
+        "cover_filename": "chiffrer-des-donnees-avec-truecrypt.png"
+    },
+    {
+        "title": "Créez votre application web avec Java EE",
+        "author": "Coyote",
+        "description": "Découvrez comment concevoir et déployer des applications web performantes et interactives grâce à ce guide pratique et complet sur Java EE. De l'installation de votre environnement (Eclipse, Tomcat) aux bases du modèle MVC, ce livre vous équipe pour maîtriser les concepts clés tels que les Servlets, JSP et JavaBeans. Vous apprendrez à structurer vos projets, à gérer les formulaires et à utiliser la JSTL pour créer des interfaces utilisateur riches et dynamiques. Grâce à des exemples concrets et un projet fil rouge progressif, vous transformerez rapidement la théorie en applications web fonctionnelles.",
+        "category": "Développement",
+        "nbr_pages": 606,
+        "original_filename": "creez-votre-application-web-avec-java-ee.pdf",
+        "cover_filename": "creez-votre-application-web-avec-java-ee.png"
+    },
+    {
+        "title": "Créer un menu horizontal déroulant en CSS",
+        "author": "Antoine Estève (Toinouz)",
+        "description": "Envie d'enrichir l'interface de votre site web avec un menu de navigation moderne et interactif ? Ce guide complet vous plonge dans la création de menus horizontaux déroulants, en exploitant la puissance du xHTML et du CSS, complétée par une touche de JavaScript pour une compatibilité navigateur étendue. De la structuration des listes à l'optimisation visuelle et fonctionnelle, vous apprendrez à concevoir des menus élégants et entièrement personnalisables. Préparez-vous à transformer l'expérience utilisateur de votre site en maîtrisant la création de menus dynamiques et professionnels.",
+        "category": "Développement",
+        "nbr_pages": 14,
+        "original_filename": "creer-un-menu-horizontal-deroulant-en-css.pdf",
+        "cover_filename": "creer-un-menu-horizontal-deroulant-en-css.png"
+    },
+    {
+        "title": "Générer des miniatures de pages web à la volée sur votre serveur web",
+        "author": "Ving",
+        "description": "Apprenez à automatiser la génération de miniatures de sites web en toute autonomie et affranchissez-vous des services tiers coûteux grâce à ce guide technique spécialisé. À travers une approche orientée console, vous découvrirez comment configurer un serveur graphique virtuel sous Linux pour capturer des visuels de haute qualité via des outils performants comme IceWeasel ou CutyCapt. Que vous gériez un annuaire ou un projet de grande envergure, cet ouvrage vous livre toutes les clés pour bâtir un système de capture robuste, scalable et entièrement gratuit. C'est la ressource indispensable pour tout développeur ou administrateur système souhaitant optimiser ses ressources serveur avec une solution professionnelle et sur mesure.",
+        "category": "Développement",
+        "nbr_pages": 7,
+        "original_filename": "generer-des-miniatures-de-pages-web-a-la-volee-sur-votre-serveur-web.pdf",
+        "cover_filename": "generer-des-miniatures-de-pages-web-a-la-volee-sur-votre-serveur-web.png"
+    },
+    {
+        "title": "[PHP5] Comment gérer l'absence de surcharge ?",
+        "author": "Legato",
+        "description": "Face à l'absence de surcharge de méthodes en PHP5, concevoir des classes flexibles peut s'avérer complexe. Ce guide pratique vous équipe des stratégies essentielles pour surmonter cette limitation, notamment pour la gestion des constructeurs et l'implémentation de méthodes polyvalentes. Explorez des techniques éprouvées comme le comptage d'arguments, le passage par tableau ou l'usage d'objets de validation, afin de développer un code orienté objet robuste et adaptable. Un ouvrage indispensable pour tout développeur PHP5 souhaitant optimiser la flexibilité et la maintenabilité de ses applications.",
+        "category": "Développement",
+        "nbr_pages": 11,
+        "original_filename": "php5-comment-gerer-l-absence-de-surcharge.pdf",
+        "cover_filename": "php5-comment-gerer-l-absence-de-surcharge.png"
+    },
+    {
+        "title": "Introduction à la logique mathématique",
+        "author": "Le Zéro",
+        "description": "Plongez au cœur des fondements des mathématiques avec cette introduction complète à la logique. Ce guide clair et accessible vous dévoile les secrets des propositions, des opérateurs de base et des quantificateurs, essentiels pour tout raisonnement rigoureux. Apprenez à construire et analyser des arguments grâce à des méthodes clés comme la contraposée, le raisonnement par l'absurde et par récurrence. Parfaitement adapté aux débutants, ce livre est votre passeport pour maîtriser l'art de la pensée logique.",
+        "category": "Mathématiques",
+        "nbr_pages": 24,
+        "original_filename": "654283-introduction-a-la-logique-mathematique.pdf",
+        "cover_filename": "introduction-a-la-logique-mathematique.png"
+    },
+    {
+        "title": "Les tests unitaires en Java",
+        "author": "Hedi Radhouane (hedi07)",
+        "description": "Fatigué des bugs insaisissables dans votre code Java complexe ? Ce guide complet est votre allié indispensable pour maîtriser les tests unitaires et garantir la robustesse de vos applications. Il vous mènera pas à pas des définitions fondamentales à la mise en pratique avec JUnit, en explorant la couverture du code, la gestion avancée du contexte et l'utilisation efficace des mocks. Apprenez à concevoir des tests unitaires solides et à développer une stratégie de test imparable, vous permettant d'économiser un temps précieux et d'améliorer considérablement la qualité de votre code. Cet ouvrage est essentiel pour tout développeur Java souhaitant bâtir des logiciels fiables et pérennes.",
+        "category": "Développement",
+        "nbr_pages": 30,
+        "original_filename": "les-tests-unitaires-en-java.pdf",
+        "cover_filename": "les-tests-unitaires-en-java.png"
+    },
+    {
+        "title": "Des statistiques pour votre site !",
+        "author": "Serialtueur",
+        "description": "Débloquez le plein potentiel de votre site web grâce à une analyse statistique approfondie ! Ce guide pratique et didactique vous équipe pour suivre précisément le nombre de visites, identifier les utilisateurs connectés et comprendre leur provenance. Vous apprendrez également à analyser les affluences et les heures de pointe pour optimiser vos campagnes de référencement et de publicité. Faites de vos données de trafic un atout stratégique pour faire rayonner votre plateforme.",
+        "category": "Développement",
+        "nbr_pages": 15,
+        "original_filename": "des-statistiques-pour-votre-site.pdf",
+        "cover_filename": "des-statistiques-pour-votre-site.png"
+    },
+    {
+        "title": "Comprendre l'USB et bricoler un périphérique",
+        "author": "OujA",
+        "description": "Ce livre vous invite à démystifier le port USB, de ses origines à son fonctionnement détaillé, tout en vous lançant dans une création concrète. Explorez son histoire fascinante, ses différentes versions et types de connecteurs, ses schémas électriques précis et le protocole de communication complexe qui le rend si universel. Mettez ensuite la théorie en pratique en fabriquant un périphérique USB original et \"furtif\" : un ventilateur personnel qui vous rafraîchira discrètement. Idéal pour les curieux et les makers débutants, cet ouvrage vous offre une approche pédagogique et ludique pour maîtriser l'USB et créer par vous-même.",
+        "category": "Réseaux & Matériel",
+        "nbr_pages": 11,
+        "original_filename": "comprendre-l-usb-et-bricoler-un-peripherique.pdf",
+        "cover_filename": "comprendre-l-usb-et-bricoler-un-peripherique.png"
+    },
+    {
+        "title": "Les closures en Javascript",
+        "author": "Darkodam",
+        "description": "Explorez les profondeurs des closures, un concept JavaScript crucial qui vous permettra de maîtriser la gestion des variables dans des scénarios complexes. Après une révision claire des fonctions et de la portée des variables, ce tutoriel vous guidera étape par étape dans la création et l'utilisation efficace des closures, notamment pour les gestionnaires d'événements et les fonctions de délai. Idéal pour tout développeur JavaScript souhaitant écrire un code plus robuste et éviter des erreurs fréquentes, ce guide pratique transforme un sujet complexe en une compétence accessible et immédiatement applicable.",
+        "category": "Développement",
+        "nbr_pages": 9,
+        "original_filename": "les-closures-en-javascript.pdf",
+        "cover_filename": "les-closures-en-javascript.png"
+    },
+    {
+        "title": "Apostille au MVC : les Delegate",
+        "author": "Mathieu STEFANI (Octal)",
+        "description": "Pour les développeurs C++ et Qt ayant déjà exploré les arcanes de l'architecture Modèle-Vue, ce livre comble une lacune majeure en apportant une apostille essentielle à votre compréhension. Il se plonge au cœur des Delegates, ces composants puissants et souvent méconnus qui permettent une personnalisation inégalée de l'affichage et de l'édition des données dans vos vues Qt. Au-delà d'une piqûre de rappel sur le MVC et sa mise en œuvre, vous apprendrez à maîtriser les Delegates existants, à comprendre leur mécanique interne, et à créer les vôtres pour des interfaces graphiques d'une richesse et d'une flexibilité exceptionnelles.",
+        "category": "Développement",
+        "nbr_pages": 17,
+        "original_filename": "apostille-au-mvc-les-delegate.pdf",
+        "cover_filename": "apostille-au-mvc-les-delegate.png"
+    },
+    {
+        "title": "Les maths pour tous !",
+        "author": "Mathieu Nebra (Mateo21)",
+        "description": "Vous en avez assez de considérer les mathématiques comme une matière obscure et inaccessible ? Découvrez \"Les maths pour tous !\", un ouvrage spécialement conçu pour vous accompagner de la 6ème à la Terminale. Loin des manuels scolaires complexes, il démystifie les concepts fondamentaux grâce à une approche pédagogique claire, des exemples concrets et des explications simples, répondant aux questions que vous vous posez vraiment. Retrouvez enfin le plaisir d'apprendre et de maîtriser les chiffres, les fractions et l'algèbre avec confiance.",
+        "category": "Mathématiques",
+        "nbr_pages": 77,
+        "original_filename": "les-maths-pour-tous.pdf",
+        "cover_filename": "les-maths-pour-tous.png"
+    },
+    {
+        "title": "CodeIgniter, le framework au service des Zéros",
+        "author": "Nestea",
+        "description": "Fatigué de repartir de zéro à chaque projet web ? Ce guide complet vous invite à maîtriser CodeIgniter, le framework PHP réputé pour sa rapidité et sa flexibilité, idéal pour les développeurs désireux d'efficacité. De l'architecture MVC et l'installation à l'utilisation avancée des contrôleurs, vues, modèles, helpers et bibliothèques, chaque composant est exploré avec des explications claires et des exemples concrets. Apprenez à développer rapidement des applications robustes, comme un livre d'or complet, et découvrez des techniques avancées pour personnaliser et optimiser vos projets, transformant ainsi votre approche du développement web.",
+        "category": "Développement",
+        "nbr_pages": 101,
+        "original_filename": "codeigniter-le-framework-au-service-des-zeros.pdf",
+        "cover_filename": "codeigniter-le-framework-au-service-des-zeros.png"
+    },
+    {
+        "title": "Structurez vos données avec XML",
+        "author": "Ludovic ROLAND (Wapiti89)",
+        "description": "Découvrez comment organiser et valider vos données de manière impeccable grâce à XML, le standard incontournable de structuration. Ce guide complet vous mène des bases de la syntaxe XML à la création de définitions robustes avec les DTD et Schémas XML, assurant ainsi l'intégrité et la cohérence de vos informations. Grâce à des exemples concrets et des travaux pratiques, vous maîtriserez également l'exploitation de vos données via les API DOM et XPath, illustrée par des applications en Java. Un ouvrage indispensable pour tout développeur souhaitant maîtriser la puissance de XML.",
+        "category": "Développement",
+        "nbr_pages": 208,
+        "original_filename": "structurez-vos-donnees-avec-xml.pdf",
+        "cover_filename": "structurez-vos-donnees-avec-xml.png"
+    },
+    {
+        "title": "Gérer son nom de domaine",
+        "author": "Mathieu Nebra (Mateo21)",
+        "description": "Chaque site web possède une adresse, mais comprenez-vous réellement les rouages complexes de votre nom de domaine ? Ce guide essentiel vous invite à explorer les fondamentaux techniques, des adresses IP aux serveurs DNS, pour maîtriser l'identité numérique de vos projets. Apprenez pas à pas à acquérir, configurer et même à installer votre propre serveur DNS, tout en gérant efficacement les zones et les enregistrements (A, CNAME, MX) de votre domaine. Devenez un expert autonome pour une présence en ligne robuste et pleinement contrôlée.",
+        "category": "Développement",
+        "nbr_pages": 17,
+        "original_filename": "gerer-son-nom-de-domaine.pdf",
+        "cover_filename": "gerer-son-nom-de-domaine.png"
+    },
+    {
+        "title": "Créer un blog accessible avec HTML5",
+        "author": "Sébastien de la Marck (Thunderseb)",
+        "description": "Vous connaissez HTML5 mais hésitez sur le bon usage des balises sémantiques pour construire un blog accessible ? Ce guide pratique, de difficulté facile, est fait pour vous ! Il vous accompagne pas à pas dans la création d'une structure de blog impeccable, des pages aux articles et commentaires, en clarifiant l'emploi des éléments HTML5 pertinents comme `<section>`, `<aside>` ou `<nav>`. Vous y découvrirez également les clés des normes d'accessibilité ARIA et de la spécification Microdata, essentielles pour un site moderne, inclusif et optimisé.",
+        "category": "Développement",
+        "nbr_pages": 21,
+        "original_filename": "creer-un-blog-accessible-avec-html5.pdf",
+        "cover_filename": "creer-un-blog-accessible-avec-html5.png"
+    },
+    {
+        "title": "Upload de fichiers par formulaire",
+        "author": "formulaire",
+        "description": "Donnez une nouvelle dimension à vos projets web en apprenant à maîtriser l'envoi de fichiers par formulaire, de la conception de l'interface à l'intégration sécurisée sur votre serveur. Ce guide pédagogique vous accompagne pas à pas pour manipuler les données avec PHP, gérer le stockage en base de données et même automatiser la création de miniatures ou de compteurs de téléchargements. Grâce à des exemples concrets et des conseils pratiques, vous transformerez vos sites en plateformes interactives capables d'héberger les documents de vos utilisateurs en toute sérénité. C’est la ressource indispensable pour tout développeur souhaitant franchir le cap de l'interactivité avancée avec assurance et professionnalisme.",
+        "category": "Développement",
+        "nbr_pages": 14,
+        "original_filename": "upload-de-fichiers-par-formulaire.pdf",
+        "cover_filename": "upload-de-fichiers-par-formulaire.png"
+    },
+    {
+        "title": "Créez des applications pour Android",
+        "author": "Frédéric Espiau (Apollidore)",
+        "description": "Prêt à donner vie à vos idées sur Android ? Ce guide complet vous emmène des fondations du développement mobile – de Java à la configuration de votre environnement – jusqu'à la maîtrise des interfaces graphiques interactives et des fonctionnalités avancées. Enrichi de projets pratiques tels qu'un bloc-notes ou une calculatrice d'IMC, il vous dote des compétences essentielles pour concevoir des applications élégantes et fonctionnelles. Que vous soyez débutant ou que vous cherchiez à approfondir vos connaissances, ce livre est votre passeport pour l'univers de la création d'applications Android.",
+        "category": "Développement",
+        "nbr_pages": 431,
+        "original_filename": "creez-des-applications-pour-android.pdf",
+        "cover_filename": "creez-des-applications-pour-android.png"
+    },
+    {
+        "title": "Tours de magie mathématiques",
+        "author": "Mickaël Launay (GéoMl17)",
+        "description": "Envie d'éblouir votre entourage avec des tours de magie qui ne nécessitent aucune dextérité, juste de la logique ? Ce livre captivant, \"Tours de magie mathématiques\", vous invite à explorer les astuces mathématiques derrière des illusions spectaculaires, des graphes bipartis aux permutations. Accessible à tous, quel que soit votre âge ou votre niveau en maths, il révèle comment des concepts de combinatoire et de probabilité se transforment en prodiges bluffants. Chaque tour est présenté avec son histoire, son explication détaillée et son fondement théorique, vous permettant de non seulement exécuter la magie, mais aussi de comprendre son secret.",
+        "category": "Mathématiques",
+        "nbr_pages": 32,
+        "original_filename": "697154-tours-de-magie-mathematiques.pdf",
+        "cover_filename": "tours-de-magie-mathematiques.png"
+    },
+    {
+        "title": "Les noms de domaine",
+        "author": "Pierre-Étienne Crépy (pierreet)",
+        "description": "Vous avez créé votre site web et souhaitez le rendre accessible et mémorable en ligne ? Ce guide exhaustif est votre allié pour maîtriser l'univers des noms de domaine, ces adresses incontournables du web. Il vous dévoilera leur fonctionnement détaillé, des types de domaines à la résolution via DNS, et vous accompagnera pas à pas dans le processus de réservation. Plongez dans les fondamentaux des noms de domaine et donnez une visibilité professionnelle et durable à votre projet numérique.",
+        "category": "Développement",
+        "nbr_pages": 8,
+        "original_filename": "les-noms-de-domaine.pdf",
+        "cover_filename": "les-noms-de-domaine.png"
+    },
+    {
+        "title": "Bonnes pratiques javascript",
+        "author": "nod_",
+        "description": "Votre code JavaScript est-il devenu un cauchemar à maintenir et à déboguer ? Ce guide essentiel, rédigé par des professionnels du web, vous plonge au cœur des meilleures pratiques pour transformer votre approche du développement. Apprenez à éviter les pièges courants, de l'emplacement optimal de votre code à l'usage judicieux de fonctions clés, et découvrez les règles de syntaxe qui garantissent clarté et performance. Adoptez des réflexes de codage propres et efficaces pour des projets JavaScript robustes et durables.",
+        "category": "Développement",
+        "nbr_pages": 13,
+        "original_filename": "bonnes-pratiques-javascript.pdf",
+        "cover_filename": "bonnes-pratiques-javascript.png"
+    }
+]

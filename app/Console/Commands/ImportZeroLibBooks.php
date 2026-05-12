@@ -20,7 +20,7 @@ class ImportZeroLibBooks extends Command
         // --- CONFIGURATION DES CHEMINS ---
         // Le dossier racine où se trouvent tes résultats d'extraction Python
         $basePath = "/home/edithson/Téléchargements/Le_site_du_zero/00_Extraction_Resultats";
-        $jsonPath = $basePath . "/creative_commons_books.json";
+        $jsonPath = $basePath . "/creative_commons_books_final.json";
         $pdfFolder = "/home/edithson/Téléchargements/Le_site_du_zero"; // Dossier source des PDF
         $coversFolder = $basePath . "/covers";
 
@@ -75,13 +75,13 @@ class ImportZeroLibBooks extends Command
                 ['title' => $data['title']], // Clé de vérification unique
                 [
                     // 'author'       => $data['author'],
-                    // 'description'  => $data['description'],
+                    'description'  => $data['description'],
                     // 'category_id'  => $categoryId,
                     // 'nbr_pages'    => $data['nbr_pages'],
                     // 'cover_path'   => $coverDestinationPath,
                     // 'file_path'    => $pdfDestinationPath,
                     // 'price'        => 0, // Gratuit par défaut
-                    'publish_year' => $data['publish_year'] ?? date('Y'),
+                    // 'publish_year' => $data['publish_year'] ?? date('Y'),
                     // 'is_published' => true,
                 ]
             );
