@@ -8,11 +8,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Http;
 
 class ContactController extends Controller
 {
     public function store(Request $request)
     {
+        // Validation du token reCAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret'   => config('services.recaptcha.secret_key'),
+            'response' => $request->input('recaptcha_token'),
+            'remoteip' => $request->ip(),
+        ]);
+
+        $data = $response->json();
+
+        // score < 0.5 = probablement un bot (0.0 = bot, 1.0 = humain)
+        if (!$data['success'] || $data['score'] < 0.5 || $data['action'] !== 'contact') {
+            return back()
+                ->withInput()
+                ->withErrors(['recaptcha' => 'Vérification anti-robot échouée. Veuillez réessayer.']);
+        }
+
         // 1. Validation des données du formulaire
         $validated = $request->validate([
             'motif'  => ['nullable', 'string', 'in:retrait,droit,suggestion,erreur,autre'],

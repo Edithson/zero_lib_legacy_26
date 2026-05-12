@@ -47,6 +47,7 @@
     /* Character counter */
     #char-count { transition: color 0.2s; }
   </style>
+  <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
   <section class="hero-cut bg-ink pt-28 pb-32 sm:pt-36 sm:pb-40 relative overflow-hidden">
     <div class="absolute inset-0 opacity-5">
       <div class="absolute top-12 left-0 right-0 h-px bg-amber"></div>

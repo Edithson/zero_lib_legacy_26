@@ -9,9 +9,18 @@
         <!-- COL GAUCHE : Formulaire -->
         <div class="lg:col-span-3 space-y-6 stagger-4">
 
+            @error('recaptcha')
+                <div class="flex items-center gap-2 px-4 py-3 bg-rust/8 border border-rust/20 rounded-xl text-rust text-sm">
+                    <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                    {{ $message }}
+                </div>
+            @enderror
+
             <div>
-            <h2 class="font-serif font-bold text-2xl text-ink mb-1">Envoyez un message</h2>
-            <p class="text-ink/50 text-sm">Réponse sous 48 h en général — souvent bien avant.</p>
+                <h2 class="font-serif font-bold text-2xl text-ink mb-1">Envoyez un message</h2>
+                <p class="text-ink/50 text-sm">Réponse sous 48 h en général — souvent bien avant.</p>
             </div>
 
 
@@ -106,6 +115,7 @@
                 Elles ne sont ni stockées en base ni partagées avec des tiers.
             </p>
 
+            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
             <button type="submit"
                     class="btn-submit w-full py-4 bg-ink text-cream font-semibold rounded-xl text-sm tracking-wide flex items-center justify-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,6 +220,8 @@
     </main>
 
     <script>
+        const RECAPTCHA_SITE_KEY = "{{ config('services.recaptcha.site_key') }}";
+
         // Compteur de caractères (inchangé)
         function updateCount(el) {
             const count = el.value.length;
@@ -221,6 +233,10 @@
         // Traitement réel de l'envoi via Fetch API
         async function handleSubmit(e) {
             e.preventDefault();
+
+            //Génère le token reCAPTCHA
+            const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' });
+            document.getElementById('recaptcha_token').value = token;
 
             const form = e.target;
             const btn = form.querySelector('button[type="submit"]');
