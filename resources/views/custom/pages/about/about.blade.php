@@ -18,20 +18,20 @@
                     Il était une fois le Site du Zéro.
                 </h2>
                 <p class="text-ink/70 leading-relaxed">
-                    Pour des milliers de francophones, le <strong class="text-ink font-semibold">Site du Zéro</strong> — devenu
-                    OpenClassrooms — a été bien plus qu'un site web. C'était un lieu de transmission,
+                    Pour des milliers de francophones, le <strong class="text-ink font-semibold">Site du Zéro</strong>; devenu
+                    OpenClassrooms; a été bien plus qu'un site web. C'était un lieu de transmission,
                     une communauté bienveillante où des passionnés écrivaient, gratuitement et avec amour,
                     pour aider les débutants à apprendre la programmation, les réseaux, Linux, les mathématiques…
                 </p>
                 <p class="text-ink/70 leading-relaxed">
                     Ces tutoriels existaient aussi sous forme de livres PDF, distribués librement.
                     Avec le temps et les évolutions de la plateforme, une partie de ce patrimoine est devenue
-                    difficile d'accès — voire introuvable. Des savoirs précieux risquaient de se perdre,
+                    difficile d'accès; voire introuvable. Des savoirs précieux risquaient de se perdre,
                     simplement par oubli.
                 </p>
                 <p class="text-ink/70 leading-relaxed">
                     C'est de ce constat qu'est né Zérolib : un projet personnel, sans ambition commerciale,
-                    avec une seule mission — <span class="text-ink font-medium">que cet héritage ne disparaisse pas.</span>
+                    avec une seule mission; <span class="text-ink font-medium">que cet héritage ne disparaisse pas.</span>
                 </p>
                 </div>
 
@@ -63,7 +63,7 @@
         </section>
 
         <!-- CE QUE NOUS FAISONS ET NE FAISONS PAS -->
-        <section class="space-y-8">
+        <section class="space-y-8 mt-8">
             <div class="ornament text-sm font-semibold tracking-widest uppercase text-amber/70">
                 Notre démarche
             </div>
@@ -82,7 +82,7 @@
                     <p class="text-ink/65 leading-relaxed text-sm sm:text-base">
                     Zérolib ne publie, dans un premier temps, que des livres explicitement placés sous
                     <strong class="text-ink">licence Creative Commons</strong> par leurs auteurs.
-                    Ces licences autorisent la redistribution libre et gratuite — c'est la base légale
+                    Ces licences autorisent la redistribution libre et gratuite; c'est la base légale
                     sur laquelle nous construisons, sans compromis.
                     </p>
                 </div>
@@ -108,7 +108,7 @@
                     <p class="text-ink/65 leading-relaxed text-sm sm:text-base">
                     Chaque livre publié sur Zérolib mentionne son auteur, l'année de création et
                     sa source d'origine. Ces personnes ont donné de leur temps et de leur talent
-                    gratuitement — la moindre des choses est de leur rendre cet honneur.
+                    gratuitement; la moindre des choses est de leur rendre cet honneur.
                     </p>
                 </div>
                 </div>
@@ -129,7 +129,7 @@
         </section>
 
         <!-- LES LICENCES CREATIVE COMMONS -->
-        <section class="bg-parchment rounded-2xl p-6 sm:p-10 space-y-6">
+        <section class="bg-parchment rounded-2xl p-6 sm:p-10 space-y-6 mt-8 mb-8">
             <div class="flex items-start gap-4">
                 <div class="text-4xl flex-shrink-0">⚖️</div>
                 <div>
@@ -139,7 +139,7 @@
                 <p class="text-ink/65 leading-relaxed text-sm sm:text-base">
                     Une licence Creative Commons est un outil juridique qui permet à un auteur
                     d'autoriser à l'avance certains usages de son œuvre, tout en conservant ses droits.
-                    Plusieurs variantes existent — voici celles que vous pourrez rencontrer sur Zérolib.
+                    Plusieurs variantes existent; voici celles que vous pourrez rencontrer sur Zérolib.
                 </p>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 </div>
                 <p class="text-xs text-ink/60 leading-relaxed">
                     <strong class="text-ink">Attribution.</strong> Vous pouvez redistribuer, modifier,
-                    même commercialiser — à condition de citer l'auteur original.
+                    même commercialiser; à condition de citer l'auteur original.
                 </p>
                 </div>
 
@@ -182,7 +182,7 @@
                 </div>
                 <p class="text-xs text-ink/60 leading-relaxed">
                     <strong class="text-ink">Attribution + Non commercial + Partage identique.</strong>
-                    La variante la plus restrictive des CC — et la plus courante sur le SDZ.
+                    La variante la plus restrictive des CC; et la plus courante sur le SDZ.
                 </p>
                 </div>
 
@@ -222,7 +222,7 @@
                 <h3 class="font-serif font-bold text-lg text-ink">Honnêteté</h3>
                 <p class="text-ink/60 text-sm leading-relaxed">
                     Ces livres ne nous appartiennent pas. Nous le disons clairement.
-                    Notre rôle est celui d'un archiviste — pas d'un propriétaire.
+                    Notre rôle est celui d'un archiviste; pas d'un propriétaire.
                     Chaque auteur est cité, chaque licence respectée.
                 </p>
                 </div>
@@ -232,7 +232,7 @@
                 <h3 class="font-serif font-bold text-lg text-ink">Accessibilité</h3>
                 <p class="text-ink/60 text-sm leading-relaxed">
                     Apprendre ne devrait jamais être une question d'argent.
-                    Zérolib est et restera gratuit — parce que c'est précisément
+                    Zérolib est et restera gratuit; parce que c'est précisément
                     l'esprit dans lequel ces livres ont été écrits à l'origine.
                 </p>
                 </div>
@@ -242,7 +242,7 @@
 
         <!-- UN MOT PERSONNEL -->
         {{-- ✦ FIX : overflow-hidden sur la section elle-même pour contenir les décos absolues --}}
-        <section class="overflow-hidden rounded-2xl">
+        <section class="overflow-hidden rounded-2xl mt-8 mb-8">
             <div class="bg-ink px-6 sm:px-12 py-10 sm:py-14 relative">
                 {{-- ✦ FIX : translate-x-1/2 remplacé par translate-x-1/3 pour rester dans les limites,
                      et overflow-hidden déplacé sur le parent section --}}
@@ -261,9 +261,9 @@
                     Ce projet est porté par une seule personne, avec beaucoup d'enthousiasme et peu de moyens.
                     Il n'est pas parfait, il évoluera. Mais il est sincère. Si vous avez des questions,
                     des suggestions, ou si vous êtes l'auteur d'un contenu présent ici et souhaitez qu'il
-                    soit retiré ou modifié — écrivez-moi. Je vous répondrai.
+                    soit retiré ou modifié; écrivez-moi. Je vous répondrai.
                 </p>
-                <a href="mailto:{{ $globalSettings->contact_email ?? 'moafogaus@gmail.com' }}"
+                <a href="mailto:{{ $globalSettings->admin_email ?? 'moafogaus@gmail.com' }}"
                     class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber text-ink font-semibold text-sm rounded-lg hover:bg-amber2 transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -286,7 +286,7 @@
                 meilleurs délais, sans discussion.
                 </p>
             </div>
-            <a href="mailto:{{ $globalSettings->contact_email ?? 'moafogaus@gmail.com' }}"
+            <a href="mailto:{{ $globalSettings->admin_email ?? 'moafogaus@gmail.com' }}"
                 class="flex-shrink-0 px-5 py-2.5 border border-amber/30 text-ink text-sm rounded-lg hover:bg-parchment transition-colors font-medium whitespace-nowrap">
                 Signaler un contenu
             </a>
