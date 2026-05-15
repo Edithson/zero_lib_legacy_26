@@ -68,7 +68,7 @@
         <em class="text-amber not-italic">compte vraiment.</em>
       </h1>
       <p class="stagger-3 text-cream/60 text-lg leading-relaxed max-w-2xl">
-        Question sur un livre, demande de retrait, suggestion, signalement de contenu —
+        Question sur un livre, demande de retrait, suggestion, signalement de contenu;
         toutes les raisons sont bonnes. Il y a une vraie personne derrière cette adresse,
         et elle vous lira.
       </p>

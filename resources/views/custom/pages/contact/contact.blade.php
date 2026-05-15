@@ -20,7 +20,7 @@
 
             <div>
                 <h2 class="font-serif font-bold text-2xl text-ink mb-1">Envoyez un message</h2>
-                <p class="text-ink/50 text-sm">Réponse sous 48 h en général — souvent bien avant.</p>
+                <p class="text-ink/50 text-sm">Réponse sous 48 h en général; souvent bien avant.</p>
             </div>
 
 
@@ -169,7 +169,7 @@
                 <span class="block text-xs text-ink/50 mt-0.5 leading-relaxed">
                     Si vous êtes l'auteur d'un contenu publié ici sans votre accord,
                     écrivez directement avec l'objet <strong class="text-ink">[RETRAIT URGENT]</strong>
-                    — votre demande sera traitée en priorité, sous 24 h.
+                   ; votre demande sera traitée en priorité, sous 24 h.
                 </span>
                 </div>
             </div>

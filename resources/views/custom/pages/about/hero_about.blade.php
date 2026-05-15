@@ -70,7 +70,7 @@
     box-shadow: 0 0 0 3px rgba(200,136,58,0.2);
   }
 
-  /* ✦ FIX : cercles décoratifs — positionnés depuis la droite sans déborder */
+  /* ✦ FIX : cercles décoratifs; positionnés depuis la droite sans déborder */
   .hero-deco-lg {
     position: absolute;
     right: -6rem;        /* déborde à droite mais contenu par .hero-wrapper */
@@ -116,7 +116,7 @@
     <div class="hero-line" style="top: 6rem;"></div>
     <div class="hero-line" style="bottom: 5rem;"></div>
 
-    <!-- Cercles décoratifs — maintenus dans .hero-wrapper -->
+    <!-- Cercles décoratifs; maintenus dans .hero-wrapper -->
     <div class="hero-deco-lg"></div>
     <div class="hero-deco-sm"></div>
 
