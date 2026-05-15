@@ -70,6 +70,22 @@
                     <p class="text-rust text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+            <div>
+                <label for="author" class="field-label">Auteur</label>
+                <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    value="{{ old('author') }}"
+                    placeholder="ex : FONHOUO GAUS"
+                    class="field-input @error('author') border-rust @enderror"
+                    nullable
+                />
+                @error('author')
+                    <p class="text-rust text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
         </div>
 
         {{-- Description --}}
@@ -194,6 +210,7 @@
                 <input type="hidden" name="is_published" :value="checked ? '1' : '0'" />
                 <button type="button"
                         @click="checked = !checked"
+                        {{ auth()->user()->type_id < 2 ? 'disabled' : '' }}
                         class="w-11 h-6 rounded-full transition-colors duration-200 flex items-center px-0.5"
                         :class="checked ? 'bg-sage' : 'bg-ink/20'">
                     <span class="w-5 h-5 bg-white rounded-full shadow transition-transform duration-200"

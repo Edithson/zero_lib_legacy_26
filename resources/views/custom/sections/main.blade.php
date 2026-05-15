@@ -67,73 +67,90 @@
         </div>
     @else
         <div id="grid-view" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
-        @foreach($books as $book)
-            <div class="book-card bg-white rounded-lg overflow-hidden border border-amber/10 flex flex-col h-full">
-                <div class="book-cover h-48 relative overflow-hidden bg-parchment flex-shrink-0">
-                    <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
+            @foreach($books as $book)
+                <div class="book-card bg-white rounded-lg overflow-hidden border border-amber/10 flex flex-col h-full">
+                    <div class="book-cover h-48 relative overflow-hidden bg-parchment flex-shrink-0">
+                        <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
 
-                    @if($book->is_free)
-                        <span class="absolute top-2 right-2 bg-sage text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">GRATUIT</span>
-                    @else
-                        <span class="absolute top-2 right-2 bg-amber text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">PREMIUM</span>
-                    @endif
-                </div>
-
-                <div class="p-3 sm:p-4 flex flex-col flex-1">
-                    <span class="text-[10px] text-amber font-semibold tracking-widest uppercase">{{ $book->category->name ?? 'Non classé' }}</span>
-                    <h3 class="font-serif font-bold text-sm mt-1 mb-1 line-clamp-2 leading-snug">{{ $book->title }}</h3>
-
-                    <div class="mt-auto pt-3 flex items-center justify-between">
-                        <span class="text-[11px] text-ink/40">{{ $book->nbr_pages }} p.</span>
-
-                        @if($book->is_free && $book->file_path)
-                            <a href="{{ route('books.download', $book) }}" class="flex items-center gap-1 px-2.5 py-1.5 bg-ink text-cream text-[11px] font-medium rounded hover:bg-amber transition-colors duration-200">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                Obtenir
-                            </a>
-                        @elseif(!$book->is_free)
-                            <span class="text-xs font-medium text-amber">{{ $book->formatted_price }}</span>
+                        @if($book->is_free)
+                            <span class="absolute top-1 right-1 bg-sage text-white text-[8px] font-bold px-1 py-1 rounded shadow-sm">GRATUIT</span>
+                        @else
+                            <span class="absolute top-2 right-2 bg-amber text-white text-[8px] font-bold px-1 py-1 rounded shadow-sm">PREMIUM</span>
                         @endif
                     </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
 
-        <div id="list-view" class="hidden flex-col gap-3">
-            @foreach($books as $book)
-                <div class="book-card bg-white rounded-lg border border-amber/10 flex gap-4 p-4">
-                    <div class="book-cover w-16 h-24 rounded flex-shrink-0 overflow-hidden bg-parchment">
-                        <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-1 min-w-0 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-start justify-between gap-2">
-                                <div>
-                                    <span class="text-[10px] text-amber font-semibold tracking-widest uppercase">{{ $book->category->name ?? 'Non classé' }}</span>
-                                    <h3 class="font-serif font-bold text-sm mt-0.5 leading-snug">{{ $book->title }}</h3>
-                                </div>
-                                @if($book->is_free)
-                                    <span class="bg-sage text-white text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0">GRATUIT</span>
-                                @else
-                                    <span class="bg-amber text-white text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0">PREMIUM</span>
-                                @endif
-                            </div>
-                            <p class="text-ink/40 text-xs mt-2 line-clamp-2">{{ Str::limit($book->description, 120) }}</p>
-                        </div>
-                        <div class="flex items-center justify-between mt-3">
-                            <span class="text-xs text-ink/40">{{ $book->nbr_pages }} pages · {{ $book->publish_year }}</span>
+                    <div class="p-3 sm:p-4 flex flex-col flex-1">
+                        <span class="text-[10px] text-amber font-semibold tracking-widest uppercase">{{ $book->category->name ?? 'Non classé' }}</span>
+                        <a href="{{ route('books.show', $book->slug) }}" class="hover:underline">
+                            <h3 class="font-serif font-bold text-sm mt-1 mb-1 line-clamp-2 leading-snug">{{ $book->title }}</h3>
+                        </a>
+
+                        {{-- Auteur --}}
+                        @if($book->author)
+                            <p class="text-[11px] text-ink/50 italic truncate">{{ $book->author }}</p>
+                        @endif
+
+                        <div class="mt-auto pt-3 flex items-center justify-between">
+                            <span class="text-[11px] text-ink/40">{{ $book->nbr_pages }} p.</span>
+
                             @if($book->is_free && $book->file_path)
-                                <a href="{{ route('books.download', $book) }}" class="flex items-center gap-1.5 px-3 py-1.5 bg-ink text-cream text-xs font-medium rounded hover:bg-amber transition-colors duration-200">
+                                <a href="{{ route('books.download', $book) }}" class="flex items-center gap-1 px-2.5 py-1.5 bg-ink text-cream text-[11px] font-medium rounded hover:bg-amber transition-colors duration-200">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                    Télécharger
+                                    Obtenir
                                 </a>
+                            @elseif(!$book->is_free)
+                                <span class="text-xs font-medium text-amber">{{ $book->formatted_price }}</span>
                             @endif
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+
+    <div id="list-view" class="hidden flex-col gap-3">
+        @foreach($books as $book)
+            <div class="book-card bg-white rounded-lg border border-amber/10 flex gap-4 p-4">
+                <div class="book-cover w-16 h-24 rounded flex-shrink-0 overflow-hidden bg-parchment">
+                    <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 min-w-0 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <span class="text-[10px] text-amber font-semibold tracking-widest uppercase">{{ $book->category->name ?? 'Non classé' }}</span>
+                                <a href="{{ route('books.show', $book->slug) }}" class="hover:underline">
+                                    <h3 class="font-serif font-bold text-sm mt-0.5 leading-snug">{{ $book->title }}</h3>
+                                </a>
+
+                                {{-- Auteur --}}
+                                @if($book->author)
+                                    <p class="flex items-center gap-1 text-[11px] text-ink/50 italic mt-0.5">
+                                        <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H9v-2a2 2 0 01.586-1.414z"/></svg>
+                                        {{ $book->author }}
+                                    </p>
+                                @endif
+                            </div>
+                            @if($book->is_free)
+                                <span class="bg-sage text-white text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0">GRATUIT</span>
+                            @else
+                                <span class="bg-amber text-white text-[10px] font-bold px-2 py-0.5 rounded flex-shrink-0">PREMIUM</span>
+                            @endif
+                        </div>
+                        <p class="text-ink/40 text-xs mt-2 line-clamp-2">{{ Str::limit($book->description, 120) }}</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-3">
+                        <span class="text-xs text-ink/40">{{ $book->nbr_pages }} pages · {{ $book->publish_year }}</span>
+                        @if($book->is_free && $book->file_path)
+                            <a href="{{ route('books.download', $book) }}" class="flex items-center gap-1.5 px-3 py-1.5 bg-ink text-cream text-xs font-medium rounded hover:bg-amber transition-colors duration-200">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Télécharger
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
         <div class="mt-10">
             {{ $books->links() }}
@@ -143,40 +160,38 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Au chargement, on récupère le choix sauvegardé (par défaut : 'grid')
-        const savedMode = localStorage.getItem('bookViewMode') || 'grid';
+        const saved = localStorage.getItem('bookViewMode');
 
-        // On applique ce mode sans le sauvegarder à nouveau
-        setViewMode(savedMode, false);
+        if (saved) {
+            // ✦ L'utilisateur a déjà fait un choix → on le respecte
+            setViewMode(saved, false);
+        } else {
+            // ✦ Premier affichage → grille sur desktop, liste sur mobile
+            const defaultMode = window.innerWidth >= 640 ? 'grid' : 'list';
+            setViewMode(defaultMode, false); // false = pas encore sauvegardé
+        }
     });
 
     function setViewMode(mode, save = true) {
-        // Si c'est un clic utilisateur, on sauvegarde le choix dans le navigateur
         if (save) {
             localStorage.setItem('bookViewMode', mode);
         }
 
-        const grid = document.getElementById('grid-view');
-        const list = document.getElementById('list-view');
+        const grid    = document.getElementById('grid-view');
+        const list    = document.getElementById('list-view');
         const btnGrid = document.getElementById('btn-grid');
         const btnList = document.getElementById('btn-list');
 
         if (!grid || !list) return;
 
         if (mode === 'grid') {
-            grid.classList.remove('hidden');
-            grid.classList.add('grid');
-            list.classList.add('hidden');
-            list.classList.remove('flex');
-
+            grid.classList.remove('hidden'); grid.classList.add('grid');
+            list.classList.add('hidden');    list.classList.remove('flex');
             btnGrid.className = "p-2 rounded transition-colors bg-ink text-cream";
             btnList.className = "p-2 rounded transition-colors bg-parchment text-ink";
         } else {
-            list.classList.remove('hidden');
-            list.classList.add('flex');
-            grid.classList.add('hidden');
-            grid.classList.remove('grid');
-
+            list.classList.remove('hidden'); list.classList.add('flex');
+            grid.classList.add('hidden');    grid.classList.remove('grid');
             btnList.className = "p-2 rounded transition-colors bg-ink text-cream";
             btnGrid.className = "p-2 rounded transition-colors bg-parchment text-ink";
         }

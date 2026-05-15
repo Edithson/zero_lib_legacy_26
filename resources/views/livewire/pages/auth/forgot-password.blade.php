@@ -209,15 +209,6 @@ new #[Layout('layouts.guest')] class extends Component
                         Envoyer le lien
                     </span>
 
-                    <span wire:loading wire:target="sendPasswordResetLink"
-                          style="display:flex; align-items:center; gap:8px;">
-                        <svg style="animation:zl-spin 0.8s linear infinite;" width="16" height="16" fill="none" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="opacity:.25"/>
-                            <path fill="currentColor" style="opacity:.8" d="M4 12a8 8 0 018-8v8z"/>
-                        </svg>
-                        Envoi en cours…
-                    </span>
-
                 </button>
 
             </form>
@@ -229,11 +220,6 @@ new #[Layout('layouts.guest')] class extends Component
                     ← Retour à la connexion
                 </a>
             </p>
-
         </div>
     </div>
 </div>
-
-<style>
-    @keyframes zl-spin { to { transform: rotate(360deg); } }
-</style>

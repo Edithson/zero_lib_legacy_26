@@ -9,4 +9,6 @@ class Newslatter extends Model
 {
     /** @use HasFactory<\Database\Factories\NewslatterFactory> */
     use HasFactory;
+
+    protected $fillable = ['email'];
 }

@@ -70,6 +70,21 @@
                     <p class="text-rust text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+            <div>
+                <label for="author" class="field-label">Auteur</label>
+                <input
+                    type="text"
+                    id="author"
+                    name="author"
+                    value="{{ old('author', $book->author) }}"
+                    class="field-input @error('author') border-rust @enderror"
+                    nullable
+                />
+                @error('author')
+                    <p class="text-rust text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
         </div>
 
         {{-- Description --}}
@@ -190,20 +205,23 @@
         </div>
 
         {{-- Statut de publication --}}
+        {{-- Toggle non disponible pour les users de type < 2 --}}
         <div class="flex items-center gap-3 pt-1 pb-1">
             <label class="field-label mb-0">Publié</label>
             <div x-data="{ checked: {{ old('is_published', $book->is_published) ? 'true' : 'false' }} }">
                 <input type="hidden" name="is_published" :value="checked ? '1' : '0'" />
                 <button type="button"
-                        @click="checked = !checked"
-                        class="w-11 h-6 rounded-full transition-colors duration-200 flex items-center px-0.5"
-                        :class="checked ? 'bg-sage' : 'bg-ink/20'">
+                        @click="{{ auth()->user()->type_id >= 2 ? 'checked = !checked' : '' }}"
+                        :class="checked ? 'bg-sage' : 'bg-ink/20'"
+                        {{ auth()->user()->type_id < 2 ? 'disabled' : '' }}
+                        class="w-11 h-6 rounded-full transition-colors duration-200 flex items-center px-0.5
+                            {{ auth()->user()->type_id < 2 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer' }}">
                     <span class="w-5 h-5 bg-white rounded-full shadow transition-transform duration-200"
-                          :class="checked ? 'translate-x-5' : 'translate-x-0'"></span>
+                        :class="checked ? 'translate-x-5' : 'translate-x-0'"></span>
                 </button>
             </div>
-            <span class="text-sm text-ink/50">
-                Visible par le public
+            <span class="text-sm {{ auth()->user()->type_id < 2 ? 'text-ink/30' : 'text-ink/50' }}">
+                {{ auth()->user()->type_id < 2 ? 'Non disponible pour votre rôle' : 'Visible par le public' }}
             </span>
         </div>
 

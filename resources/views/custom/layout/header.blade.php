@@ -2,9 +2,7 @@
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
     <a href="{{ route('home') }}" class="flex items-center gap-2 group">
       <div class="w-8 h-8 bg-ink rounded flex items-center justify-center transition-transform group-hover:scale-105">
-        <svg class="w-4 h-4 text-amber" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-        </svg>
+        <img src="{{asset('media/img/ours.png')}}" alt="logo provisoire">
       </div>
       <span class="font-serif text-xl font-bold tracking-tight">Zéro<span class="text-amber">lib</span></span>
     </a>
@@ -26,9 +24,26 @@
                 class="nav-link text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'text-amber font-bold' : 'text-ink/70 hover:text-ink' }}">
                 Contact
         </a>
-        <button class="px-4 py-2 bg-ink text-cream text-sm font-medium rounded hover:bg-amber transition-colors duration-200">
+        @if (Auth::check() && Auth::user()->type_id > 1)
+            <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 bg-ink text-cream text-sm font-medium rounded hover:bg-amber transition-colors duration-200">
+                Admin
+            </a>
+        @endif
+        @if (!Auth::check())
+            <a href="{{route('login')}}" class="px-4 py-2 bg-ink text-cream text-sm font-medium rounded hover:bg-amber transition-colors duration-200">
             Connexion
-        </button>
+            </a>
+        @else
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                </button>
+            </form>
+        @endif
     </div>
 
     <button id="mobile-menu-btn" class="md:hidden p-2 focus:outline-none" aria-label="Menu">
@@ -55,9 +70,23 @@
        class="text-base font-medium {{ request()->routeIs('contact') ? 'text-amber font-bold' : 'text-ink/70' }}">
        Contact
     </a>
-    <button class="mt-2 px-4 py-3 bg-ink text-cream text-sm font-medium rounded w-full hover:bg-amber transition-colors">
-      Connexion
-    </button>
+    @if (Auth::check() && Auth::user()->type_id >= 1)
+        <a href="{{ route('admin.dashboard') }}" class="text-base font-medium {{ request()->routeIs('admin.dashboard') ? 'text-amber font-bold' : 'text-ink/70' }}">
+            Admin
+        </a>
+    @endif
+    @if (!Auth::check())
+        <a href="{{route('login')}}" class="mt-2 px-4 py-3 bg-ink text-cream text-sm font-medium rounded w-full hover:bg-amber transition-colors">
+        Connexion
+        </a>
+    @else
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="mt-2 px-4 py-3 bg-ink text-cream text-sm font-medium rounded w-full hover:bg-amber transition-colors">
+                Déconnexion
+            </button>
+        </form>
+    @endif
   </div>
 </header>
 

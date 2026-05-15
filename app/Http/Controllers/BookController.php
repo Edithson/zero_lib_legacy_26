@@ -43,6 +43,7 @@ class BookController extends Controller
     {
         $validated = $request->validate([
             'title'        => ['required', 'string', 'max:255'],
+            'author'       => ['nullable', 'string', 'max:255'],
             'description'  => ['nullable', 'string'],
             'price'        => ['nullable', 'integer', 'min:0'],
             'category_id'  => ['nullable', 'exists:categories,id'],
@@ -67,6 +68,7 @@ class BookController extends Controller
 
         Book::create([
             'title'        => $validated['title'],
+            'author'       => $validated['author'] ?? null,
             'description'  => $validated['description'] ?? null,
             'price'        => $validated['price'] ?? 0,
             'category_id'  => $validated['category_id'] ?? null,
@@ -99,6 +101,7 @@ class BookController extends Controller
     {
         $validated = $request->validate([
             'title'        => ['required', 'string', 'max:255'],
+            'author'       => ['nullable', 'string', 'max:255'],
             'description'  => ['nullable', 'string'],
             'price'        => ['nullable', 'integer', 'min:0'],
             'category_id'  => ['nullable', 'exists:categories,id'],
@@ -129,6 +132,7 @@ class BookController extends Controller
 
             $book->update([
                 'title'        => $validated['title'],
+                'author'       => $validated['author'] ?? null,
                 'description'  => $validated['description'] ?? null,
                 'price'        => $validated['price'] ?? 0,
                 'category_id'  => $validated['category_id'] ?? null,

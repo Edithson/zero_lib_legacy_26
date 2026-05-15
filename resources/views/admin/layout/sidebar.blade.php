@@ -1,23 +1,43 @@
 {{-- SIDEBAR OVERLAY (mobile) --}}
-<div class="sidebar-overlay" x-show="sidebarOpen" @click="sidebarOpen = false"></div>
+{{-- ✦ FIX : z-index explicite + display géré par Alpine pour que le clic fonctionne --}}
+<div x-show="sidebarOpen"
+     x-transition:enter="transition-opacity ease-out duration-200"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"
+     x-transition:leave="transition-opacity ease-in duration-150"
+     x-transition:leave-start="opacity-100"
+     x-transition:leave-end="opacity-0"
+     @click="sidebarOpen = false"
+     class="fixed inset-0 bg-ink/60 backdrop-blur-sm z-30 lg:hidden"
+     style="display: none;">
+</div>
 
 {{-- SIDEBAR --}}
 <aside class="sidebar flex flex-col" :class="{ open: sidebarOpen }">
 
-    {{-- Logo --}}
+    {{-- Logo + bouton fermeture mobile --}}
     <div class="px-6 py-5 border-b border-white/8">
         <div class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-amber rounded flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-ink" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+            <div class="w-8 h-8 bg-ink rounded flex items-center justify-center transition-transform group-hover:scale-105">
+                <img src="{{asset('media/img/ours.png')}}" alt="logo provisoire">
             </div>
-            <div>
-                <span class="font-serif font-black text-cream text-lg leading-none">
-                    Zéro<span class="text-amber">lib</span>
-                </span>
+            <div class="flex-1 min-w-0">
+                <a href="{{route('admin.dashboard')}}">
+                    <span class="font-serif font-black text-cream text-lg leading-none">
+                        Zéro<span class="text-amber">lib</span>
+                    </span>
+                </a>
                 <div class="text-white/30 text-xs mt-0.5">Administration</div>
             </div>
+
+            {{-- ✦ AJOUT : Bouton ✕ visible uniquement sur mobile --}}
+            <button @click="sidebarOpen = false"
+                    class="lg:hidden flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg text-white/40 hover:text-cream hover:bg-white/10 transition-colors"
+                    aria-label="Fermer le menu">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -29,7 +49,9 @@
             Tableau de bord
         </div>
 
+        {{-- ✦ FIX : @click="sidebarOpen = false" sur chaque lien pour fermer au tap mobile --}}
         <a href="{{ route('admin.dashboard') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -44,13 +66,13 @@
         </div>
 
         <a href="{{ route('admin.books.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.books.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
             Livres
-            {{-- Ce compteur sera passé depuis le layout ou un View Composer --}}
             @isset($totalBooks)
                 <span class="ml-auto bg-amber/20 text-amber text-xs px-2 py-0.5 rounded-full">
                     {{ $totalBooks }}
@@ -59,6 +81,7 @@
         </a>
 
         <a href="{{ route('admin.categories.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -67,7 +90,8 @@
             Catégories
         </a>
 
-        <a href="#"
+        <a href="{{ route('admin.downloads.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.downloads.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,12 +100,49 @@
             Téléchargements
         </a>
 
+        {{-- Groupe : Communication --}}
+        <div class="text-white/20 text-xs font-semibold uppercase tracking-widest px-3 py-3 mb-1 mt-3">
+            Communication
+        </div>
+
+        <a href="{{ route('admin.contacts.index') }}"
+           @click="sidebarOpen = false"
+           class="sidebar-link {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Demandes de contact
+            @isset($pendingContacts)
+                <span class="ml-auto bg-rust/20 text-rust text-xs px-2 py-0.5 rounded-full">
+                    {{ $pendingContacts }}
+                </span>
+            @endisset
+        </a>
+
+        <a href="{{ route('admin.newsletter.index') }}"
+           @click="sidebarOpen = false"
+           class="sidebar-link {{ request()->routeIs('admin.newsletter.*') ? 'active' : '' }}">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+            Newsletter
+            @isset($totalSubscribers)
+                <span class="ml-auto bg-amber/20 text-amber text-xs px-2 py-0.5 rounded-full">
+                    {{ $totalSubscribers }}
+                </span>
+            @endisset
+        </a>
+
+        @if(auth()->user()->type_id == 3)
         {{-- Groupe : Système --}}
         <div class="text-white/20 text-xs font-semibold uppercase tracking-widest px-3 py-3 mb-1 mt-3">
             Système
         </div>
 
-        <a href="#"
+        <a href="{{ route('admin.users.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -90,8 +151,9 @@
             Utilisateurs
         </a>
 
-        <a href="#"
-           class="sidebar-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+        <a href="{{ route('settings.index') }}"
+           @click="sidebarOpen = false"
+           class="sidebar-link {{ request()->routeIs('settings.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
@@ -99,6 +161,7 @@
             </svg>
             Paramètres
         </a>
+        @endif
 
     </nav>
 
@@ -108,8 +171,8 @@
             <div class="w-8 h-8 rounded-full bg-amber flex items-center justify-center text-ink font-bold text-sm flex-shrink-0">
                 {{ strtoupper(substr(Auth::user()->name ?? 'A', 0, 1)) }}
             </div>
-            <div class="min-w-0">
-                <a href="{{route('admin.profile')}}">
+            <div class="min-w-0 flex-1">
+                <a href="{{ route('admin.profile') }}">
                     <div class="text-cream text-sm font-medium truncate">
                         {{ Auth::user()->name ?? 'Administrateur' }}
                     </div>

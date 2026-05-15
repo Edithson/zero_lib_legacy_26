@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Type;
 use App\Models\Order;
 use App\Models\Download;
 use Database\Factories\UserFactory;
@@ -23,6 +24,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'type_id',
         'password',
         'provider',
         'provider_id',
@@ -54,5 +56,10 @@ class User extends Authenticatable
     public function downloads()
     {
         return $this->hasMany(Download::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
     }
 }

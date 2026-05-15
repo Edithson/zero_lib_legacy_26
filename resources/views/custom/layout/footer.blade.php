@@ -10,24 +10,21 @@
           <div>
             <h4 class="text-xs font-semibold tracking-wider uppercase text-cream/40 mb-3">Navigation</h4>
             <div class="flex flex-col gap-2 text-sm text-cream/60">
-              <a href="#" class="hover:text-amber transition-colors">Catalogue</a>
-              <a href="#" class="hover:text-amber transition-colors">Catégories</a>
-              <a href="#" class="hover:text-amber transition-colors">À propos</a>
+              <a href="{{ route('home') }}#catalogue" class="hover:text-amber transition-colors">Catalogue</a>
+              <a href="{{ route('about') }}" class="hover:text-amber transition-colors">À propos</a>
             </div>
           </div>
           <div>
             <h4 class="text-xs font-semibold tracking-wider uppercase text-cream/40 mb-3">Légal</h4>
             <div class="flex flex-col gap-2 text-sm text-cream/60">
-              <a href="#" class="hover:text-amber transition-colors">Mentions légales</a>
-              <a href="#" class="hover:text-amber transition-colors">Confidentialité</a>
-              <a href="#" class="hover:text-amber transition-colors">Contact</a>
+              <a href="{{ route('contact') }}" class="hover:text-amber transition-colors">Contact</a>
             </div>
           </div>
         </div>
       </div>
       <div class="border-t border-cream/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-        <p class="text-cream/30 text-xs">© 2025 Zérolib — Tous droits réservés.</p>
-        <p class="text-cream/30 text-xs">Fait avec ♥ pour la communauté</p>
+        <p class="text-cream/30 text-xs">© 2026 Zérolib — Tous droits réservés.</p>
+        <p class="text-cream/30 text-xs">Fait par FONHOUO GAUS pour la communauté</p>
       </div>
     </div>
   </footer>

@@ -18,12 +18,14 @@
           Des dizaines de tutoriels et livres du Zéro, librement téléchargeables au format PDF. Une archive vivante pour les passionnés.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 animate-fade-up stagger-4">
-          <button @click="scrollTo('#catalogue')" class="px-8 py-4 bg-amber text-ink font-semibold rounded hover:bg-amber2 transition-colors duration-200 text-sm">
-            Explorer le catalogue →
-          </button>
-          <button class="px-8 py-4 border border-cream/30 text-cream font-medium rounded hover:border-amber hover:text-amber transition-colors duration-200 text-sm">
-            En savoir plus
-          </button>
+            <button
+                @click="document.querySelector('#catalogue').scrollIntoView({ behavior: 'smooth' })"
+                class="px-8 py-4 bg-amber text-ink font-semibold rounded hover:bg-amber2 transition-colors duration-200 text-sm">
+                Explorer le catalogue →
+            </button>
+            <a href="{{ route('about') }}" class="px-8 py-4 border border-cream/30 text-cream font-medium rounded hover:border-amber hover:text-amber transition-colors duration-200 text-sm">
+                En savoir plus
+            </a>
         </div>
       </div>
     </div>
@@ -32,7 +34,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 relative z-10">
       <div class="grid grid-cols-3 gap-4 max-w-lg">
         <div class="animate-fade-up stagger-4">
-          <div class="font-serif text-3xl font-black text-amber">48+</div>
+          <div class="font-serif text-3xl font-black text-amber">{{ $totalBooks }}+</div>
           <div class="text-cream/50 text-xs mt-1">Livres disponibles</div>
         </div>
         <div class="animate-fade-up stagger-5">
@@ -40,7 +42,7 @@
           <div class="text-cream/50 text-xs mt-1">Gratuit</div>
         </div>
         <div class="animate-fade-up stagger-6">
-          <div class="font-serif text-3xl font-black text-amber">8</div>
+          <div class="font-serif text-3xl font-black text-amber">{{ $totalCategories }}</div>
           <div class="text-cream/50 text-xs mt-1">Catégories</div>
         </div>
       </div>

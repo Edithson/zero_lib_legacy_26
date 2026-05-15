@@ -47,8 +47,12 @@ class HomeController extends Controller
         // 6. Pagination avec conservation des paramètres d'URL
         $books = $query->paginate(15)->withQueryString()->fragment('catalogue');
 
-        // On récupère toutes les catégories pour afficher les filtres
-        $categories = Category::orderBy('name')->get();
+        // On récupère les catégories ayant au moins un livre pour afficher les filtres
+        $categories = Category::has('books')->orderBy('name')->get();
+
+        // On reccupère le nombre total de livres et de catégories pour l'afficher dans le titre
+        $totalBooks = $query->count();
+        $totalCategories = $categories->count();
 
         return view('custom.pages.home', [
             'books'        => $books,
@@ -56,6 +60,8 @@ class HomeController extends Controller
             'currentSearch'=> $search,
             'currentSort'  => $sortBy,
             'currentCat'   => $categorySlug,
+            'totalBooks'   => $totalBooks,
+            'totalCategories' => $totalCategories,
         ]);
     }
 
@@ -67,5 +73,15 @@ class HomeController extends Controller
     public function contact(): View
     {
         return view('custom.pages.contact.contact');
+    }
+
+    public function show_art($slug): View
+    {
+        try {
+            $book = Book::where('slug', $slug)->firstOrFail();
+            return view('custom.pages.articles.show', ['book' => $book]);
+        } catch (\Throwable $th) {
+            abort(404);
+        }
     }
 }

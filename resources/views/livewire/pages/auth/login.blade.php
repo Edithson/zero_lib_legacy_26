@@ -14,7 +14,12 @@ new #[Layout('layouts.guest')] class extends Component
         $this->validate();
         $this->form->authenticate();
         Session::regenerate();
-        $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+        // rediriger vers la route home si l'utilisateur est de type 1
+        if (Auth::user()->type_id == 1) {
+            $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+        } else {
+            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+        }
     }
 }; ?>
 
@@ -212,8 +217,12 @@ new #[Layout('layouts.guest')] class extends Component
             {{-- Retour catalogue --}}
             <p class="text-center text-xs fade-up-3" style="color: rgba(14,12,10,0.35);">
                 Pas encore de compte ?
-                <a href="{{ url('/') }}" class="font-medium hover:underline" style="color: #c8883a;">
+                <a href="{{ route('home') }}#catalogue" class="font-medium hover:underline" style="color: #c8883a;">
                     Parcourir le catalogue
+                </a>
+                ou
+                <a href="{{ route('register') }}" wire:navigate class="font-medium hover:underline" style="color: #c8883a;">
+                    s'inscrire
                 </a>
             </p>
 
