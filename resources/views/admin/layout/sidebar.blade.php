@@ -1,10 +1,21 @@
 {{-- SIDEBAR OVERLAY (mobile) --}}
-<div class="sidebar-overlay" x-show="sidebarOpen" @click="sidebarOpen = false"></div>
+{{-- ✦ FIX : z-index explicite + display géré par Alpine pour que le clic fonctionne --}}
+<div x-show="sidebarOpen"
+     x-transition:enter="transition-opacity ease-out duration-200"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"
+     x-transition:leave="transition-opacity ease-in duration-150"
+     x-transition:leave-start="opacity-100"
+     x-transition:leave-end="opacity-0"
+     @click="sidebarOpen = false"
+     class="fixed inset-0 bg-ink/60 backdrop-blur-sm z-30 lg:hidden"
+     style="display: none;">
+</div>
 
 {{-- SIDEBAR --}}
 <aside class="sidebar flex flex-col" :class="{ open: sidebarOpen }">
 
-    {{-- Logo --}}
+    {{-- Logo + bouton fermeture mobile --}}
     <div class="px-6 py-5 border-b border-white/8">
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 bg-amber rounded flex items-center justify-center flex-shrink-0">
@@ -12,12 +23,21 @@
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
             </div>
-            <div>
+            <div class="flex-1 min-w-0">
                 <span class="font-serif font-black text-cream text-lg leading-none">
                     Zéro<span class="text-amber">lib</span>
                 </span>
                 <div class="text-white/30 text-xs mt-0.5">Administration</div>
             </div>
+
+            {{-- ✦ AJOUT : Bouton ✕ visible uniquement sur mobile --}}
+            <button @click="sidebarOpen = false"
+                    class="lg:hidden flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg text-white/40 hover:text-cream hover:bg-white/10 transition-colors"
+                    aria-label="Fermer le menu">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -29,7 +49,9 @@
             Tableau de bord
         </div>
 
+        {{-- ✦ FIX : @click="sidebarOpen = false" sur chaque lien pour fermer au tap mobile --}}
         <a href="{{ route('admin.dashboard') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -44,6 +66,7 @@
         </div>
 
         <a href="{{ route('admin.books.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.books.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,6 +81,7 @@
         </a>
 
         <a href="{{ route('admin.categories.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -67,6 +91,7 @@
         </a>
 
         <a href="{{ route('admin.downloads.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.downloads.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -81,6 +106,7 @@
         </div>
 
         <a href="{{ route('admin.contacts.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -95,6 +121,7 @@
         </a>
 
         <a href="{{ route('admin.newsletter.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.newsletter.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -114,6 +141,7 @@
         </div>
 
         <a href="{{ route('admin.users.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -123,6 +151,7 @@
         </a>
 
         <a href="{{ route('settings.index') }}"
+           @click="sidebarOpen = false"
            class="sidebar-link {{ request()->routeIs('settings.*') ? 'active' : '' }}">
             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -140,7 +169,7 @@
             <div class="w-8 h-8 rounded-full bg-amber flex items-center justify-center text-ink font-bold text-sm flex-shrink-0">
                 {{ strtoupper(substr(Auth::user()->name ?? 'A', 0, 1)) }}
             </div>
-            <div class="min-w-0">
+            <div class="min-w-0 flex-1">
                 <a href="{{ route('admin.profile') }}">
                     <div class="text-cream text-sm font-medium truncate">
                         {{ Auth::user()->name ?? 'Administrateur' }}
