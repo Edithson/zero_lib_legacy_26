@@ -263,7 +263,7 @@
                     des suggestions, ou si vous êtes l'auteur d'un contenu présent ici et souhaitez qu'il
                     soit retiré ou modifié — écrivez-moi. Je vous répondrai.
                 </p>
-                <a href="mailto:contact@zerolib.fr"
+                <a href="mailto:{{ $globalSettings->contact_email ?? 'moafogaus@gmail.com' }}"
                     class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber text-ink font-semibold text-sm rounded-lg hover:bg-amber2 transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -282,11 +282,11 @@
                 <h3 class="font-semibold text-ink mb-1">Vous êtes auteur d'un contenu présent ici ?</h3>
                 <p class="text-ink/60 text-sm leading-relaxed">
                 Si vous souhaitez que votre œuvre soit retirée, modifiée, ou si vous avez des
-                droits à faire valoir — contactez-nous. Nous traiterons votre demande dans les
+                droits à faire valoir; contactez-nous. Nous traiterons votre demande dans les
                 meilleurs délais, sans discussion.
                 </p>
             </div>
-            <a href="mailto:contact@zerolib.fr"
+            <a href="mailto:{{ $globalSettings->contact_email ?? 'moafogaus@gmail.com' }}"
                 class="flex-shrink-0 px-5 py-2.5 border border-amber/30 text-ink text-sm rounded-lg hover:bg-parchment transition-colors font-medium whitespace-nowrap">
                 Signaler un contenu
             </a>

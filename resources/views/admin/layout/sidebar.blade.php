@@ -18,15 +18,15 @@
     {{-- Logo + bouton fermeture mobile --}}
     <div class="px-6 py-5 border-b border-white/8">
         <div class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-amber rounded flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-ink" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+            <div class="w-8 h-8 bg-ink rounded flex items-center justify-center transition-transform group-hover:scale-105">
+                <img src="{{asset('media/img/ours.png')}}" alt="logo provisoire">
             </div>
             <div class="flex-1 min-w-0">
-                <span class="font-serif font-black text-cream text-lg leading-none">
-                    Zéro<span class="text-amber">lib</span>
-                </span>
+                <a href="{{route('admin.dashboard')}}">
+                    <span class="font-serif font-black text-cream text-lg leading-none">
+                        Zéro<span class="text-amber">lib</span>
+                    </span>
+                </a>
                 <div class="text-white/30 text-xs mt-0.5">Administration</div>
             </div>
 
@@ -135,6 +135,7 @@
             @endisset
         </a>
 
+        @if(auth()->user()->type_id == 3)
         {{-- Groupe : Système --}}
         <div class="text-white/20 text-xs font-semibold uppercase tracking-widest px-3 py-3 mb-1 mt-3">
             Système
@@ -160,6 +161,7 @@
             </svg>
             Paramètres
         </a>
+        @endif
 
     </nav>
 

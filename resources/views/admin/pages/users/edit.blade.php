@@ -38,7 +38,6 @@
         <div>
             <label for="type_id" class="field-label">Rôle d'accès</label>
             <select id="type_id" name="type_id" class="field-input @error('type_id') border-rust @enderror">
-                <option value="">— Aucun rôle spécifique —</option>
                 @foreach($types as $type)
                     <option value="{{ $type->id }}" {{ old('type_id', $user->type_id) == $type->id ? 'selected' : '' }}>
                         {{ ucfirst($type->name) }}

@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ $title ?? 'Zérolib — Bibliothèque Libre' }}</title>
+        <title>{{ $title ?? 'Zérolib' }}</title>
+        {{-- intégration du logo de l'onglet --}}
+        <link rel="icon" type="image/x-icon" href="{{ asset('media/img/ours.png') }}" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -73,9 +73,9 @@
                         <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
 
                         @if($book->is_free)
-                            <span class="absolute top-2 right-2 bg-sage text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">GRATUIT</span>
+                            <span class="absolute top-1 right-1 bg-sage text-white text-[8px] font-bold px-1 py-1 rounded shadow-sm">GRATUIT</span>
                         @else
-                            <span class="absolute top-2 right-2 bg-amber text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">PREMIUM</span>
+                            <span class="absolute top-2 right-2 bg-amber text-white text-[8px] font-bold px-1 py-1 rounded shadow-sm">PREMIUM</span>
                         @endif
                     </div>
 
@@ -160,40 +160,38 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Au chargement, on récupère le choix sauvegardé (par défaut : 'grid')
-        const savedMode = localStorage.getItem('bookViewMode') || 'grid';
+        const saved = localStorage.getItem('bookViewMode');
 
-        // On applique ce mode sans le sauvegarder à nouveau
-        setViewMode(savedMode, false);
+        if (saved) {
+            // ✦ L'utilisateur a déjà fait un choix → on le respecte
+            setViewMode(saved, false);
+        } else {
+            // ✦ Premier affichage → grille sur desktop, liste sur mobile
+            const defaultMode = window.innerWidth >= 640 ? 'grid' : 'list';
+            setViewMode(defaultMode, false); // false = pas encore sauvegardé
+        }
     });
 
     function setViewMode(mode, save = true) {
-        // Si c'est un clic utilisateur, on sauvegarde le choix dans le navigateur
         if (save) {
             localStorage.setItem('bookViewMode', mode);
         }
 
-        const grid = document.getElementById('grid-view');
-        const list = document.getElementById('list-view');
+        const grid    = document.getElementById('grid-view');
+        const list    = document.getElementById('list-view');
         const btnGrid = document.getElementById('btn-grid');
         const btnList = document.getElementById('btn-list');
 
         if (!grid || !list) return;
 
         if (mode === 'grid') {
-            grid.classList.remove('hidden');
-            grid.classList.add('grid');
-            list.classList.add('hidden');
-            list.classList.remove('flex');
-
+            grid.classList.remove('hidden'); grid.classList.add('grid');
+            list.classList.add('hidden');    list.classList.remove('flex');
             btnGrid.className = "p-2 rounded transition-colors bg-ink text-cream";
             btnList.className = "p-2 rounded transition-colors bg-parchment text-ink";
         } else {
-            list.classList.remove('hidden');
-            list.classList.add('flex');
-            grid.classList.add('hidden');
-            grid.classList.remove('grid');
-
+            list.classList.remove('hidden'); list.classList.add('flex');
+            grid.classList.add('hidden');    grid.classList.remove('grid');
             btnList.className = "p-2 rounded transition-colors bg-ink text-cream";
             btnGrid.className = "p-2 rounded transition-colors bg-parchment text-ink";
         }

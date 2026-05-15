@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('74l4m4150n'),
             'type_id' => Type::where('name', 'super admin')->first()->id,
         ]);
 
@@ -43,14 +43,14 @@ class DatabaseSeeder extends Seeder
             'site_name' => 'ZeroLib',
             'contact_email' => 'hello@zerolib.org',
             'admin_email' => 'moafogaus@gmail.com',
-            'adr_git' => 'https://github.com/zerolib',
-            'adr_linkedin' => 'https://www.linkedin.com/company/zerolib/',
-            'phone' => '+237658995265',
+            'adr_git' => 'https://github.com/Edithson',
+            'adr_linkedin' => 'www.linkedin.com/in/gaus-fonhouo-961344236',
+            'phone' => '+237678859210',
         ]);
 
         // On appelle notre BookSeeder
-        $this->call([
-            BookSeeder::class,
-        ]);
+        // $this->call([
+        //     BookSeeder::class,
+        // ]);
     }
 }

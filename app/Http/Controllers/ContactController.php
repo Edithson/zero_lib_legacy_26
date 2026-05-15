@@ -79,8 +79,8 @@ class ContactController extends Controller
     public function show(Contact $contact): View
     {
         // Marquer comme lu si ce n'est pas déjà le cas
-        if (!$contact->is_read) {
-            $contact->update(['is_read' => true]);
+        if ($contact->is_read == 0) {
+            $contact->update(['is_read' => 1]);
         }
 
         return view('admin.pages.contacts.show', [

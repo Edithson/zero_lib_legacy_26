@@ -16,5 +16,6 @@ class Contact extends Model
         'motif',
         'sujet',
         'message',
+        'is_read'
     ];
 }

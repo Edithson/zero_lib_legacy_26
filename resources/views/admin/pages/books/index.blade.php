@@ -18,7 +18,7 @@
                 type="text"
                 name="search"
                 value="{{ request('search') }}"
-                placeholder="Filtrer les livres..."
+                placeholder="    Filtrer les livres..."
                 class="field-input pl-9"
             />
         </div>
