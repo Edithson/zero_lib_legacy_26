@@ -24,7 +24,7 @@
       </div>
       <div class="border-t border-cream/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
         <p class="text-cream/30 text-xs">© 2026 Zérolib — Tous droits réservés.</p>
-        <p class="text-cream/30 text-xs">Fait par <a href="https://moafogaus.com" class="hover:text-amber transition-colors underline font-bold">FONHOUO GAUS</a> pour la communauté</p>
+        <p class="text-cream/30 text-xs">Fait par <a href="https://moafogaus.72.62.16.16.nip.io/" class="hover:text-amber transition-colors underline font-bold">FONHOUO GAUS</a> pour la communauté</p>
       </div>
     </div>
   </footer>

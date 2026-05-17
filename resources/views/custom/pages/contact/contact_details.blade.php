@@ -2,7 +2,7 @@
 <div class="bg-white border border-amber/15 rounded-2xl p-5 space-y-4">
 
     {{-- En-tête --}}
-    <a href="https://moafogaus.com" class="hover:bg-amber2">
+    <a href="https://moafogaus.72.62.16.16.nip.io/" class="hover:bg-amber2">
     <div class="flex items-center gap-3 pb-4 border-b border-ink/6">
         <div class="w-10 h-10 rounded-xl bg-ink flex items-center justify-center flex-shrink-0">
             <img src="{{asset('media/img/img_1.png')}}" alt="photo du dev" class="w-8 h-8 rounded-lg object-cover">
