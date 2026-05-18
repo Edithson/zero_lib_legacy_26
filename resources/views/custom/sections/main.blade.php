@@ -70,7 +70,10 @@
             @foreach($books as $book)
                 <div class="book-card bg-white rounded-lg overflow-hidden border border-amber/10 flex flex-col h-full">
                     <div class="book-cover h-48 relative overflow-hidden bg-parchment flex-shrink-0">
-                        <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
+                        <img src="{{ $book->cover_url }}"
+                        alt="{{ $book->title }}"
+                        class="w-full h-full object-cover object-top"
+                        onerror="this.onerror=null; this.src='{{ asset('images/cover-placeholder.jpg') }}'">
 
                         @if($book->is_free)
                             <span class="absolute top-1 right-1 bg-sage text-white text-[8px] font-bold px-1 py-1 rounded shadow-sm">GRATUIT</span>
