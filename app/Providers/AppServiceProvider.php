@@ -27,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
             $globalSettings = (new Setting())->forceFill($attributes);
             View::share('globalSettings', $globalSettings);
 
+            if (config('app.env') === 'production') {
+                URL::forceScheme('https');
+            }
+
         } catch (\Throwable $e) {
             // Table settings absente (ex: première migration), on partage un objet vide
             View::share('globalSettings', new Setting());
