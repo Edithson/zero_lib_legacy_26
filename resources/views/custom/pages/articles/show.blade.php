@@ -366,19 +366,20 @@
 
           {{-- CTA ── --}}
           <div class="s4 flex flex-wrap gap-3 pt-2">
-            @if($book->file_path)
-              <a href="{{ route('books.download', $book) }}" class="btn-primary">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                </svg>
-                @if($book->price > 0)
-                  Acheter · {{ number_format($book->price, 0, ',', ' ') }} FCFA
-                @else
-                  Télécharger gratuitement
-                @endif
-              </a>
+            @if($book->is_free && $book->file_path)
+                <form action="{{ route('books.download', $book) }}" method="POST" class="download-form">
+                    @csrf
+                    <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                    <button type="submit" class="btn-primary">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" str<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Télécharger gratuitement
+                    </button>
+                </form>
             @endif
+
             <button onclick="
                 document.referrer && document.referrer.startsWith(window.location.origin)
                 ? history.back()
@@ -557,19 +558,19 @@
       </div>
 
       {{-- CTA sticky répété --}}
-      @if($book->file_path)
-      <a href="{{ route('books.download', $book) }}" class="btn-primary w-full justify-center">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-        </svg>
-        @if($book->price > 0)
-          Obtenir ce livre
-        @else
-          Télécharger gratuitement
+      @if($book->is_free && $book->file_path)
+            <form action="{{ route('books.download', $book) }}" method="POST" class="download-form">
+                @csrf
+                <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                <button type="submit" class="btn-primary">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" str<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    Télécharger gratuitement
+                </button>
+            </form>
         @endif
-      </a>
-      @endif
 
       {{-- Partager --}}
       <div class="bg-white border rounded-2xl p-4 space-y-3"
@@ -648,20 +649,41 @@
 </main>
 
 <script>
-  function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn   = document.getElementById('copy-btn');
-      const label = document.getElementById('copy-label');
-      label.textContent = 'Lien copié !';
-      btn.style.color   = 'var(--sage)';
-      btn.style.borderColor = 'rgba(74,103,65,.4)';
-      setTimeout(() => {
-        label.textContent = 'Copier le lien';
-        btn.style.color   = '';
-        btn.style.borderColor = '';
-      }, 2000);
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+        const btn   = document.getElementById('copy-btn');
+        const label = document.getElementById('copy-label');
+        label.textContent = 'Lien copié !';
+        btn.style.color   = 'var(--sage)';
+        btn.style.borderColor = 'rgba(74,103,65,.4)';
+        setTimeout(() => {
+            label.textContent = 'Copier le lien';
+            btn.style.color   = '';
+            btn.style.borderColor = '';
+        }, 2000);
+        });
+    }
+
+    // Gestion du formulaire de téléchargement avec reCAPTCHA v3
+    const RECAPTCHA_SITE_KEY = "{{ config('services.recaptcha.site_key') }}";
+    document.querySelectorAll('.download-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (typeof grecaptcha === 'undefined') {
+                console.error('reCAPTCHA non chargé — vérifie le script api.js dans le layout.');
+                form.submit(); // fallback : on laisse passer, le backend doit re-vérifier de toute façon
+                return;
+            }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'download'}).then(function(token) {
+                    form.querySelector('.g-recaptcha-response').value = token;
+                    form.submit();
+                });
+            });
+        });
     });
-  }
 </script>
 
 @endsection

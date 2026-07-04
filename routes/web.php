@@ -25,7 +25,7 @@ Route::get('/books/{slug}', [HomeController::class, 'show_art'])->name('books.sh
 Route::post('/newsletter/subscribe', [NewslatterController::class, 'store'])
      ->name('newsletter.subscribe');
 
-Route::get('/books/{book}/download', [DownloadController::class, 'download'])->name('books.download');
+Route::post('/books/{book}/download', [DownloadController::class, 'download'])->middleware(['throttle:downloads'])->name('books.download');
 
 // Redirige l'utilisateur vers Google ou Facebook
 Route::get('/auth/{provider}/redirect', [SocialAuthController::class, 'redirect'])->name('social.redirect');
