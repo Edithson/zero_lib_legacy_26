@@ -3,6 +3,21 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Intercepteur d'erreurs global (Sécurité & Robustesse console) -->
+        <script>
+            (function() {
+                if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                    window.addEventListener('error', function(e) {
+                        e.preventDefault();
+                        return true;
+                    }, true);
+                    window.addEventListener('unhandledrejection', function(e) {
+                        e.preventDefault();
+                        return true;
+                    }, true);
+                }
+            })();
+        </script>
         <title>@yield('title', 'ZeroLib - Votre bibliothèque de livres numériques')</title>
         <meta name="description" content="@yield('meta_description', 'Découvrez ZeroLib, votre bibliothèque numérique pour télécharger gratuitement des livres au format PDF et acheter des e-books en toute sécurité.')" />
         <meta name="keywords" content="@yield('meta_keywords', 'ZeroLib, bibliothèque numérique, livres gratuits, télécharger PDF, e-books, livres audio, romans, culture, éducation, notchpay')" />
