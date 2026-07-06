@@ -10,6 +10,28 @@ class NewslatterController extends Controller
 {
     public function store(Request $request)
     {
+        // 0. Vérification du reCAPTCHA v3
+        $recaptchaToken = $request->input('g-recaptcha-response');
+        if (!$recaptchaToken) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Jeton reCAPTCHA manquant. Veuillez réessayer.',
+            ], 403);
+        }
+
+        $recaptchaResponse = \Illuminate\Support\Facades\Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret'   => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $recaptchaToken,
+            'remoteip' => $request->ip(),
+        ]);
+
+        if (!$recaptchaResponse->json('success') || $recaptchaResponse->json('score') < 0.5) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Action suspecte détectée (reCAPTCHA a échoué).',
+            ], 403);
+        }
+
         $request->validate([
             'email'   => ['required', 'email', 'max:255'],
             'consent' => ['accepted'],
