@@ -97,10 +97,15 @@
                             <span class="text-[11px] text-ink/40">{{ $book->nbr_pages }} p.</span>
 
                             @if($book->is_free && $book->file_path)
-                                <a href="{{ route('books.download', $book) }}" class="flex items-center gap-1 px-2.5 py-1.5 bg-ink text-cream text-[11px] font-medium rounded hover:bg-amber transition-colors duration-200">
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                    Obtenir
-                                </a>
+                                <form method="POST" action="{{ route('books.download', $book) }}" class="download-form"
+                                    data-sitekey="{{ config('services.recaptcha.site_key') }}">
+                                    @csrf
+                                    <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                                    <button type="submit" class="flex items-center gap-1 px-2.5 py-1.5 bg-ink text-cream text-[11px] font-medium rounded hover:bg-amber transition-colors duration-200">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        Obtenir
+                                    </button>
+                                </form>
                             @elseif(!$book->is_free)
                                 <span class="text-xs font-medium text-amber">{{ $book->formatted_price }}</span>
                             @endif
@@ -144,10 +149,14 @@
                     <div class="flex items-center justify-between mt-3">
                         <span class="text-xs text-ink/40">{{ $book->nbr_pages }} pages · {{ $book->publish_year }}</span>
                         @if($book->is_free && $book->file_path)
-                            <a href="{{ route('books.download', $book) }}" class="flex items-center gap-1.5 px-3 py-1.5 bg-ink text-cream text-xs font-medium rounded hover:bg-amber transition-colors duration-200">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                Télécharger
-                            </a>
+                            <form action="{{ route('books.download', $book) }}" method="POST" class="download-form">
+                                @csrf
+                                <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                                <button type="submit" class="flex items-center gap-1.5 px-3 py-1.5 bg-ink text-cream text-xs font-medium rounded hover:bg-amber transition-colors duration-200">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                    Télécharger
+                                </button>
+                            </form>
                         @endif
                     </div>
                 </div>
@@ -199,4 +208,25 @@
             btnGrid.className = "p-2 rounded transition-colors bg-parchment text-ink";
         }
     }
+
+    // Gestion du formulaire de téléchargement avec reCAPTCHA v3
+    const RECAPTCHA_SITE_KEY = "{{ config('services.recaptcha.site_key') }}";
+    document.querySelectorAll('.download-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (typeof grecaptcha === 'undefined') {
+                console.error('reCAPTCHA non chargé — vérifie le script api.js dans le layout.');
+                form.submit(); // fallback : on laisse passer, le backend doit re-vérifier de toute façon
+                return;
+            }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'download'}).then(function(token) {
+                    form.querySelector('.g-recaptcha-response').value = token;
+                    form.submit();
+                });
+            });
+        });
+    });
 </script>

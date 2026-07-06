@@ -1,12 +1,17 @@
 <?php
 namespace App\Providers;
 use App\Models\Setting;
-use Illuminate\Support\Facades\View;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void {}
+
     public function boot(): void
     {
         try {
@@ -35,5 +40,10 @@ class AppServiceProvider extends ServiceProvider
             // Table settings absente (ex: première migration), on partage un objet vide
             View::share('globalSettings', new Setting());
         }
+
+        RateLimiter::for('downloads', function (Request $request) {
+            return Limit::perMinute(5)->by($request->ip());
+        });
+
     }
 }

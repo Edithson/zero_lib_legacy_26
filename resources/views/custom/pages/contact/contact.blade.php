@@ -1,5 +1,8 @@
 @extends('custom.index')
 
+@section('title', 'Contactez ZeroLib - Une Question ou un Signalement')
+@section('meta_description', 'Contactez l\'équipe de ZeroLib. Que ce soit pour une demande de retrait de contenu, une suggestion de livre ou une simple question, nous vous répondrons rapidement.')
+
 @section('content')
     @include('custom.pages.contact.hero_contact')
       <!-- CONTENU -->

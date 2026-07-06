@@ -1,58 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 ZeroLib
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ZeroLib est une plateforme de bibliothèque numérique moderne et performante, conçue pour l'exploration, le téléchargement sécurisé et l'achat de livres. Développée avec le framework **Laravel 13**, **Livewire 3 (avec Volt)** et stylisée avec **Tailwind CSS**, elle offre une expérience utilisateur fluide et un tableau de bord d'administration robuste.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fonctionnalités
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🖥️ Espace Public (Visiteurs & Membres)
+- **Catalogue Dynamique :** Recherche par mot-clé, filtrage par catégories et tri (par récence, popularité ou ordre alphabétique).
+- **Téléchargements de Livres Gratuits :** 
+  - Fichiers stockés sur un disque privé sécurisé (`private`).
+  - Validation humaine via **Google reCAPTCHA** pour bloquer les robots.
+  - Limitation du débit de téléchargement (rate limiting) pour éviter les abus.
+- **Achat de Livres Payants :**
+  - Intégration de la passerelle **NotchPay** pour des paiements mobiles (Mobile Money : Orange, MTN, Wave, etc.) et cartes bancaires.
+  - Traitement automatisé des statuts de commande via **Webhooks** sécurisés.
+- **Authentification Hybride :** Connexion classique par e-mail/mot de passe ou connexion sociale via **Google & Facebook** (Laravel Socialite).
+- **Newsletter & Contact :** Inscription à la newsletter et formulaire de contact direct.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛡️ Espace Administration (Admins & Super Admins)
+- **Tableau de Bord :** Statistiques en temps réel sur les livres, catégories et téléchargements.
+- **Gestion du Contenu (CRUD) :**
+  - **Livres :** Gestion des titres, slugs uniques automatiques, auteurs, prix (en FCFA), couvertures d'images et fichiers PDF sécurisés.
+  - **Catégories :** Structuration thématique des ouvrages.
+- **Supervision :**
+  - Consultation des messages de contact reçus.
+  - Gestion des abonnés à la newsletter avec exportation au format CSV.
+  - Historique détaillé et filtrable des téléchargements.
 
-## Learning Laravel
+### 👑 Espace Super Administrateur (Type 3 uniquement)
+- **Configuration Globale :** Gestion des métadonnées du site (Nom du site, e-mail de contact, e-mail de l'administrateur principal, téléphone, réseaux sociaux : GitHub, LinkedIn).
+- **Gestion des Utilisateurs :** CRUD complet des utilisateurs et attribution des rôles.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Stack Technique
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- **Backend :** PHP 8.3+, Laravel 13
+- **Frontend :** Livewire 3 (Volt), Blade, Tailwind CSS, Vite.js
+- **Base de données :** MySQL (ou SQLite pour les tests)
+- **Paiements :** NotchPay API
+- **Sécurité :** Google reCAPTCHA (v2/v3)
+- **Intégrations :** Laravel Socialite (OAuth Google/Facebook), Sentry (Suivi des erreurs en production)
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🏗️ Structure des Rôles & Sécurité
+
+L'application utilise un système de rôles basé sur la table `types` liée aux utilisateurs (`users.type_id`) :
+
+| Type ID | Rôle | Description | Accès autorisés |
+| :---: | :--- | :--- | :--- |
+| **1** | `user` | Utilisateur standard | Espace public, achats, téléchargements. |
+| **2** | `admin` | Administrateur | Dashboard, CRUD Livres/Catégories, Logs, Contacts. |
+| **3** | `super admin` | Super Administrateur | Tous les accès + Gestion des utilisateurs & Paramètres site. |
+
+---
+
+## ⚙️ Installation & Configuration
+
+### 📋 Prérequis
+- PHP `>= 8.3`
+- Composer
+- Node.js & NPM
+- Un serveur de base de données (MySQL, PostgreSQL, ou SQLite)
+
+### 🚀 Étapes d'installation
+
+1. **Cloner le projet :**
+   ```bash
+   git clone https://github.com/votre-compte/zero-lib.git
+   cd zero-lib
+   ```
+
+2. **Lancer le script de configuration automatique :**
+   Le projet intègre un script Composer pour simplifier le déploiement local :
+   ```bash
+   composer run setup
+   ```
+   *Ce script exécute successivement : l'installation des dépendances PHP et Node, la copie du `.env.example` vers `.env` (si non existant), la génération de la clé d'application, la migration des tables et la compilation des assets de production.*
+
+3. **Configurer les variables d'environnement (`.env`) :**
+   Ouvrez le fichier `.env` généré et configurez les éléments clés suivants :
+   
+   - **Base de données :**
+     ```env
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=nom_de_votre_base
+     DB_USERNAME=votre_utilisateur
+     DB_PASSWORD=votre_mot_de_passe
+     ```
+   
+   - **NotchPay API (Achat de livres) :**
+     ```env
+     NOTCHPAY_PUBLIC_KEY=votre_cle_publique
+     ```
+   
+   - **Google reCAPTCHA (Téléchargement sécurisé) :**
+     ```env
+     RECAPTCHA_SITE_KEY=votre_cle_site
+     RECAPTCHA_SECRET_KEY=votre_cle_secrete
+     ```
+
+   - **OAuth Socialite (Connexion Google / Facebook) :**
+     ```env
+     GOOGLE_CLIENT_ID=votre_client_id
+     GOOGLE_CLIENT_SECRET=votre_client_secret
+     GOOGLE_REDIRECT_URI="${APP_URL}/auth/google/callback"
+     
+     FACEBOOK_CLIENT_ID=votre_client_id
+     FACEBOOK_CLIENT_SECRET=votre_client_secret
+     FACEBOOK_REDIRECT_URI="${APP_URL}/auth/facebook/callback"
+     ```
+
+4. **Peupler la base de données (Seeding) :**
+   Pour insérer les types de rôles et créer un compte administrateur par défaut :
+   ```bash
+   php artisan db:seed
+   ```
+
+---
+
+## 🔑 Identifiants de test par défaut
+
+Après avoir exécuté le *Seeder*, vous pouvez vous connecter avec le compte Super Administrateur suivant :
+- **E-mail :** `test@example.com`
+- **Mot de passe :** `74l4m4150n`
+
+---
+
+## 💻 Utilisation en Développement
+
+Pour lancer tous les serveurs nécessaires en local simultanément (Serveur PHP Laravel, Vite.js, Queue Worker de tâches en arrière-plan et Pail pour les logs) :
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer run dev
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Pour lancer les tests unitaires et fonctionnels :
+```bash
+composer run test
+```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📂 Organisation du Disque de Stockage
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Pour stocker en toute sécurité les livres achetables ou gratuits, le projet utilise deux disques Laravel :
+- Le disque `public` (pour les images de couverture de livres et le logo du site).
+- Le disque `private` (pour les fichiers PDF de livres, empêchant l'accès direct par URL). Assurez-vous que votre configuration de stockage local ou S3 est correctement liée.

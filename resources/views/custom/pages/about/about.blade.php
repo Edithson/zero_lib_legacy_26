@@ -1,5 +1,8 @@
 @extends('custom.index')
 
+@section('title', 'À Propos de ZeroLib - Sauvegarder le Patrimoine du Site du Zéro')
+@section('meta_description', 'Découvrez la genèse de ZeroLib, un projet bénévole de préservation et d\'archivage des livres PDF et tutoriels du Site du Zéro sous licence Creative Commons.')
+
 @section('content')
     @include('custom.pages.about.hero_about')
 

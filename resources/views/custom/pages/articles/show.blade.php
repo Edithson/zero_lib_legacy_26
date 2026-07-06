@@ -1,6 +1,68 @@
 @extends('custom.index')
 
+@section('title', $book->title . ($book->author ? ' - de ' . $book->author : '') . ' | ZeroLib')
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($book->description ?? 'Téléchargez ou achetez le livre ' . $book->title . ' sur ZeroLib.'), 155, '...'))
+
+@section('og_type', 'book')
+@section('og_title', $book->title)
+@section('og_description', \Illuminate\Support\Str::limit(strip_tags($book->description ?? 'Téléchargez ou achetez le livre ' . $book->title . ' sur ZeroLib.'), 155, '...'))
+@section('og_image', route('books.og-image', $book->slug))
+@section('twitter_image', route('books.og-image', $book->slug))
+
+@section('json_ld')
+<script type="application/ld+json">
+{!! json_encode(array_filter([
+  '@' . 'context' => 'https://schema.org',
+  '@' . 'type' => 'Book',
+  'name' => $book->title,
+  'author' => [
+    '@' . 'type' => 'Person',
+    'name' => $book->author ?? 'Auteur inconnu',
+  ],
+  'description' => \Illuminate\Support\Str::limit(strip_tags($book->description ?? ''), 250, '...'),
+  'bookFormat' => 'http://schema.org/EBook',
+  'image' => $book->cover_path ? asset('storage/' . $book->cover_path) : null,
+  'copyrightYear' => $book->publish_year ?: null,
+  'numberOfPages' => $book->nbr_pages,
+  'offers' => [
+    '@' . 'type' => 'Offer',
+    'price' => $book->price ?? 0,
+    'priceCurrency' => 'XAF',
+    'availability' => 'https://schema.org/InStock',
+    'url' => request()->url(),
+  ]
+], fn($val) => !is_null($val)), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+</script>
+<script type="application/ld+json">
+{!! json_encode([
+  '@' . 'context' => 'https://schema.org',
+  '@' . 'type' => 'BreadcrumbList',
+  'itemListElement' => array_values(array_filter([
+    [
+      '@' . 'type' => 'ListItem',
+      'position' => 1,
+      'name' => 'Accueil',
+      'item' => url('/'),
+    ],
+    $book->category ? [
+      '@' . 'type' => 'ListItem',
+      'position' => 2,
+      'name' => $book->category->name,
+      'item' => url('/') . '/?category=' . $book->category->slug,
+    ] : null,
+    [
+      '@' . 'type' => 'ListItem',
+      'position' => $book->category ? 3 : 2,
+      'name' => $book->title,
+      'item' => request()->url(),
+    ]
+  ]))
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+</script>
+@endsection
+
 @section('content')
+<div x-data="{ showPreview: false }">
 
 <style>
   /* ── Variables cohérentes avec le design system existant ── */
@@ -290,7 +352,8 @@
             @if($book->cover_path)
               <img src="{{ asset('storage/' . $book->cover_path) }}"
                    alt="Couverture — {{ $book->title }}"
-                   class="book-cover-img">
+                   class="book-cover-img"
+                   fetchpriority="high">
             @else
               {{-- Placeholder élégant si pas de cover --}}
               <div class="book-cover-img flex flex-col items-center justify-center gap-3"
@@ -366,19 +429,30 @@
 
           {{-- CTA ── --}}
           <div class="s4 flex flex-wrap gap-3 pt-2">
-            @if($book->file_path)
-              <a href="{{ route('books.download', $book) }}" class="btn-primary">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                </svg>
-                @if($book->price > 0)
-                  Acheter · {{ number_format($book->price, 0, ',', ' ') }} FCFA
-                @else
-                  Télécharger gratuitement
-                @endif
-              </a>
+            @if($book->is_free && $book->file_path)
+                <form action="{{ route('books.download', $book) }}" method="POST" class="download-form">
+                    @csrf
+                    <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                    <button type="submit" class="btn-primary">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Télécharger gratuitement
+                    </button>
+                </form>
             @endif
+
+            @if($book->file_path)
+              <button @click="showPreview = true" class="btn-secondary" style="border: 1px solid var(--amber); color: var(--amber);">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                Extrait PDF
+              </button>
+            @endif
+
             <button onclick="
                 document.referrer && document.referrer.startsWith(window.location.origin)
                 ? history.back()
@@ -557,19 +631,29 @@
       </div>
 
       {{-- CTA sticky répété --}}
-      @if($book->file_path)
-      <a href="{{ route('books.download', $book) }}" class="btn-primary w-full justify-center">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-        </svg>
-        @if($book->price > 0)
-          Obtenir ce livre
-        @else
-          Télécharger gratuitement
+      @if($book->is_free && $book->file_path)
+            <form action="{{ route('books.download', $book) }}" method="POST" class="download-form">
+                @csrf
+                <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response">
+                <button type="submit" class="btn-primary w-full justify-center">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    Télécharger gratuitement
+                </button>
+            </form>
         @endif
-      </a>
-      @endif
+
+        @if($book->file_path)
+          <button @click="showPreview = true" class="btn-secondary w-full justify-center" style="border: 1px solid var(--amber); color: var(--amber);">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+            Lire un extrait PDF
+          </button>
+        @endif
 
       {{-- Partager --}}
       <div class="bg-white border rounded-2xl p-4 space-y-3"
@@ -645,23 +729,97 @@
   </section>
   @endif
 
+  {{-- ── Modale de Prévisualisation PDF (Étape 7) ── --}}
+  <div x-show="showPreview" 
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0"
+       x-transition:enter-end="opacity-100"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+       style="display: none;"
+       @keydown.escape.window="showPreview = false">
+    
+    <div @click.away="showPreview = false" 
+         class="relative w-full max-w-4xl h-[85vh] bg-[#FAF7F2] rounded-2xl shadow-2xl flex flex-col overflow-hidden border"
+         style="border-color: rgba(200,136,58,.2);">
+      
+      {{-- Header de la modale --}}
+      <div class="px-6 py-4 flex items-center justify-between border-b" style="border-color: rgba(14,12,10,.08); background: #FAF7F2;">
+        <div class="flex flex-col">
+          <span class="text-[0.65rem] font-bold uppercase tracking-widest text-[#C8883A]">Extrait (5 premières pages)</span>
+          <h3 class="font-serif font-bold text-lg text-[#0E0C0A] truncate max-w-lg sm:max-w-xl">{{ $book->title }}</h3>
+        </div>
+        
+        <button @click="showPreview = false" 
+                class="p-2 rounded-lg hover:bg-black/5 text-[#5F5B54] transition-all"
+                aria-label="Fermer">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      {{-- Lecteur PDF --}}
+      <div class="flex-1 bg-[#F2EDE4] relative">
+        <template x-if="showPreview">
+          <iframe src="{{ route('books.preview', $book->slug) }}" 
+                  class="w-full h-full border-0" 
+                  allow="autoplay">
+          </iframe>
+        </template>
+      </div>
+
+      {{-- Footer de la modale --}}
+      <div class="px-6 py-3 flex items-center justify-end gap-3 border-t bg-[#FAF7F2]" style="border-color: rgba(14,12,10,.08);">
+        <button @click="showPreview = false" class="btn-secondary py-1.5 px-4 text-xs font-semibold rounded-lg">
+          Fermer
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 </main>
 
 <script>
-  function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn   = document.getElementById('copy-btn');
-      const label = document.getElementById('copy-label');
-      label.textContent = 'Lien copié !';
-      btn.style.color   = 'var(--sage)';
-      btn.style.borderColor = 'rgba(74,103,65,.4)';
-      setTimeout(() => {
-        label.textContent = 'Copier le lien';
-        btn.style.color   = '';
-        btn.style.borderColor = '';
-      }, 2000);
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+        const btn   = document.getElementById('copy-btn');
+        const label = document.getElementById('copy-label');
+        label.textContent = 'Lien copié !';
+        btn.style.color   = 'var(--sage)';
+        btn.style.borderColor = 'rgba(74,103,65,.4)';
+        setTimeout(() => {
+            label.textContent = 'Copier le lien';
+            btn.style.color   = '';
+            btn.style.borderColor = '';
+        }, 2000);
+        });
+    }
+
+    // Gestion du formulaire de téléchargement avec reCAPTCHA v3
+    const RECAPTCHA_SITE_KEY = "{{ config('services.recaptcha.site_key') }}";
+    document.querySelectorAll('.download-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (typeof grecaptcha === 'undefined') {
+                console.error('reCAPTCHA non chargé — vérifie le script api.js dans le layout.');
+                form.submit(); // fallback : on laisse passer, le backend doit re-vérifier de toute façon
+                return;
+            }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'download'}).then(function(token) {
+                    form.querySelector('.g-recaptcha-response').value = token;
+                    form.submit();
+                });
+            });
+        });
     });
-  }
 </script>
 
 @endsection

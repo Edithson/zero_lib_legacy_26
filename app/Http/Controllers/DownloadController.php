@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Download;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -14,6 +16,18 @@ class DownloadController extends Controller
     // On passe le modèle Book directement via la route
     public function download(Request $request, Book $book)
     {
+
+        // 0. Vérification du reCAPTCHA v3
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ]);
+
+        if (!$response->json('success') || $response->json('score') < 0.5) {
+            abort(403, 'Action suspecte détectée. C\'est encore toi le robot ?\nVilain robot !');
+        }
+
         // 1. Vérification stricte : le livre doit être publié, gratuit et avoir un fichier
         if (!$book->is_published || !$book->is_free || !$book->file_path) {
             abort(403, 'Ce livre n\'est pas disponible au téléchargement public.');

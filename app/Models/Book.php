@@ -43,6 +43,30 @@ class Book extends Model
                 $book->slug = static::generateUniqueSlug($book->title, $book->id);
             }
         });
+
+        // Régénérer le sitemap après enregistrement (création/mise à jour)
+        static::saved(function (Book $book) {
+            try {
+                \Illuminate\Support\Facades\Cache::forever('catalog_cache_version', time());
+                \Illuminate\Support\Facades\Artisan::queue('sitemap:generate');
+                \Illuminate\Support\Facades\Storage::disk('public')->delete('og-shares/' . $book->slug . '-' . $book->id . '.webp');
+                \Illuminate\Support\Facades\Storage::disk('private')->delete('previews/' . $book->slug . '.pdf');
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Erreur de sitemap:generate en arrière-plan : ' . $e->getMessage());
+            }
+        });
+
+        // Régénérer le sitemap après suppression
+        static::deleted(function (Book $book) {
+            try {
+                \Illuminate\Support\Facades\Cache::forever('catalog_cache_version', time());
+                \Illuminate\Support\Facades\Artisan::queue('sitemap:generate');
+                \Illuminate\Support\Facades\Storage::disk('public')->delete('og-shares/' . $book->slug . '-' . $book->id . '.webp');
+                \Illuminate\Support\Facades\Storage::disk('private')->delete('previews/' . $book->slug . '.pdf');
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Erreur de sitemap:generate en arrière-plan : ' . $e->getMessage());
+            }
+        });
     }
 
     private static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
