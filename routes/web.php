@@ -12,7 +12,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\NewslatterController;
-
 // ==========================================
 // ROUTES LIBRES (Public & User Type 1)
 // ==========================================
@@ -21,6 +20,8 @@ Route::get('/about', HomeController::class . '@about')->name('about');
 Route::get('/contact', HomeController::class . '@contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/books/{slug}', [HomeController::class, 'show_art'])->name('books.show');
+Route::get('/books/{slug}/og-image', [HomeController::class, 'ogImage'])->name('books.og-image');
+Route::get('/books/{slug}/preview', [HomeController::class, 'preview'])->name('books.preview');
 
 Route::post('/newsletter/subscribe', [NewslatterController::class, 'store'])
      ->name('newsletter.subscribe');

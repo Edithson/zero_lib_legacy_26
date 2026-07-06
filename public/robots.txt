@@ -1,2 +1,59 @@
+# Autoriser explicitement les bots d'IA à analyser la bibliothèque publique
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+User-agent: Applebot-extended
+Allow: /
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+User-agent: Cohere-ai
+Allow: /
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+# Règle par défaut pour tous les autres crawlers
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /webhook/
+Disallow: /login
+Disallow: /register
+
+# Adresse du plan du site XML
+Sitemap: http://localhost:8000/sitemap.xml

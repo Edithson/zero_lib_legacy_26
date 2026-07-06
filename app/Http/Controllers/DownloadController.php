@@ -17,16 +17,15 @@ class DownloadController extends Controller
     public function download(Request $request, Book $book)
     {
 
+        // 0. Vérification du reCAPTCHA v3
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => env('RECAPTCHA_SECRET_KEY'),
             'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
         ]);
 
-        $data = $response->json();
-
-        if (!$data['success']) {
-            // Affiche les erreurs retournées par Google (ex: invalid-input-secret, etc.)
-            dd($data['error-codes'] ?? 'Erreur inconnue');
+        if (!$response->json('success') || $response->json('score') < 0.5) {
+            abort(403, 'Action suspecte détectée. C\'est encore toi le robot ?\nVilain robot !');
         }
 
         // 1. Vérification stricte : le livre doit être publié, gratuit et avoir un fichier

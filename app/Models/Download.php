@@ -32,4 +32,14 @@ class Download extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected static function booted(): void
+    {
+        static::created(function (Download $download) {
+            try {
+                \Illuminate\Support\Facades\Cache::forever('catalog_cache_version', time());
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Erreur lors de la mise à jour de la version de cache : ' . $e->getMessage());
+            }
+        });
+    }
 }

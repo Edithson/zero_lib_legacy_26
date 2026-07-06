@@ -54,10 +54,10 @@ class BookController extends Controller
             'file'         => ['nullable', 'file', 'mimes:pdf', 'max:51200'], // 50 Mo
         ]);
 
-        // --- Couverture (stockée publiquement) ---
+        // --- Couverture (optimisée et stockée publiquement) ---
         $coverPath = null;
         if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('covers', 'public');
+            $coverPath = $this->optimizeAndStoreCover($request->file('cover'));
         }
 
         // --- Fichier PDF (stocké dans le disque privé) ---
@@ -112,13 +112,13 @@ class BookController extends Controller
             'file'         => ['nullable', 'file', 'mimes:pdf', 'max:51200'], // 50 Mo
         ]);
         try {
-            // --- Couverture (stockée publiquement) ---
+            // --- Couverture (optimisée et stockée publiquement) ---
             if ($request->hasFile('cover')) {
                 // Supprimer l'ancienne couverture si elle existe
                 if ($book->cover_path) {
                     Storage::disk('public')->delete($book->cover_path);
                 }
-                $book->cover_path = $request->file('cover')->store('covers', 'public');
+                $book->cover_path = $this->optimizeAndStoreCover($request->file('cover'));
             }
 
             // --- Fichier PDF (stocké dans le disque privé) ---
@@ -172,4 +172,75 @@ class BookController extends Controller
         }
     }
 
+    /**
+     * Optimise l'image de couverture, la redimensionne et la convertit au format WebP.
+     */
+    private function optimizeAndStoreCover($file): ?string
+    {
+        if (!$file) {
+            return null;
+        }
+
+        try {
+            $path = $file->getRealPath();
+            $mime = $file->getMimeType();
+
+            switch ($mime) {
+                case 'image/jpeg':
+                case 'image/jpg':
+                    $image = imagecreatefromjpeg($path);
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($path);
+                    break;
+                case 'image/webp':
+                    $image = imagecreatefromwebp($path);
+                    break;
+                case 'image/avif':
+                    $image = imagecreatefromavif($path);
+                    break;
+                default:
+                    return $file->store('covers', 'public');
+            }
+
+            if (!$image) {
+                return $file->store('covers', 'public');
+            }
+
+            $origWidth = imagesx($image);
+            $origHeight = imagesy($image);
+
+            // Largeur max 400px, hauteur proportionnelle
+            $targetWidth = 400;
+            if ($origWidth > $targetWidth) {
+                $targetHeight = (int) (($origHeight / $origWidth) * $targetWidth);
+            } else {
+                $targetWidth = $origWidth;
+                $targetHeight = $origHeight;
+            }
+
+            $resizedImage = imagecreatetruecolor($targetWidth, $targetHeight);
+
+            // Gestion de la transparence pour WebP
+            imagealphablending($resizedImage, false);
+            imagesavealpha($resizedImage, true);
+
+            imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $targetWidth, $targetHeight, $origWidth, $origHeight);
+
+            ob_start();
+            imagewebp($resizedImage, null, 80);
+            $webpContent = ob_get_clean();
+
+            imagedestroy($image);
+            imagedestroy($resizedImage);
+
+            $filename = 'covers/' . \Illuminate\Support\Str::random(40) . '.webp';
+            Storage::disk('public')->put($filename, $webpContent);
+
+            return $filename;
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Erreur lors de l\'optimisation de l\'image de couverture : ' . $e->getMessage());
+            return $file->store('covers', 'public');
+        }
+    }
 }
