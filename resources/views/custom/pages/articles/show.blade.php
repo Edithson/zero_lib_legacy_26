@@ -62,7 +62,8 @@
 @endsection
 
 @section('content')
-<div x-data="{ showPreview: false }">
+<div x-data="{ showPreview: false }" 
+     x-effect="document.body.classList.toggle('overflow-hidden', showPreview); if (showPreview) { $nextTick(() => { $refs.previewIframe.contentWindow.location.replace('{{ route('books.preview', $book->slug) }}') }) } else if ($refs.previewIframe) { $refs.previewIframe.contentWindow.location.replace('about:blank') }">
 
 <style>
   /* ── Variables cohérentes avec le design system existant ── */
@@ -762,13 +763,12 @@
       </div>
 
       {{-- Lecteur PDF --}}
-      <div class="flex-1 bg-[#F2EDE4] relative">
-        <template x-if="showPreview">
-          <iframe src="{{ route('books.preview', $book->slug) }}" 
-                  class="w-full h-full border-0" 
-                  allow="autoplay">
-          </iframe>
-        </template>
+      <div class="flex-1 bg-[#F2EDE4] relative overflow-y-auto" style="-webkit-overflow-scrolling: touch;">
+        <iframe x-ref="previewIframe"
+                class="w-full h-full border-0" 
+                style="overflow: auto; -webkit-overflow-scrolling: touch;"
+                allow="autoplay">
+        </iframe>
       </div>
 
       {{-- Footer de la modale --}}

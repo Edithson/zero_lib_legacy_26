@@ -9,103 +9,20 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
-        // 1. Récupération des paramètres de l'URL
-        $search = $request->input('search');
-        $sortBy = $request->input('sort', 'recent');
-        $categorySlug = $request->input('category');
-        $page = $request->input('page', 1);
-
-        // Récupérer la version de cache globale ou en créer une par défaut
         $version = \Illuminate\Support\Facades\Cache::rememberForever('catalog_cache_version', fn() => time());
-        
-        $cacheKey = 'catalog_' . $version . '_' . md5(serialize([$search, $sortBy, $categorySlug, $page]));
 
-        // Récupérer les livres depuis le cache (sous forme de tableau brut)
-        $booksData = \Illuminate\Support\Facades\Cache::remember($cacheKey, now()->addMinutes(60), function () use ($search, $sortBy, $categorySlug) {
-            $query = Book::where('is_published', true)
-                         ->with('category')
-                         ->withCount('downloads');
-
-            // Application du filtre de recherche
-            if ($search) {
-                $query->where(function($q) use ($search) {
-                    $q->where('title', 'like', "%{$search}%")
-                      ->orWhere('description', 'like', "%{$search}%");
-                });
-            }
-
-            // Application du filtre de catégorie
-            if ($categorySlug) {
-                $query->whereHas('category', function($q) use ($categorySlug) {
-                    $q->where('slug', $categorySlug);
-                });
-            }
-
-            // Application du tri
-            match ($sortBy) {
-                'alpha'   => $query->orderBy('title', 'asc'),
-                'popular' => $query->orderByDesc('downloads_count'),
-                default   => $query->latest(), // 'recent'
-            };
-
-            $paginator = $query->paginate(15)->withQueryString()->fragment('catalogue');
-
-            // Extraction des données brutes sous forme de tableaux (évite la sérialisation d'objets)
-            $itemsArray = collect($paginator->items())->map(fn($item) => $item->toArray())->toArray();
-
+        $stats = \Illuminate\Support\Facades\Cache::remember('catalog_stats_' . $version, now()->addMinutes(60), function () {
             return [
-                'items' => $itemsArray,
-                'total' => $paginator->total(),
-                'perPage' => $paginator->perPage(),
-                'currentPage' => $paginator->currentPage(),
-                'options' => $paginator->getOptions(),
+                'totalBooks' => Book::where('is_published', true)->count(),
+                'totalCategories' => Category::has('books')->count(),
             ];
         });
 
-        // Reconstitution des instances de modèles Book avec leurs relations pre-chargées
-        $items = array_map(function ($itemData) {
-            $book = (new Book)->forceFill(array_filter($itemData, fn($k) => $k !== 'category', ARRAY_FILTER_USE_KEY));
-            if (isset($itemData['category']) && $itemData['category']) {
-                $book->setRelation('category', (new Category)->forceFill($itemData['category']));
-            }
-            return $book;
-        }, $booksData['items']);
-
-        // Reconstitution de l'objet LengthAwarePaginator
-        $books = new \Illuminate\Pagination\LengthAwarePaginator(
-            $items,
-            $booksData['total'],
-            $booksData['perPage'],
-            $booksData['currentPage'],
-            $booksData['options']
-        );
-        $books->withQueryString();
-        $books->fragment('catalogue');
-
-        // Récupérer les catégories actives depuis le cache (sous forme de tableau brut)
-        $categoriesData = \Illuminate\Support\Facades\Cache::remember('catalog_categories_' . $version, now()->addMinutes(60), function () {
-            return Category::has('books')->orderBy('name')->get()->toArray();
-        });
-
-        // Reconstitution de la collection de catégories
-        $categories = collect(array_map(function ($catData) {
-            return (new Category)->forceFill($catData);
-        }, $categoriesData));
-
-        // Récupération des totaux
-        $totalBooks = $books->total();
-        $totalCategories = $categories->count();
-
         return view('custom.pages.home', [
-            'books'        => $books,
-            'categories'   => $categories,
-            'currentSearch'=> $search,
-            'currentSort'  => $sortBy,
-            'currentCat'   => $categorySlug,
-            'totalBooks'   => $totalBooks,
-            'totalCategories' => $totalCategories,
+            'totalBooks' => $stats['totalBooks'],
+            'totalCategories' => $stats['totalCategories'],
         ]);
     }
 
@@ -294,14 +211,22 @@ class HomeController extends Controller
 
         // Si l'extrait n'est pas encore généré sur disque, on le crée
         if (!file_exists($previewPath)) {
-            $cmd = "gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -dFirstPage=1 -dLastPage=5 -sOutputFile=" . escapeshellarg($previewPath) . " " . escapeshellarg($inputPath);
-            
-            exec($cmd, $output, $status);
+            $status = -1;
+            if (function_exists('exec')) {
+                $cmd = "gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -dFirstPage=1 -dLastPage=5 -sOutputFile=" . escapeshellarg($previewPath) . " " . escapeshellarg($inputPath);
+                @exec($cmd, $output, $status);
+            }
 
             if ($status !== 0 || !file_exists($previewPath)) {
                 \Illuminate\Support\Facades\Log::error("Échec de la génération de l'extrait PDF pour le livre : " . $book->title . " (Status: " . $status . ")");
-                // Fallback de secours : renvoyer le fichier d'origine
-                return response()->file($inputPath, ['Content-Type' => 'application/pdf']);
+                
+                // Si le livre est gratuit, on s'autorise à renvoyer le livre complet en fallback
+                if ($book->price === 0 || $book->price === null) {
+                    return response()->file($inputPath, ['Content-Type' => 'application/pdf']);
+                }
+
+                // Si le livre est payant, INTERDICTION absolue de fuiter le fichier original !
+                abort(403, "L'extrait de ce livre n'est pas disponible pour le moment.");
             }
         }
 

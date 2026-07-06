@@ -43,6 +43,6 @@
 
 @section('content')
     @include('custom.sections.hero')
-    @include('custom.sections.main')
+    @livewire('front.catalog')
     @include('custom.sections.featured')
 @endsection

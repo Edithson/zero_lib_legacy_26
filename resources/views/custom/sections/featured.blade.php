@@ -12,6 +12,18 @@
             this.status  = null;
 
             try {
+                const token = await new Promise((resolve, reject) => {
+                    if (typeof grecaptcha === 'undefined') {
+                        reject(new Error('reCAPTCHA non chargé.'));
+                        return;
+                    }
+                    grecaptcha.ready(() => {
+                        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'subscribe'})
+                            .then(resolve)
+                            .catch(reject);
+                    });
+                });
+
                 const res = await fetch('{{ route('newsletter.subscribe') }}', {
                     method: 'POST',
                     headers: {
@@ -19,7 +31,11 @@
                         'X-CSRF-TOKEN': '{{ csrf_token() }}',
                         'Accept': 'application/json',
                     },
-                    body: JSON.stringify({ email: this.email, consent: this.consent }),
+                    body: JSON.stringify({ 
+                        email: this.email, 
+                        consent: this.consent, 
+                        'g-recaptcha-response': token 
+                    }),
                 });
 
                 // ← Lire le JSON même en cas d'erreur HTTP
