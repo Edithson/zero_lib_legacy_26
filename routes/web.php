@@ -19,14 +19,17 @@ Route::get('/', HomeController::class . '@index')->name('home');
 Route::get('/about', HomeController::class . '@about')->name('about');
 Route::get('/contact', HomeController::class . '@contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-Route::get('/books/{slug}', [HomeController::class, 'show_art'])->name('books.show');
-Route::get('/books/{slug}/og-image', [HomeController::class, 'ogImage'])->name('books.og-image');
-Route::get('/books/{slug}/preview', [HomeController::class, 'preview'])->name('books.preview');
+Route::get('/books/{slug}', [HomeController::class, 'show_art'])->name('books.show')->where('slug', '[a-zA-Z0-9\-]+');
+Route::get('/books/{slug}/og-image', [HomeController::class, 'ogImage'])->name('books.og-image')->where('slug', '[a-zA-Z0-9\-]+');
+Route::get('/books/{slug}/preview', [HomeController::class, 'preview'])->name('books.preview')->where('slug', '[a-zA-Z0-9\-]+');
 
 Route::post('/newsletter/subscribe', [NewslatterController::class, 'store'])
      ->name('newsletter.subscribe');
 
 Route::post('/books/{book}/download', [DownloadController::class, 'download'])->middleware(['throttle:downloads'])->name('books.download');
+
+// Webhook NotchPay (Public, sécurisé par signature HMAC)
+Route::post('/webhook/notchpay', [WebhookController::class, 'handleNotchPay'])->name('webhook.notchpay');
 
 // Redirige l'utilisateur vers Google ou Facebook
 Route::get('/auth/{provider}/redirect', [SocialAuthController::class, 'redirect'])->name('social.redirect');
@@ -38,9 +41,6 @@ Route::get('/auth/{provider}/callback', [SocialAuthController::class, 'callback'
 // On protège ce groupe avec 'auth' ET notre nouveau middleware 'admin'
 
 Route::middleware(['auth'])->group(function () {
-
-    // pour le payement de livre
-    Route::post('/webhook/notchpay', [WebhookController::class, 'handleNotchPay'])->name('webhook.notchpay');
 
     Route::middleware(['admin'])->group(function () {
 

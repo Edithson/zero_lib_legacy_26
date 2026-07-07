@@ -20,25 +20,6 @@
   ]
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
 </script>
-<script type="application/ld+json">
-{!! json_encode(array_filter([
-  '@' . 'context' => 'https://schema.org',
-  '@' . 'type' => 'Organization',
-  'name' => $globalSettings->site_name ?? 'ZeroLib',
-  'url' => url('/'),
-  'logo' => $globalSettings->logo_path ? asset('storage/' . $globalSettings->logo_path) : asset('media/img/ours.png'),
-  'contactPoint' => array_filter([
-    '@' . 'type' => 'ContactPoint',
-    'email' => $globalSettings->contact_email ?: null,
-    'telephone' => $globalSettings->phone ?: null,
-    'contactType' => 'customer support'
-  ]),
-  'sameAs' => array_values(array_filter([
-    $globalSettings->adr_git ?: null,
-    $globalSettings->adr_linkedin ?: null
-  ]))
-], fn($val) => !is_null($val) && $val !== []), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
-</script>
 @endsection
 
 @section('content')

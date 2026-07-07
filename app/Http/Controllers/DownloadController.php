@@ -19,7 +19,7 @@ class DownloadController extends Controller
 
         // 0. Vérification du reCAPTCHA v3
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'secret' => config('services.recaptcha.secret_key'),
             'response' => $request->input('g-recaptcha-response'),
             'remoteip' => $request->ip(),
         ]);

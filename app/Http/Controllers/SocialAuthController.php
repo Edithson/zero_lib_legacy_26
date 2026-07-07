@@ -22,17 +22,28 @@ class SocialAuthController extends Controller
             // Récupère les infos de l'utilisateur depuis Google/Facebook
             $socialUser = Socialite::driver($provider)->user();
 
-            // Cherche un utilisateur avec cet email, ou le crée s'il n'existe pas
-            $user = User::updateOrCreate([
-                'email' => $socialUser->getEmail(),
-            ], [
-                'name' => $socialUser->getName(),
-                'provider' => $provider,
-                'provider_id' => $socialUser->getId(),
-                'provider_token' => $socialUser->token,
-                // Le mot de passe reste null (car rendu optionnel dans notre migration)
-                'type_id' => 1, // Par défaut, les utilisateurs créés via social login sont de type 1 (utilisateur standard)
-            ]);
+            // Cherche un utilisateur avec cet email
+            $user = User::where('email', $socialUser->getEmail())->first();
+
+            if ($user) {
+                // L'utilisateur existe déjà. On lie les détails du fournisseur social s'ils ne le sont pas.
+                // On préserve impérativement son type_id (rôle), son mot de passe et son nom d'origine.
+                $user->update([
+                    'provider'       => $user->provider ?: $provider,
+                    'provider_id'    => $user->provider_id ?: $socialUser->getId(),
+                    'provider_token' => $socialUser->token,
+                ]);
+            } else {
+                // L'utilisateur n'existe pas, on le crée en forçant type_id = 1 (utilisateur standard)
+                $user = User::create([
+                    'email'          => $socialUser->getEmail(),
+                    'name'           => $socialUser->getName() ?? 'Utilisateur Social',
+                    'provider'       => $provider,
+                    'provider_id'    => $socialUser->getId(),
+                    'provider_token' => $socialUser->token,
+                    'type_id'        => 1,
+                ]);
+            }
 
             // Connecte l'utilisateur
             Auth::login($user, true);

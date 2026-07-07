@@ -24,7 +24,7 @@
     </div>
 
     <div class="mb-10 pb-4 border-b border-amber/10">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-ink/40 mb-3.5 flex items-center gap-1.5">
+        <div class="text-[10px] font-bold uppercase tracking-widest text-ink/40 mb-7 flex items-center gap-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
             Parcourir par catégorie
         </div>
@@ -72,7 +72,19 @@
         </div>
     </div>
 
-    @if($books->isEmpty())
+    <div class="relative min-h-[350px]">
+        {{-- Loader overlay --}}
+        <div wire:loading.flex class="absolute inset-0 z-20 bg-cream/60 backdrop-blur-[1px] items-center justify-center transition-all duration-300" style="display: none;">
+            <div class="flex flex-col items-center gap-3">
+                <svg class="animate-spin h-8 w-8 text-amber" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-ink/50 animate-pulse">Mise à jour...</span>
+            </div>
+        </div>
+
+        @if($books->isEmpty())
         <div class="text-center py-24">
             <div class="text-5xl mb-4">📚</div>
             <h3 class="font-serif text-xl font-bold mb-2">Aucun résultat</h3>
@@ -184,6 +196,7 @@
             {{ $books->links(data: ['scrollTo' => false]) }}
         </div>
     @endif
+    </div>
 
     <script>
         // Gestion déléguée des formulaires de téléchargement avec reCAPTCHA v3 (Étape 8 / Livewire-friendly)
