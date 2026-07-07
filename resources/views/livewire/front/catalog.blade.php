@@ -24,7 +24,7 @@
     </div>
 
     <div class="mb-10 pb-4 border-b border-amber/10">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-ink/40 mb-3.5 flex items-center gap-1.5">
+        <div class="text-[10px] font-bold uppercase tracking-widest text-ink/40 mb-7 flex items-center gap-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
             Parcourir par catégorie
         </div>

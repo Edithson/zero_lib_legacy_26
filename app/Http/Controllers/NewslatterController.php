@@ -20,7 +20,7 @@ class NewslatterController extends Controller
         }
 
         $recaptchaResponse = \Illuminate\Support\Facades\Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret'   => env('RECAPTCHA_SECRET_KEY'),
+            'secret'   => config('services.recaptcha.secret_key'),
             'response' => $recaptchaToken,
             'remoteip' => $request->ip(),
         ]);

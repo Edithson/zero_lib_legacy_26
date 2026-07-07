@@ -45,7 +45,7 @@ class Storefront extends Component
         ]);
 
         $response = Http::withHeaders([
-            'Authorization' => env('NOTCHPAY_PUBLIC_KEY'),
+            'Authorization' => config('services.notchpay.public_key'),
             'Accept'        => 'application/json',
         ])->post('https://api.notchpay.co/payments/initialize', [
             'amount'      => $book->price,

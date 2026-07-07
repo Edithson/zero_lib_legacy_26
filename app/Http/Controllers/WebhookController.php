@@ -12,7 +12,7 @@ class WebhookController extends Controller
     public function handleNotchPay(Request $request)
     {
         // 1. Validation de la signature NotchPay (si configurée dans l'environnement)
-        $hashKey = env('NOTCHPAY_HASH_KEY');
+        $hashKey = config('services.notchpay.hash_key');
         if ($hashKey) {
             $signature = $request->header('x-notch-signature');
             $computed = hash_hmac('sha256', $request->getContent(), $hashKey);

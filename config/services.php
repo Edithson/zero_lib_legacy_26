@@ -52,4 +52,9 @@ return [
         'secret_key' => env('RECAPTCHA_SECRET_KEY'),
     ],
 
+    'notchpay' => [
+        'public_key' => env('NOTCHPAY_PUBLIC_KEY'),
+        'hash_key'   => env('NOTCHPAY_HASH_KEY'),
+    ],
+
 ];
