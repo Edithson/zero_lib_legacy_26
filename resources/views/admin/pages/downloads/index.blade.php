@@ -27,6 +27,123 @@
         </a>
     </div>
 
+    {{-- GRAPHIQUE : TÉLÉCHARGEMENTS DES 14 DERNIERS JOURS (2 SEMAINES) --}}
+    <div class="stat-card p-6 border border-amber/10 bg-white" x-data="{ hoveredDay: null }">
+
+        {{-- En-tête du graphique avec KPI résumés --}}
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-amber/10">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-sage"></span>
+                    <h3 class="font-serif font-bold text-lg text-ink">Évolution des téléchargements</h3>
+                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-sage/10 text-sage font-medium">14 derniers jours</span>
+                </div>
+                <p class="text-xs text-ink/50 mt-1">Activité quotidienne enregistrée du {{ $dailyStats->first()['short_date'] }} au {{ $dailyStats->last()['short_date'] }}.</p>
+            </div>
+
+            {{-- Cartouches KPI du graphique --}}
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div class="px-3 py-2 bg-parchment/60 rounded-lg border border-amber/10">
+                    <div class="text-[10px] uppercase font-semibold tracking-wider text-ink/40">Total 14 jours</div>
+                    <div class="font-serif font-bold text-base text-ink">{{ number_format($totalLast14Days, 0, ',', ' ') }} <span class="text-[10px] font-sans font-normal text-ink/50">DL</span></div>
+                </div>
+                <div class="px-3 py-2 bg-parchment/60 rounded-lg border border-amber/10">
+                    <div class="text-[10px] uppercase font-semibold tracking-wider text-ink/40">Moyenne / jour</div>
+                    <div class="font-serif font-bold text-base text-ink">{{ $dailyAverage }} <span class="text-[10px] font-sans font-normal text-ink/50">DL</span></div>
+                </div>
+                <div class="px-3 py-2 bg-parchment/60 rounded-lg border border-amber/10">
+                    <div class="text-[10px] uppercase font-semibold tracking-wider text-ink/40">Pic journalier</div>
+                    <div class="font-serif font-bold text-base text-amber">{{ $bestDay['count'] }} <span class="text-[10px] font-sans font-normal text-ink/50">{{ $bestDay['label'] !== '—' ? '(' . $bestDay['label'] . ')' : '' }}</span></div>
+                </div>
+                <div class="px-3 py-2 bg-parchment/60 rounded-lg border border-amber/10">
+                    <div class="text-[10px] uppercase font-semibold tracking-wider text-ink/40">Aujourd'hui</div>
+                    <div class="font-serif font-bold text-base text-sage">{{ $todayDownloads }} <span class="text-[10px] font-sans font-normal text-ink/50">DL</span></div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Zone du graphique en barres --}}
+        <div class="pt-6">
+            {{-- Info-bulle dynamique lors du survol (Alpine.js) --}}
+            <div class="h-6 mb-2 flex items-center justify-between text-xs">
+                <template x-if="hoveredDay">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-ink" x-text="hoveredDay.full_date"></span>
+                        <span class="text-ink/40">•</span>
+                        <span class="font-bold text-amber" x-text="hoveredDay.count + ' téléchargement(s)'"></span>
+                        <template x-if="hoveredDay.is_today">
+                            <span class="px-1.5 py-0.5 rounded text-[10px] bg-amber/15 text-amber font-semibold">Aujourd'hui</span>
+                        </template>
+                    </div>
+                </template>
+                <template x-if="!hoveredDay">
+                    <span class="text-ink/40 text-xs italic">Survolez une barre pour afficher le détail de la journée</span>
+                </template>
+
+                <div class="hidden sm:flex items-center gap-3 text-[11px] text-ink/40">
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-sage"></span> Jours précédents</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-amber"></span> Aujourd'hui</span>
+                </div>
+            </div>
+
+            {{-- Grille & Barres --}}
+            <div class="relative pt-6">
+                {{-- Lignes de repères horizontales en arrière-plan --}}
+                <div class="absolute inset-0 flex flex-col justify-between pointer-events-none pb-12 pt-2">
+                    <div class="border-b border-dashed border-amber/15 w-full flex justify-between">
+                        <span class="text-[10px] text-ink/30 -mt-2">{{ $maxDailyDownloads }}</span>
+                    </div>
+                    <div class="border-b border-dashed border-amber/10 w-full flex justify-between">
+                        <span class="text-[10px] text-ink/30 -mt-2">{{ round($maxDailyDownloads / 2) }}</span>
+                    </div>
+                    <div class="border-b border-amber/20 w-full flex justify-between">
+                        <span class="text-[10px] text-ink/30 -mt-2">0</span>
+                    </div>
+                </div>
+
+                {{-- Les 14 barres --}}
+                <div class="relative h-48 flex items-end gap-1.5 sm:gap-3 px-1 sm:px-4 overflow-x-auto pb-12">
+                    @foreach($dailyStats as $stat)
+                        @php
+                            $percentage = $maxDailyDownloads > 0 ? round(($stat['count'] / $maxDailyDownloads) * 100) : 0;
+                            $displayHeight = $stat['count'] > 0 ? max(6, $percentage) : 2;
+                        @endphp
+                        <div class="flex-1 min-w-[22px] sm:min-w-0 flex flex-col items-center justify-end h-full group relative cursor-pointer"
+                             @mouseenter="hoveredDay = {{ json_encode($stat) }}"
+                             @mouseleave="hoveredDay = null">
+
+                            {{-- Valeur au-dessus de la barre --}}
+                            <span class="text-[10px] font-bold mb-1 transition-all duration-200 {{ $stat['count'] > 0 ? ($stat['is_today'] ? 'text-amber font-extrabold' : 'text-ink/60 group-hover:text-amber') : 'text-ink/20 opacity-0 group-hover:opacity-100' }}">
+                                {{ $stat['count'] }}
+                            </span>
+
+                            {{-- Piste et barre verticale animée --}}
+                            <div class="w-full max-w-[28px] sm:max-w-[36px] bg-parchment/60 rounded-t-md sm:rounded-t-lg h-full flex flex-col justify-end p-0.5 border border-amber/10 group-hover:border-amber/40 transition-colors">
+                                <div class="w-full rounded-t-sm sm:rounded-t-md transition-all duration-700 ease-out {{ $stat['is_today'] ? 'bg-gradient-to-t from-amber to-amber2 shadow-sm' : ($stat['count'] > 0 ? 'bg-gradient-to-t from-sage to-sage/80 group-hover:from-amber group-hover:to-amber2' : 'bg-ink/5') }}"
+                                     style="height: 0%"
+                                     x-data
+                                     x-init="setTimeout(() => { $el.style.height = '{{ $displayHeight }}%' }, {{ 50 + ($loop->index * 35) }})">
+                                </div>
+                            </div>
+
+                            {{-- Libellés de date sous la barre --}}
+                            <div class="absolute -bottom-10 text-center w-full">
+                                <div class="text-[10px] font-semibold {{ $stat['is_today'] ? 'text-amber font-bold' : 'text-ink/60 group-hover:text-ink' }}">
+                                    {{ $stat['day_number'] }}
+                                </div>
+                                <div class="text-[9px] text-ink/35 hidden sm:block uppercase tracking-wider">
+                                    {{ substr($stat['day_name'], 0, 3) }}
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     {{-- FILTRES ET TOP 5 (Grille) --}}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 

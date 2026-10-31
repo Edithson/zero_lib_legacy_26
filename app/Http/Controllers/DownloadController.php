@@ -76,13 +76,68 @@ class DownloadController extends Controller
         // On récupère le nombre maximum pour calculer les pourcentages de nos barres de progression
         $maxDownloads = $topBooks->max('downloads_count') ?: 1;
 
+        // 3. Téléchargements par jour sur les 14 derniers jours (2 semaines)
+        $startDate14Days = now()->subDays(13)->startOfDay();
+
+        $dailyCounts = Download::where('created_at', '>=', $startDate14Days)
+            ->selectRaw('DATE(created_at) as date_val, COUNT(*) as total')
+            ->groupBy('date_val')
+            ->pluck('total', 'date_val');
+
+        $dailyStats = collect();
+        $totalLast14Days = 0;
+        $bestDay = [
+            'count'     => 0,
+            'label'     => '—',
+            'full_date' => '—',
+        ];
+
+        for ($i = 13; $i >= 0; $i--) {
+            $date = now()->subDays($i);
+            $dateKey = $date->format('Y-m-d');
+            $count = (int) ($dailyCounts[$dateKey] ?? 0);
+            $totalLast14Days += $count;
+
+            $shortDate = $date->locale('fr')->translatedFormat('d M');
+            $dayName   = ucfirst($date->locale('fr')->translatedFormat('D'));
+            $fullDate  = ucfirst($date->locale('fr')->translatedFormat('l d F Y'));
+
+            if ($count > $bestDay['count']) {
+                $bestDay = [
+                    'count'     => $count,
+                    'label'     => $shortDate,
+                    'full_date' => $fullDate,
+                ];
+            }
+
+            $dailyStats->push([
+                'date'        => $dateKey,
+                'short_date'  => $shortDate,
+                'day_name'    => $dayName,
+                'day_number'  => $date->format('d/m'),
+                'full_date'   => $fullDate,
+                'count'       => $count,
+                'is_today'    => $i === 0,
+            ]);
+        }
+
+        $maxDailyDownloads = $dailyStats->max('count') ?: 1;
+        $dailyAverage = round($totalLast14Days / 14, 1);
+        $todayDownloads = $dailyStats->last()['count'] ?? 0;
+
         return view('admin.pages.downloads.index', [
-            'downloads'    => $downloads,
-            'topBooks'     => $topBooks,
-            'maxDownloads' => $maxDownloads,
-            'startDate'    => $startDate,
-            'endDate'      => $endDate,
-            'pageTitle'    => 'Statistiques des téléchargements',
+            'downloads'         => $downloads,
+            'topBooks'          => $topBooks,
+            'maxDownloads'      => $maxDownloads,
+            'startDate'         => $startDate,
+            'endDate'           => $endDate,
+            'pageTitle'         => 'Statistiques des téléchargements',
+            'dailyStats'        => $dailyStats,
+            'maxDailyDownloads' => $maxDailyDownloads,
+            'totalLast14Days'   => $totalLast14Days,
+            'dailyAverage'      => $dailyAverage,
+            'bestDay'           => $bestDay,
+            'todayDownloads'    => $todayDownloads,
         ]);
     }
 
