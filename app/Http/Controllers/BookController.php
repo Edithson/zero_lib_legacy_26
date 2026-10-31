@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class BookController extends Controller
@@ -248,6 +249,117 @@ class BookController extends Controller
         return redirect()
             ->route('admin.books.index')
             ->with('success', '« ' . $validated['title'] . ' » a été publié avec succès.');
+    }
+
+    /**
+     * Affiche les détails complets d'un livre côté administration, avec son historique de téléchargements.
+     */
+    public function show_admin(Book $book, Request $request): View
+    {
+        $book->load('category');
+
+        $downloads = $book->downloads()
+            ->with('user')
+            ->latest()
+            ->paginate(15)
+            ->withQueryString();
+
+        $totalDownloads = $book->downloads()->count();
+        $todayDownloads = $book->downloads()->whereDate('created_at', today())->count();
+        $monthDownloads = $book->downloads()->whereYear('created_at', now()->year)->whereMonth('created_at', now()->month)->count();
+        $uniqueUsersCount = $book->downloads()->distinct('ip_address')->count('ip_address');
+
+        $hasFile = !empty($book->file_path) && Storage::disk('private')->exists($book->file_path);
+        $fileSize = $hasFile ? Storage::disk('private')->size($book->file_path) : null;
+
+        $hasCover = !empty($book->cover_path) && Storage::disk('public')->exists($book->cover_path);
+        $coverSize = $hasCover ? Storage::disk('public')->size($book->cover_path) : null;
+
+        return view('admin.pages.books.show', [
+            'book'             => $book,
+            'downloads'        => $downloads,
+            'totalDownloads'   => $totalDownloads,
+            'todayDownloads'   => $todayDownloads,
+            'monthDownloads'   => $monthDownloads,
+            'uniqueUsersCount' => $uniqueUsersCount,
+            'hasFile'          => $hasFile,
+            'fileSize'         => $fileSize,
+            'hasCover'         => $hasCover,
+            'coverSize'        => $coverSize,
+            'pageTitle'        => 'Détails du livre : ' . $book->title,
+        ]);
+    }
+
+    /**
+     * Téléchargement du fichier numérique (PDF) côté admin.
+     */
+    public function downloadFile(Book $book)
+    {
+        if (empty($book->file_path) || !Storage::disk('private')->exists($book->file_path)) {
+            return back()->with('error', 'Le fichier numérique de ce livre est introuvable sur le serveur.');
+        }
+
+        $extension = pathinfo($book->file_path, PATHINFO_EXTENSION) ?: 'pdf';
+        $fileName = Str::slug($book->title) . '.' . $extension;
+
+        return Storage::disk('private')->download($book->file_path, $fileName);
+    }
+
+    /**
+     * Téléchargement de l'image de couverture côté admin.
+     */
+    public function downloadCover(Book $book)
+    {
+        if (empty($book->cover_path) || !Storage::disk('public')->exists($book->cover_path)) {
+            return back()->with('error', 'L\'image de couverture de ce livre est introuvable sur le serveur.');
+        }
+
+        $extension = pathinfo($book->cover_path, PATHINFO_EXTENSION) ?: 'webp';
+        $fileName = Str::slug($book->title) . '-couverture.' . $extension;
+
+        return Storage::disk('public')->download($book->cover_path, $fileName);
+    }
+
+    /**
+     * Exportation individuelle des données du livre au format JSON.
+     */
+    public function exportBookJson(Book $book)
+    {
+        $book->load('category');
+
+        $data = [
+            'id'              => $book->id,
+            'title'           => $book->title,
+            'slug'            => $book->slug,
+            'author'          => $book->author,
+            'category'        => $book->category ? [
+                'id'   => $book->category->id,
+                'name' => $book->category->name,
+                'slug' => $book->category->slug,
+            ] : null,
+            'description'     => $book->description,
+            'price'           => $book->price,
+            'formatted_price' => $book->formatted_price,
+            'is_free'         => (bool) $book->is_free,
+            'licence'         => $book->licence,
+            'nbr_pages'       => $book->nbr_pages,
+            'publish_year'    => $book->publish_year,
+            'is_published'    => (bool) $book->is_published,
+            'cover_path'      => $book->cover_path,
+            'cover_url'       => $book->cover_url,
+            'file_path'       => $book->file_path,
+            'has_file'        => !empty($book->file_path) && Storage::disk('private')->exists($book->file_path),
+            'downloads_count' => $book->downloads()->count(),
+            'created_at'      => $book->created_at?->toIso8601String(),
+            'updated_at'      => $book->updated_at?->toIso8601String(),
+            'exported_at'     => now()->toIso8601String(),
+        ];
+
+        $fileName = 'livre-' . $book->id . '-' . Str::slug($book->title) . '.json';
+
+        return response()->streamDownload(function () use ($data) {
+            echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        }, $fileName, ['Content-Type' => 'application/json; charset=UTF-8']);
     }
 
     // méthodes d'édition

@@ -52,6 +52,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/books/export', [BookController::class, 'export'])->name('admin.books.export');
         Route::get('/admin/books/create', [BookController::class, 'create'])->name('admin.books.create');
         Route::post('/admin/books/store', [BookController::class, 'store'])->name('admin.books.store');
+        Route::get('/admin/books/{book}', [BookController::class, 'show_admin'])->name('admin.books.show');
+        Route::get('/admin/books/{book}/download-file', [BookController::class, 'downloadFile'])->name('admin.books.download_file');
+        Route::get('/admin/books/{book}/download-cover', [BookController::class, 'downloadCover'])->name('admin.books.download_cover');
+        Route::get('/admin/books/{book}/export-json', [BookController::class, 'exportBookJson'])->name('admin.books.export_json');
         Route::get('/admin/books/{book}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
         Route::put('/admin/books/{book}', [BookController::class, 'update'])->name('admin.books.update');
         Route::delete('/admin/books/{book}', [BookController::class, 'destroy'])->name('admin.books.destroy');

@@ -157,12 +157,14 @@
                             {{-- Titre + icône + auteur --}}
                             <td>
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-lg flex items-center justify-center text-lg flex-shrink-0 bg-parchment">
+                                    <a href="{{ route('admin.books.show', $book->id) }}" class="w-9 h-9 rounded-lg flex items-center justify-center text-lg flex-shrink-0 bg-parchment hover:bg-amber/10 transition-colors">
                                         {{ $book->icon ?? '📖' }}
-                                    </div>
+                                    </a>
                                     <div class="min-w-0">
                                         <div class="font-medium text-sm truncate max-w-[160px] sm:max-w-[220px]">
-                                            {{ $book->title }}
+                                            <a href="{{ route('admin.books.show', $book->id) }}" class="hover:text-amber transition-colors">
+                                                {{ $book->title }}
+                                            </a>
                                         </div>
                                         <div class="text-xs text-ink/40 truncate">
                                             {{ $book->author ?? 'Auteur non renseigné' }}
@@ -212,6 +214,18 @@
                             {{-- Actions --}}
                             <td class="text-right">
                                 <div class="flex items-center justify-end gap-1">
+
+                                    {{-- Consulter --}}
+                                    <a href="{{ route('admin.books.show', $book->id) }}"
+                                       class="p-1.5 rounded hover:bg-parchment transition-colors text-ink/50 hover:text-amber"
+                                       title="Consulter le livre">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                    </a>
 
                                     {{-- Modifier --}}
                                     <a href="{{ route('admin.books.edit', $book->id) }}"
