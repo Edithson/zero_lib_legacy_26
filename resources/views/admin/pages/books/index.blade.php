@@ -51,6 +51,49 @@
             Filtrer
         </button>
 
+        {{-- Menu déroulant Exportation --}}
+        <div class="relative" x-data="{ open: false }" @click.outside="open = false">
+            <button type="button"
+                    @click="open = !open"
+                    class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-parchment text-ink border border-amber/30 text-sm font-medium rounded-lg hover:bg-amber/15 hover:border-amber transition-colors">
+                <svg class="w-4 h-4 text-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <span>Exporter</span>
+                <svg class="w-3.5 h-3.5 text-ink/40 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+
+            <div x-show="open"
+                 x-transition:enter="transition ease-out duration-100"
+                 x-transition:enter-start="transform opacity-0 scale-95"
+                 x-transition:enter-end="transform opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-75"
+                 x-transition:leave-start="transform opacity-100 scale-100"
+                 x-transition:leave-end="transform opacity-0 scale-95"
+                 class="absolute right-0 mt-2 w-48 bg-white border border-amber/20 rounded-xl shadow-lg py-1.5 z-20"
+                 style="display: none;">
+                <a href="{{ route('admin.books.export', array_merge(request()->except('page'), ['format' => 'csv'])) }}"
+                   class="flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-ink hover:bg-parchment/60 hover:text-amber transition-colors">
+                    <span class="w-6 h-6 rounded bg-sage/10 text-sage flex items-center justify-center font-bold text-[10px]">CSV</span>
+                    <div>
+                        <div class="font-semibold">Format CSV</div>
+                        <div class="text-[10px] text-ink/40">Excel, Calc, Sheets</div>
+                    </div>
+                </a>
+                <div class="border-t border-amber/10 my-1"></div>
+                <a href="{{ route('admin.books.export', array_merge(request()->except('page'), ['format' => 'json'])) }}"
+                   class="flex items-center gap-2.5 px-4 py-2 text-xs font-medium text-ink hover:bg-parchment/60 hover:text-amber transition-colors">
+                    <span class="w-6 h-6 rounded bg-amber/15 text-amber flex items-center justify-center font-bold text-[10px]">JSON</span>
+                    <div>
+                        <div class="font-semibold">Format JSON</div>
+                        <div class="text-[10px] text-ink/40">API, export brut</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
         {{-- Bouton nouveau livre --}}
         <a href="{{ route('admin.books.create') }}"
            class="flex items-center justify-center gap-2 px-4 py-2 bg-amber text-cream text-sm rounded-lg hover:bg-amber2 transition-colors">
@@ -64,6 +107,38 @@
 
     {{-- TABLE --}}
     <div class="stat-card overflow-hidden">
+        {{-- En-tête de table avec nombre de livres et raccourcis d'export --}}
+        <div class="px-6 py-4 border-b border-amber/10 bg-parchment/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+                <span class="font-medium text-ink text-sm">Catalogue des livres</span>
+                <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber/15 text-amber font-semibold">{{ $books->total() }}</span>
+                @if(request('search') || request('category') || (request()->has('published') && request('published') !== ''))
+                    <span class="text-xs text-ink/40">(filtrés)</span>
+                @endif
+            </div>
+
+            <div class="flex items-center gap-2 text-xs">
+                <span class="text-ink/40">Exporter (filtrés) :</span>
+                <a href="{{ route('admin.books.export', array_merge(request()->except('page'), ['format' => 'csv'])) }}"
+                   class="inline-flex items-center gap-1 font-semibold text-sage hover:text-amber transition-colors px-2 py-1 rounded hover:bg-white"
+                   title="Télécharger les résultats au format CSV">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    CSV
+                </a>
+                <span class="text-ink/20">|</span>
+                <a href="{{ route('admin.books.export', array_merge(request()->except('page'), ['format' => 'json'])) }}"
+                   class="inline-flex items-center gap-1 font-semibold text-amber hover:text-amber2 transition-colors px-2 py-1 rounded hover:bg-white"
+                   title="Télécharger les résultats au format JSON">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    JSON
+                </a>
+            </div>
+        </div>
+
         <div class="overflow-x-auto">
             <table class="w-full data-table">
                 <thead>

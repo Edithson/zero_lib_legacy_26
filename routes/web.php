@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Livres
         Route::get('/admin/books', [BookController::class, 'index_admin'])->name('admin.books.index');
+        Route::get('/admin/books/export', [BookController::class, 'export'])->name('admin.books.export');
         Route::get('/admin/books/create', [BookController::class, 'create'])->name('admin.books.create');
         Route::post('/admin/books/store', [BookController::class, 'store'])->name('admin.books.store');
         Route::get('/admin/books/{book}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
